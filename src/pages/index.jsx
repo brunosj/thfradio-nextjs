@@ -1,9 +1,8 @@
 import Head from 'next/head';
 import Image from 'next/image';
-import styles from '../styles/Home.module.css';
+import ShowsArchive from '../modules/shows/components/showsArchive';
 
-export default function Home({ data }) {
-  console.log(data);
+export default function Home({ shows }) {
   return (
     <div className=''>
       <Head>
@@ -13,12 +12,8 @@ export default function Home({ data }) {
       </Head>
 
       <main className=''>
-        <p>THF Radio</p>
-        {data.data.map((show) => (
-          <div>
-            <p>{show.name}</p>
-          </div>
-        ))}
+        <p className='text-4xl'>THF Radio</p>
+        <ShowsArchive shows={shows} />
       </main>
     </div>
   );
@@ -26,11 +21,11 @@ export default function Home({ data }) {
 
 export async function getStaticProps() {
   const res = await fetch(process.env.MIXCLOUD_API);
-  const data = await res.json();
+  const shows = await res.json();
 
   return {
     props: {
-      data,
+      shows,
     },
     revalidate: 10,
   };
