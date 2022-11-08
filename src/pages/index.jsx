@@ -1,7 +1,6 @@
 import Head from 'next/head';
-import Image from 'next/image';
 import Layout from '../layout';
-import ShowsArchive from '../modules/shows/components/showsArchive';
+import ShowsArchive from '../modules/archive/showsArchive';
 
 export default function Home({ shows }) {
   return (
@@ -12,7 +11,6 @@ export default function Home({ shows }) {
         <link rel='icon' href='/favicon.ico' />
       </Head>
       <Layout>
-        <p className='text-4xl'>THF Radio</p>
         <ShowsArchive shows={shows} />
       </Layout>
     </div>
