@@ -6,7 +6,7 @@ const ShowCard = ({ show }) => {
       <p>{show.name}</p>
       <div className='h-24 w-24'>
         <Image
-          src={show.pictures.extra_large}
+          src={show.pictures.medium}
           height={600}
           width={600}
           layout='responsive'
