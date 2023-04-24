@@ -5,12 +5,17 @@ import ShowsArchive from '../modules/archive/showsArchive';
 import { Shows } from '@/types/ResponsesInterface';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { PageTypes, CloudShowTypes } from '@/types/ResponsesInterface';
+import ical from 'next-ical';
 
 const Home: NextPage<{
   pages: PageTypes[];
   shows: CloudShowTypes[];
-}> = ({ pages, shows }) => {
+  calendarEntries: string;
+}> = ({ pages, shows, calendarEntries }) => {
   const [page] = pages.filter((page) => page.attributes.slug === 'home');
+
+  const calendarShows = Object.entries(calendarEntries);
+  console.log(calendarShows);
 
   return (
     <div className=''>
@@ -28,6 +33,7 @@ const Home: NextPage<{
 };
 
 export default Home;
+
 export const getStaticProps = async ({ locale }: { locale: string }) => {
   const pagesResponse = await fetch(
     `${process.env.STRAPI_PUBLIC_API_URL}pages?locale=${locale}&populate=*`
@@ -36,23 +42,24 @@ export const getStaticProps = async ({ locale }: { locale: string }) => {
   const cloudShowsResponse = await fetch(`${process.env.MIXCLOUD_API}`);
   const cloudShows = await cloudShowsResponse.json();
 
-  // const API_KEY =
-  //   'e1f6fcb44660c8499e19af3fd284f8fc7941072f204c4b025eddf7731f6b9819';
-  // const url = 'https://api.teamup.com/ksnqp495oqbop4qmit/THF-Radio';
+  const calendarEntriesResponse = await ical.async.fromURL(
+    'https://ics.teamup.com/feed/ksn22z3grmc5p1xhzp/7027389.ics'
+  );
+  const serializedCalendarEntries = JSON.stringify(calendarEntriesResponse);
+  const calendarEntries = JSON.parse(serializedCalendarEntries);
 
-  // const calendarResponse = await fetch(url, {
-  //   headers: {
-  //     'Teamup-Token': API_KEY,
-  //   },
-  // });
+  // console.log(eventsResponse);
 
-  // const calendar = await calendarResponse.json();
-  // console.log(calendarResponse, calendar);
+  // const events = ical.async.fromURL(
+  //   'https://ics.teamup.com/feed/ksn22z3grmc5p1xhzp/7027389.ics',
+  //   { headers: { 'User-Agent': 'API-Example / 1.0' } }
+  // );
 
   return {
     props: {
       pages: pages.data,
       shows: cloudShows.data,
+      calendarEntries,
       ...(await serverSideTranslations(locale ?? 'en', ['common'])),
     },
     revalidate: 10,
