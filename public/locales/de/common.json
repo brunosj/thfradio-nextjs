@@ -1,0 +1,31 @@
+{
+  "en": "Englisch",
+  "de": "Deutsch",
+  "menu": [
+    {
+      "name": "Programm",
+      "path": "/",
+      "lang": "de"
+    },
+    {
+      "name": "Sendungen",
+      "path": "/shows",
+      "lang": "de"
+    },
+    {
+      "name": "Info",
+      "path": "/info",
+      "lang": "de"
+    },
+    {
+      "name": "Torhaus",
+      "path": "/torhaus",
+      "lang": "de"
+    },
+    {
+      "name": "Chat",
+      "path": "/chat",
+      "lang": "de"
+    }
+  ]
+}

@@ -1,4 +1,6 @@
-const Footer = ({ children }) => {
+import { Props } from '@/types/PropsInterface';
+
+const Footer = ({ children }: Props) => {
   return (
     <footer>
       <nav>{children}</nav>
