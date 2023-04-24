@@ -23,12 +23,6 @@ const ShowPage: NextPage<ShowPage> = ({
   let locale = router.locale;
   const currentContent = locale === 'en' ? content : otherLocaleContent;
 
-  const showTitle = currentContent.attributes.title;
-
-  const filteredShows = shows.filter((show) =>
-    new RegExp(showTitle, 'i').test(show.name)
-  );
-
   return (
     <>
       <Layout>
@@ -36,7 +30,7 @@ const ShowPage: NextPage<ShowPage> = ({
         <article className='markdown pt-6'>
           <ReactMarkdown>{currentContent.attributes.description}</ReactMarkdown>
         </article>
-        <ShowsArchive shows={filteredShows} />
+        <ShowsArchive shows={shows} />
       </Layout>
     </>
   );
