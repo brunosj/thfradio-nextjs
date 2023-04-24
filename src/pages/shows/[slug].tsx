@@ -6,6 +6,7 @@ import { ShowTypes, CloudShowTypes } from '@/types/ResponsesInterface';
 import Layout from '@/common/layout/layout';
 import ShowsArchive from '@/modules/archive/showsArchive';
 import ReactMarkdown from 'react-markdown';
+import getAllShows from '@/utils/getAllShows';
 
 interface ShowPage {
   content: ShowTypes;
@@ -64,14 +65,14 @@ export async function getStaticProps({
   // Find the entry for the other locale
   const otherLocaleEntry = currentLocaleEntry.attributes.localizations.data[0];
 
-  const cloudShowsResponse = await fetch(`${process.env.MIXCLOUD_API}`);
-  const cloudShows = await cloudShowsResponse.json();
+  // const cloudShowsResponse = await fetch(`${process.env.MIXCLOUD_API}`);
+  const cloudShows = await getAllShows();
 
   return {
     props: {
       content: currentLocaleEntry,
       otherLocaleContent: otherLocaleEntry,
-      shows: cloudShows.data,
+      shows: cloudShows,
       ...(await serverSideTranslations(locale ?? 'en', ['common'])),
     },
     revalidate: 10,
