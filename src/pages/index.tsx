@@ -15,7 +15,6 @@ const Home: NextPage<{
   const [page] = pages.filter((page) => page.attributes.slug === 'home');
 
   const calendarShows = Object.entries(calendarEntries);
-  console.log(calendarShows);
 
   return (
     <div className=''>
@@ -47,13 +46,6 @@ export const getStaticProps = async ({ locale }: { locale: string }) => {
   );
   const serializedCalendarEntries = JSON.stringify(calendarEntriesResponse);
   const calendarEntries = JSON.parse(serializedCalendarEntries);
-
-  // console.log(eventsResponse);
-
-  // const events = ical.async.fromURL(
-  //   'https://ics.teamup.com/feed/ksn22z3grmc5p1xhzp/7027389.ics',
-  //   { headers: { 'User-Agent': 'API-Example / 1.0' } }
-  // );
 
   return {
     props: {
