@@ -1,21 +1,21 @@
 const getAllShows = async () => {
-  let i = 0; // start with the first page
-  let mixcloudShows: any = []; // array to store all results
+  const limit = 100; // limit of items per page
+  const pages = Math.ceil(1500 / limit); // number of pages to fetch
+  const promises = [];
 
-  while (true) {
-    const res = await fetch(
-      `${process.env.MIXCLOUD_API}?offset=${i * 100}&limit=9999`
-    );
-    const resJSON = await res.json();
-    mixcloudShows = mixcloudShows.concat(resJSON.data);
-    if (resJSON.data.length < 100) {
-      // if the number of items in the response is less than the limit, we've reached the last page
-      break;
-    }
+  for (let i = 0; i < pages; i++) {
+    const promise = fetch(
+      `${process.env.MIXCLOUD_API}?offset=${i * limit}&limit=${limit}`
+    )
+      .then((res) => res.json())
+      .then((data) => data.data);
 
-    i++;
+    promises.push(promise);
   }
-  return mixcloudShows;
+
+  const results = await Promise.all(promises);
+
+  return results.flat();
 };
 
 export default getAllShows;

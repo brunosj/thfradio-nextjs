@@ -68,11 +68,15 @@ export async function getStaticProps({
   // const cloudShowsResponse = await fetch(`${process.env.MIXCLOUD_API}`);
   const cloudShows = await getAllShows();
 
+  const filteredCloudcasts = cloudShows.filter((cloudcast: CloudShowTypes) =>
+    new RegExp(currentLocaleEntry.attributes.title, 'i').test(cloudcast.name)
+  );
+
   return {
     props: {
       content: currentLocaleEntry,
       otherLocaleContent: otherLocaleEntry,
-      shows: cloudShows,
+      shows: filteredCloudcasts,
       ...(await serverSideTranslations(locale ?? 'en', ['common'])),
     },
     revalidate: 10,
