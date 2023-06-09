@@ -1,11 +1,12 @@
 import Image from 'next/image';
 import { CloudShowTypes } from '@/types/ResponsesInterface';
 
-type ShowCards = {
+interface ShowCardProps {
   items: CloudShowTypes[];
-};
+  onPlay: (url: string) => void;
+}
 
-const ShowCards = ({ items }: ShowCards) => {
+const ShowCards = ({ items, onPlay }: ShowCardProps) => {
   return (
     <>
       {items.map((item, i) => {
@@ -13,6 +14,7 @@ const ShowCards = ({ items }: ShowCards) => {
           <button
             className='flex flex-row border border-gray-600 bg-white font-mono duration-200 lg:flex-col'
             key={i}
+            onClick={() => onPlay(item.url)}
           >
             <div className='group relative flex h-full justify-around p-4 duration-200'>
               <div className='w-48 group-hover:opacity-20'>

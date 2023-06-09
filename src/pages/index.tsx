@@ -6,16 +6,24 @@ import { Shows } from '@/types/ResponsesInterface';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { PageTypes, CloudShowTypes } from '@/types/ResponsesInterface';
 import ical from 'next-ical';
+import {
+  isWithinInterval,
+  startOfDay,
+  endOfDay,
+  addDays,
+  endOfWeek,
+} from 'date-fns';
+import { useRouter } from 'next/router';
+import Timetable from '@/modules/timetable/timetable';
 
 const Home: NextPage<{
   pages: PageTypes[];
   shows: CloudShowTypes[];
-  calendarEntries: string;
+  calendarEntries: any[];
 }> = ({ pages, shows, calendarEntries }) => {
   const [page] = pages.filter((page) => page.attributes.slug === 'home');
-
-  const calendarShows = Object.entries(calendarEntries);
-
+  const router = useRouter();
+  const { locale: currentLocale = 'en' } = router;
   return (
     <div className=''>
       <Head>
@@ -24,7 +32,8 @@ const Home: NextPage<{
         <link rel='icon' href='/favicon.ico' />
       </Head>
       <Layout>
-        {page.attributes.title}
+        <Timetable calendarEntries={calendarEntries} locale={currentLocale} />
+
         <ShowsArchive shows={shows} />
       </Layout>
     </div>
@@ -44,14 +53,30 @@ export const getStaticProps = async ({ locale }: { locale: string }) => {
   const calendarEntriesResponse = await ical.async.fromURL(
     'https://ics.teamup.com/feed/ksn22z3grmc5p1xhzp/7027389.ics'
   );
+
   const serializedCalendarEntries = JSON.stringify(calendarEntriesResponse);
   const calendarEntries = JSON.parse(serializedCalendarEntries);
 
+  const veventEntries = Object.values(calendarEntries).filter(
+    (entry: any) => entry.type === 'VEVENT'
+  );
+
+  const now = startOfDay(new Date());
+  const endOfCurrentWeek = endOfDay(addDays(endOfWeek(now), 1));
+  const upcomingShows = veventEntries.filter((show: any) => {
+    const showStart = new Date(show.start);
+    const showEnd = new Date(show.end);
+    // Ensure the show is starting from today up to the end of the current week (including Sunday), and also ending within the same period
+    return (
+      isWithinInterval(showStart, { start: now, end: endOfCurrentWeek }) &&
+      isWithinInterval(showEnd, { start: now, end: endOfCurrentWeek })
+    );
+  });
   return {
     props: {
       pages: pages.data,
       shows: cloudShows.data,
-      calendarEntries,
+      calendarEntries: upcomingShows,
       ...(await serverSideTranslations(locale ?? 'en', ['common'])),
     },
     revalidate: 10,

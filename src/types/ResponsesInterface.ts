@@ -9,6 +9,7 @@ export interface PageTypes {
 
 export interface CloudShowTypes {
   name: string;
+  url: string;
   pictures: {
     extra_large: string;
   };
@@ -25,6 +26,7 @@ export interface ShowTypes {
     description: string;
     slug: string;
     locale: string;
+    url: string;
     picture: {
       data: {
         id: number;
