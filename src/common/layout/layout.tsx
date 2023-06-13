@@ -1,6 +1,6 @@
-import Header from './header/Header';
-import Footer from './footer/Footer';
-import LiveTicker from '../../modules/live-ticker/LiveTicker';
+import Header from '@/layout/header/Header';
+import Footer from '@/layout/footer/Footer';
+import LiveTicker from '@/modules/live-ticker/LiveTicker';
 import { Props } from '@/types/PropsInterface';
 import MixcloudWidget from '@/modules/mixcloud/MixcloudWidget';
 
