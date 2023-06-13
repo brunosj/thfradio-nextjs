@@ -2,52 +2,112 @@
 @tailwind components;
 @tailwind utilities;
 
-
-.layout {
-  @apply px-12;
+@font-face {
+  font-family: 'NeueMachina';
+  src: url('./fonts/NeueMachina-Regular.ttf');
+  font-weight: 450;
+  font-style: normal;
+  font-display: swap;
 }
 
+@font-face {
+  font-family: 'NeueMachina';
+  src: url('./fonts/NeueMachina-Ultrabold.ttf');
+  font-weight: 600;
+  font-style: bold;
+  font-display: swap;
+}
+
+
+@font-face {
+  font-family: 'SpaceMono';
+  src: url('./fonts/SpaceMono-Regular.ttf');
+  font-weight: 450;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'SpaceMono';
+  src: url('./fonts/SpaceMono-Regular.ttf');
+  font-weight: 300;
+  font-style: light;
+  font-display: swap;
+}
+
+h1 {
+  @apply text-3xl font-bold md:text-4xl mb-6 last:mb-0;
+}
+
+h2 {
+  @apply mt-0 text-xl font-light md:text-3xl lg:mt-2;
+}
+
+h3 {
+  @apply text-lg md:text-2xl;
+}
+
+h4 {
+  @apply text-base md:text-xl;
+}
+
+h6 {
+@apply text-sm mb-2
+}
 
 .sectionPy {
   @apply py-12 lg:py-20;
 }
 
-.markdown p {
-  @apply mb-3 text-sm last:mb-0 lg:text-base;
+.sectionPb {
+@apply pb-12 lg:pb-20
 }
 
-.markdown h1 {
-  @apply mb-6 text-lg leading-relaxed last:mb-0 lg:text-2xl;
+
+.layout {
+  @apply px-6 md:px-16;
 }
 
-.markdown li {
-  @apply py-1;
-}
-.markdown ul {
-  @apply py-2;
-}
 
 .markdown a {
-  @apply underline underline-offset-4 duration-300  hover:text-blue-600 group-hover:text-blue-600 dark:hover:text-blue-700 dark:group-hover:text-blue-700;
+  @apply  text-neutral-300  duration-300  hover:text-neutral-500 group-hover:text-neutral-500
 }
 
-.markdown li {
-  @apply list-inside list-disc text-sm last:mb-0 lg:text-base;
-}
-
-.markdownSmallText p {
-  @apply mb-3 text-sm last:mb-0 lg:text-base;
-}
 
 .markdown h5 {
   @apply py-3;
 }
 
 .textHover {
-  @apply duration-300  hover:text-gray-800 group-hover:text-gray-800 dark:hover:text-gray-700 dark:group-hover:text-gray-700;
+  @apply duration-300  hover:text-neutral-300 group-hover:text-neutral-300 
 }
 
 .imageHover {
   @apply opacity-100 duration-300 group-hover:opacity-80 hover:opacity-80;
 }
 
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+  width: 5rem;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+  background: #1200ff;
+  height: 0.2rem;
+}
+
+input[type="range"]::-moz-range-track {
+  background: #1200ff;
+  height: 0.2rem;
+}
+
+input[type="range"]::-moz-range-thumb {
+  border: none; /*Removes extra border that FF applies*/
+  border-radius: 100; /*Removes default border-radius that FF applies*/
+  background-color: #1200ff;
+  height: 1rem;
+  width: 1rem;
+}

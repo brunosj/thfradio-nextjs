@@ -1,15 +1,17 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import Layout from '../common/layout/layout';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import Layout from '@/common/layout/Layout';
 import { PageTypes, ShowTypes } from '@/types/ResponsesInterface';
-import ShowListing from '@/modules/show-listing/show-listing';
+import ShowListing from '@/modules/show-listing/ShowListingChild';
+import { DataContext } from '@/context/DataContext';
+import { useContext } from 'react';
 
-const Home: NextPage<{
-  pages: PageTypes[];
-  shows: ShowTypes[];
-}> = ({ pages, shows }) => {
-  const [page] = pages.filter((page) => page.attributes.slug === 'shows');
+const Shows: NextPage<{
+  page: PageTypes;
+}> = ({ page }) => {
+  const { showListings } = useContext(DataContext)!;
+
   return (
     <div className=''>
       <Head>
@@ -19,29 +21,31 @@ const Home: NextPage<{
       </Head>
       <Layout>
         {page.attributes.title}
-
-        <ShowListing items={shows} />
+        <ShowListing items={showListings} />
       </Layout>
     </div>
   );
 };
+export default Shows;
 
-export default Home;
 export const getStaticProps = async ({ locale }: { locale: string }) => {
   const pagesResponse = await fetch(
     `${process.env.STRAPI_PUBLIC_API_URL}pages?locale=${locale}&populate=*`
   );
   const pages = await pagesResponse.json();
+  const [page] = pages.data.filter(
+    (page: PageTypes) => page.attributes.slug === 'shows'
+  );
 
-  const showsResponse = await fetch(
+  const showListingsResponse = await fetch(
     `${process.env.STRAPI_PUBLIC_API_URL}shows?locale=${locale}&populate=*`
   );
-  const shows = await showsResponse.json();
+  const showListings = await showListingsResponse.json();
 
   return {
     props: {
-      pages: pages.data,
-      shows: shows.data,
+      page,
+      showListings: showListings.data,
       ...(await serverSideTranslations(locale ?? 'en', ['common'])),
     },
     revalidate: 10,

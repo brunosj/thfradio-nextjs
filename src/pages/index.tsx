@@ -1,29 +1,29 @@
-import type { NextPage } from 'next';
 import Head from 'next/head';
-import Layout from '../common/layout/layout';
-import ShowsArchive from '../modules/archive/showsArchive';
-import { Shows } from '@/types/ResponsesInterface';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import { PageTypes, CloudShowTypes } from '@/types/ResponsesInterface';
-import ical from 'next-ical';
-import {
-  isWithinInterval,
-  startOfDay,
-  endOfDay,
-  addDays,
-  endOfWeek,
-} from 'date-fns';
 import { useRouter } from 'next/router';
-import Timetable from '@/modules/timetable/timetable';
+import { useContext } from 'react';
+import type { NextPage } from 'next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import { DataContext } from '@/context/DataContext';
+import Layout from '@/common/layout/Layout';
+import ShowsArchive from '@/modules/archive/ShowsArchive';
+import Timetable from '@/modules/timetable/Timetable';
+import {
+  PageTypes,
+  CloudShowTypes,
+  HomepageTypes,
+} from '@/types/ResponsesInterface';
+import Hero from '@/modules/hero/Hero';
+import ShowsSection from '@/modules/show-listing/ShowSection';
+import ProgrammeSection from '@/modules/timetable/ProgrammeSection';
+import ArchiveSection from '@/modules/archive/ArchiveSection';
 
 const Home: NextPage<{
-  pages: PageTypes[];
-  shows: CloudShowTypes[];
-  calendarEntries: any[];
-}> = ({ pages, shows, calendarEntries }) => {
-  const [page] = pages.filter((page) => page.attributes.slug === 'home');
+  page: HomepageTypes;
+}> = ({ page }) => {
   const router = useRouter();
   const { locale: currentLocale = 'en' } = router;
+  const { shows, calendarEntries, showListings } = useContext(DataContext)!;
+
   return (
     <div className=''>
       <Head>
@@ -32,9 +32,25 @@ const Home: NextPage<{
         <link rel='icon' href='/favicon.ico' />
       </Head>
       <Layout>
-        <Timetable calendarEntries={calendarEntries} locale={currentLocale} />
-
-        <ShowsArchive shows={shows} />
+        <Hero
+          description={page.attributes.heroText}
+          imageSrc={page.attributes.heroPictures.data[0].attributes.url}
+        />
+        <ShowsSection
+          title={page.attributes.shows.title}
+          subtitle={page.attributes.shows.subtitle}
+          showListings={showListings}
+        />
+        <ProgrammeSection
+          title={page.attributes.programme.title}
+          subtitle={page.attributes.programme.subtitle}
+          calendarEntries={calendarEntries}
+        />
+        <ArchiveSection
+          title={page.attributes.archive.title}
+          subtitle={page.attributes.archive.subtitle}
+          shows={shows}
+        />
       </Layout>
     </div>
   );
@@ -44,39 +60,13 @@ export default Home;
 
 export const getStaticProps = async ({ locale }: { locale: string }) => {
   const pagesResponse = await fetch(
-    `${process.env.STRAPI_PUBLIC_API_URL}pages?locale=${locale}&populate=*`
+    `${process.env.STRAPI_PUBLIC_API_URL}homepage?locale=${locale}&populate=*`
   );
-  const pages = await pagesResponse.json();
-  const cloudShowsResponse = await fetch(`${process.env.MIXCLOUD_API}`);
-  const cloudShows = await cloudShowsResponse.json();
+  const page = await pagesResponse.json();
 
-  const calendarEntriesResponse = await ical.async.fromURL(
-    'https://ics.teamup.com/feed/ksn22z3grmc5p1xhzp/7027389.ics'
-  );
-
-  const serializedCalendarEntries = JSON.stringify(calendarEntriesResponse);
-  const calendarEntries = JSON.parse(serializedCalendarEntries);
-
-  const veventEntries = Object.values(calendarEntries).filter(
-    (entry: any) => entry.type === 'VEVENT'
-  );
-
-  const now = startOfDay(new Date());
-  const endOfCurrentWeek = endOfDay(addDays(endOfWeek(now), 1));
-  const upcomingShows = veventEntries.filter((show: any) => {
-    const showStart = new Date(show.start);
-    const showEnd = new Date(show.end);
-    // Ensure the show is starting from today up to the end of the current week (including Sunday), and also ending within the same period
-    return (
-      isWithinInterval(showStart, { start: now, end: endOfCurrentWeek }) &&
-      isWithinInterval(showEnd, { start: now, end: endOfCurrentWeek })
-    );
-  });
   return {
     props: {
-      pages: pages.data,
-      shows: cloudShows.data,
-      calendarEntries: upcomingShows,
+      page: page.data,
       ...(await serverSideTranslations(locale ?? 'en', ['common'])),
     },
     revalidate: 10,

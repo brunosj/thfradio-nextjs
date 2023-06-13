@@ -15,6 +15,7 @@
     "next": "^13.4.4",
     "next-i18next": "^13.3.0",
     "next-ical": "^0.16.4",
+    "node-fetch": "^3.3.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-fast-marquee": "^1.6.0",

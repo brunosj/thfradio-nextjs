@@ -1,6 +1,9 @@
 {
   "en": "Englisch",
   "de": "Deutsch",
+  "nextShow": "Nächste Show",
+  "nowPlaying": "Jetzt wird das Archiv abgespielt",
+  "on": "am",
   "menu": [
     {
       "name": "Programm",

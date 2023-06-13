@@ -3,8 +3,8 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useTranslation } from 'next-i18next';
 import { useRouter } from 'next/router';
 import { ShowTypes, CloudShowTypes } from '@/types/ResponsesInterface';
-import Layout from '@/common/layout/layout';
-import ShowsArchive from '@/modules/archive/showsArchive';
+import Layout from '@/common/layout/Layout';
+import ShowsArchive from '@/modules/archive/ShowsArchive';
 import ReactMarkdown from 'react-markdown';
 import getAllShows from '@/utils/getAllShows';
 
@@ -26,11 +26,21 @@ const ShowPage: NextPage<ShowPage> = ({
   return (
     <>
       <Layout>
-        {currentContent.attributes.title}
-        <article className='markdown pt-6'>
-          <ReactMarkdown>{currentContent.attributes.description}</ReactMarkdown>
-        </article>
-        <ShowsArchive shows={shows} />
+        <div className=''>
+          <div className='bg-orange-500 text-white h-32 md:h-64 flex items-center'>
+            <h1 className='layout'>{currentContent.attributes.title}</h1>
+          </div>
+          <div className='bg-blue-800 sectionPy'>
+            <article className='layout sectionPb markdown text-white '>
+              <ReactMarkdown>
+                {currentContent.attributes.description}
+              </ReactMarkdown>
+            </article>
+            <div className='layout'>
+              <ShowsArchive shows={shows} />
+            </div>
+          </div>
+        </div>
       </Layout>
     </>
   );

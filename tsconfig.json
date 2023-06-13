@@ -31,6 +31,7 @@
       "@/assets/*": ["src/common/assets/*"],
       "@/modules/*": ["src/modules/*"],
       "@/utils/*": ["src/utils/*"],
+      "@/context/*": ["src/context/*"],
       "@/types/*": ["src/types/*"]
     } /* Specify a set of entries that re-map imports to additional lookup locations. */,
     // "rootDirs": [],                                   /* Allow multiple folders to be treated as one when resolving modules. */

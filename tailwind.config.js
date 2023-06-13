@@ -7,6 +7,10 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['NeueMachina'],
+        mono: ['SpaceMono'],
+      },
       colors: {
         blue: {
           100: '#d0ccff',

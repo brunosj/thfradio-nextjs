@@ -1,6 +1,9 @@
 {
   "en": "English",
   "de": "German",
+  "nextShow": "Next show",
+  "nowPlaying": "Now playing the radio archive",
+  "on": "on",
   "menu": [
     {
       "name": "Programme",

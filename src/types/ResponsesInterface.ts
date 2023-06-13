@@ -7,6 +7,12 @@ export interface PageTypes {
   id: number;
 }
 
+export interface CalendarEntry {
+  start: string;
+  end: string;
+  summary: string;
+}
+
 export interface CloudShowTypes {
   name: string;
   url: string;
@@ -42,4 +48,28 @@ export interface ShowTypes {
 
 export interface Shows {
   shows: ShowTypes[];
+}
+
+export interface Section {
+  title: string;
+  subtitle: string;
+  showListings?: ShowTypes[];
+  calendarEntries?: CalendarEntry[];
+  shows?: CloudShowTypes[];
+}
+
+export interface HomepageTypes {
+  attributes: {
+    heroText: string;
+    heroPictures: {
+      data: Array<{
+        attributes: {
+          url: string;
+        };
+      }>;
+    };
+    shows: Section;
+    programme: Section;
+    archive: Section;
+  };
 }
