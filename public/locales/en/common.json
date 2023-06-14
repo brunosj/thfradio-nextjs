@@ -4,10 +4,26 @@
   "nextShow": "Next show",
   "nowPlaying": "Now playing the radio archive",
   "on": "on",
+  "allShows": "All THF shows",
+  "aboutUs": "About us",
+  "fromTheArchive": "From the archive",
+  "loadMore": "Load more",
+  "supportUs": "Support us",
+  "becomeMember": "Become a member",
   "menu": [
     {
+      "name": "About",
+      "path": "/about",
+      "lang": "en"
+    },
+    {
+      "name": "Archive",
+      "path": "/#archive",
+      "lang": "de"
+    },
+    {
       "name": "Programme",
-      "path": "/",
+      "path": "/programme",
       "lang": "en"
     },
     {
@@ -16,13 +32,8 @@
       "lang": "en"
     },
     {
-      "name": "Info",
-      "path": "/info",
-      "lang": "en"
-    },
-    {
       "name": "Torhaus",
-      "path": "/torhaus",
+      "path": "https://torhausberlin.de/",
       "lang": "en"
     },
     {

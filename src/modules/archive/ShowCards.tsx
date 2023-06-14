@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { CloudShowTypes } from '@/types/ResponsesInterface';
 import { format, parseISO } from 'date-fns';
 import { Play } from '@/common/assets/PlayIcon';
+import Button from '@/common/ui/UIButton';
 
 interface ShowCardProps {
   items: CloudShowTypes[];
@@ -90,8 +91,13 @@ const ShowCards = ({ items, onPlay }: ShowCardProps) => {
         );
       })}
       {displayCount < items.length && (
-        <div className='col-span-4 text-white m-auto'>
-          <button onClick={handleLoadMore}>Load More</button>
+        <div className='col-span-4  m-auto'>
+          <button
+            className='flex font-mono rounded-xl text-sm shadow-sm border-blue-800 px-4 py-2 bg-white  duration-300 hover:bg-blue-100 '
+            onClick={handleLoadMore}
+          >
+            Load More
+          </button>
         </div>
       )}
     </div>

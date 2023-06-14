@@ -14,7 +14,7 @@ const ProgrammeSection = ({
   calendarEntries,
 }: ProgrammeProps) => {
   return (
-    <section className='bg-blue-500 layout sectionPb'>
+    <section className='bg-blue-500 layout sectionPb' id='programme'>
       <SectionHeader title={title} subtitle={subtitle} />
       <div className='max-w-6xl m-auto'>
         <Timetable calendarEntries={calendarEntries} />

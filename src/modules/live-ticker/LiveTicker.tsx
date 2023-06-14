@@ -87,7 +87,8 @@ export const LiveTicker = () => {
       if (nextShow) {
         const formattedNextShowDate = format(
           parseISO(nextShow.start),
-          'EEEE dd.MM.yyyy'
+          'EEEE dd.MM.yyyy',
+          { locale: localeModule }
         );
         const formattedNextShowStartTime = format(
           new Date(nextShow.start),
@@ -119,32 +120,34 @@ export const LiveTicker = () => {
   const currentShowName = getCurrentShowName();
 
   return (
-    <div className='layout py-0 border-blue-800 border font-mono flex items-center bg-white shadow-lg opacity-95 space-x-3 justify-between flex-col md:flex-row'>
-      <div className='w-full md:w-1/6 py-2 md:py-0 space-x-2 text-xs md:text-sm '>
-        <span className='uppercase font-light'>Live from Airport Berlin</span>
-      </div>
-      <div className='w-5/6 md:w-4/6'>
-        <Marquee
-          gradient={true}
-          gradientWidth={25}
-          speed={50}
-          pauseOnHover={true}
-          className='bg-white text-black'
-        >
-          {currentShowName ? (
-            <div className=''>{currentShowName}</div>
-          ) : (
-            <span>Live Radio</span>
-          )}
-        </Marquee>
-      </div>
-      <div className='hidden md:block ml-auto'>
-        <AudioPlayer
-          shows={shows}
-          calendarEntries={calendarEntries}
-          iconClassName='w-6 h-6 md:w-12 md:h-12'
-          iconFill='#1200ff'
-        />
+    <div className='md:sticky top-0  z-50'>
+      <div className='layout h-full md:h-12 border-blue-800 border-b font-mono flex items-center bg-white shadow-lg opacity-95 space-x-3 justify-between flex-col md:flex-row'>
+        <div className='hidden md:block w-full md:w-1/6 py-2 md:py-0 space-x-2 text-xs md:text-sm '>
+          <span className='uppercase font-light'>Live from Airport Berlin</span>
+        </div>
+        <div className='w-full md:w-4/6 py-2 md:py-0'>
+          <Marquee
+            gradient={false}
+            gradientWidth={25}
+            speed={50}
+            pauseOnHover={true}
+            className='bg-white'
+          >
+            {currentShowName ? (
+              <div className=''>{currentShowName}</div>
+            ) : (
+              <span>Live Radio</span>
+            )}
+          </Marquee>
+        </div>
+        <div className='hidden md:block ml-auto'>
+          <AudioPlayer
+            shows={shows}
+            calendarEntries={calendarEntries}
+            iconClassName='w-6 h-6 md:w-12 md:h-12'
+            iconFill='#1200ff'
+          />
+        </div>
       </div>
     </div>
   );

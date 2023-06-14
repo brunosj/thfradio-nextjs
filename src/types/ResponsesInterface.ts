@@ -31,6 +31,8 @@ export interface ShowTypes {
     title: string;
     description: string;
     slug: string;
+    teaserSentence: string;
+    activeShow: boolean;
     locale: string;
     url: string;
     picture: {

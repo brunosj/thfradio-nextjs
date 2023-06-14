@@ -8,9 +8,7 @@ export const Layout = ({ children }: Props) => {
   return (
     <div className='relative'>
       <Header />
-      <div className='sticky top-0  z-50'>
-        <LiveTicker />
-      </div>
+      <LiveTicker />
       <main>
         <article>{children}</article>
         <MixcloudWidget />

@@ -10,7 +10,7 @@ interface ShowsProps {
 
 const ArchiveSection = ({ title, subtitle, shows }: ShowsProps) => {
   return (
-    <section className='bg-blue-800 layout sectionPb'>
+    <section className='bg-blue-800 layout sectionPb' id='archive'>
       <SectionHeader title={title} subtitle={subtitle} />
       <div className='m-auto'>
         <ShowsArchive shows={shows} />

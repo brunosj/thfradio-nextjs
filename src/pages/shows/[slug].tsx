@@ -73,7 +73,7 @@ export async function getStaticProps({
   const cloudShows = await getAllShows();
 
   const filteredCloudcasts = cloudShows.filter((cloudcast: CloudShowTypes) =>
-    new RegExp(currentLocaleEntry.attributes.title, 'i').test(cloudcast.name)
+    new RegExp(currentLocaleEntry.attributes.keyword, 'i').test(cloudcast.name)
   );
 
   return {

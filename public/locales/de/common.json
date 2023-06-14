@@ -4,10 +4,26 @@
   "nextShow": "Nächste Show",
   "nowPlaying": "Jetzt wird das Archiv abgespielt",
   "on": "am",
+  "allShows": "Alle THF Shows",
+  "aboutUs": "Über uns",
+  "fromTheArchive": "Aus dem Archiv",
+  "loadMore": "Mehr laden",
+  "supportUs": "Unterstütze uns",
+  "becomeMember": "Werde Vereinsmitglied",
   "menu": [
     {
+      "name": "Über uns",
+      "path": "/about",
+      "lang": "de"
+    },
+    {
+      "name": "Archiv",
+      "path": "/#archive",
+      "lang": "de"
+    },
+    {
       "name": "Programm",
-      "path": "/",
+      "path": "/programme",
       "lang": "de"
     },
     {
@@ -16,13 +32,8 @@
       "lang": "de"
     },
     {
-      "name": "Info",
-      "path": "/info",
-      "lang": "de"
-    },
-    {
       "name": "Torhaus",
-      "path": "/torhaus",
+      "path": "https://torhausberlin.de/",
       "lang": "de"
     },
     {

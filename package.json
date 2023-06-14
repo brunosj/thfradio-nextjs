@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@types/next": "^9.0.0",
+    "clsx": "^1.2.1",
     "date-fns": "^2.30.0",
     "i18next": "^22.5.1",
     "next": "^13.4.5",
