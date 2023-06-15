@@ -41,14 +41,14 @@ const Header: React.FC<HeaderProps> = ({ isOpen, setIsOpen }) => {
     };
   }, [setIsOpen]);
   return (
-    <header className='relative top-0 pt-4 z-50 bg-blue-500 text-white pb-4 md:pb-0'>
+    <header className='relative top-0 pt-4 z-50 bg-blue-500 text-white pb-4 lg:pb-0'>
       <div className='layout flex items-center justify-between'>
-        <Link className='w-24 md:w-32 pb-2 md:pb-4' href='/' aria-label='logo'>
+        <Link className='w-24 lg:w-32 pb-2 lg:pb-4' href='/' aria-label='logo'>
           <Image src={logo} alt='THF Radio Logo' />
         </Link>
         <div className=''>
           {/* Desktop mMenu */}
-          <nav className='hidden md:flex items-center border-t  '>
+          <nav className='hidden lg:flex items-center border-t  '>
             {menu.map((item, i) => {
               const isExternal = item.path.slice(0, 4) === 'http';
               return (
@@ -78,7 +78,7 @@ const Header: React.FC<HeaderProps> = ({ isOpen, setIsOpen }) => {
             </Link>
           </nav>
           {/* Mobile mMenu */}
-          <nav className={'block md:hidden '}>
+          <nav className={'block lg:hidden '}>
             <div className='flex space-x-3'>
               <AudioPlayer
                 shows={shows}

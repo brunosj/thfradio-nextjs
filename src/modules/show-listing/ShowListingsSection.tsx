@@ -6,13 +6,19 @@ import { CMS_URL } from '@/utils/constants';
 
 interface ShowListingProps {
   items: ShowTypes[];
+  isActive: boolean;
+  locale: string;
 }
 
 interface RefsObject {
   [key: string]: React.RefObject<HTMLDivElement>;
 }
 
-const ShowListing: React.FC<ShowListingProps> = ({ items }) => {
+const ShowListingSection: React.FC<ShowListingProps> = ({
+  items,
+  isActive,
+  locale,
+}) => {
   const [activeLetter, setActiveLetter] = useState<string>('');
   const refs: RefsObject = items.reduce((acc: RefsObject, item) => {
     acc[item.id] = createRef();
@@ -37,50 +43,69 @@ const ShowListing: React.FC<ShowListingProps> = ({ items }) => {
     String.fromCharCode(65 + i)
   );
 
-  // Create a new array of letters that have shows associated with them
   const lettersWithShows: string[] = items.map((item) =>
     item.attributes.title[0].toUpperCase()
   );
 
+  const sectionTitleEnglish = isActive ? 'Current Shows' : 'Past Shows';
+  const sectionTitleGerman = isActive
+    ? 'Aktuelle Sendungen'
+    : 'Vergangene Sendungen';
+
+  const getTitleByLocale = () => {
+    if (locale === 'de') {
+      return sectionTitleGerman;
+    } else {
+      return sectionTitleEnglish;
+    }
+  };
+
   return (
     <div className='relative'>
-      <div className='bg-blue-500 md:sticky top-12 z-50 opacity-90'>
-        <div className='layout space-x-2 text-white py-2'>
-          {alphabet.map((letter) =>
-            lettersWithShows.includes(letter) ? (
-              <button key={letter} onClick={() => scrollToShow(letter)}>
-                {letter}
-              </button>
-            ) : (
-              <button
-                key={letter}
-                disabled
-                className=' disabled:cursor-not-allowed text-neutral-400'
-              >
-                {letter}
-              </button>
-            )
-          )}
+      {isActive && (
+        <div className='bg-blue-500 lg:sticky top-12 z-50 opacity-90'>
+          <div className='layout space-x-2 text-white py-2'>
+            {alphabet.map((letter) =>
+              lettersWithShows.includes(letter) ? (
+                <button key={letter} onClick={() => scrollToShow(letter)}>
+                  {letter}
+                </button>
+              ) : (
+                <button
+                  key={letter}
+                  disabled
+                  className=' disabled:cursor-not-allowed text-neutral-400'
+                >
+                  {letter}
+                </button>
+              )
+            )}
+          </div>
         </div>
-      </div>
+      )}
+
+      {!isActive && <div className='bg-blue-500 opacity-90 py-3' />}
       <div className='layout py-12  bg-orange-500 grid grid-cols-1 gap-6'>
+        <h2 className='font-mono text-white text-2xl  font-bold mb-4'>
+          {getTitleByLocale()}
+        </h2>
         {items
           .sort((a, b) => a.attributes.title.localeCompare(b.attributes.title))
           .map((item) => {
             const hasPicture = item.attributes.picture.data;
             const showContentClass = hasPicture
-              ? 'pr-3 pl-4 md:pl-12 space-y-2'
-              : 'pl-[5rem] md:pl-[11rem] pr-3 space-y-2';
+              ? 'pr-3 pl-4 lg:pl-12 space-y-2'
+              : 'pl-[5rem] lg:pl-[11rem] pr-3 space-y-2';
 
             return (
               <div key={item.id} ref={refs[item.id]}>
                 <Link
-                  className='group flex items-center flex-row border rounded-xl border-blue-600  bg-white hover:bg-blue-500 hover:text-white font-mono duration-200 h-16 md:h-32 '
+                  className='group flex items-center flex-row border rounded-xl border-blue-600  bg-white hover:bg-blue-500 hover:text-white font-mono duration-200 h-16 lg:h-32 '
                   href={`/shows/${item.attributes.slug}`}
                 >
                   {item.attributes.picture.data && (
                     <div className='group relative flex h-full justify-around imageHover'>
-                      <div className='relative w-16 md:w-32'>
+                      <div className='relative w-16 lg:w-32'>
                         <Image
                           src={`${CMS_URL}${item.attributes.picture.data.attributes.url}`}
                           fill
@@ -94,7 +119,7 @@ const ShowListing: React.FC<ShowListingProps> = ({ items }) => {
                   <div className={showContentClass}>
                     <h4>{item.attributes.title}</h4>
                     {item.attributes.teaserSentence && (
-                      <p className='hidden md:block'>
+                      <p className='hidden lg:block'>
                         {item.attributes.teaserSentence}
                       </p>
                     )}
@@ -108,4 +133,4 @@ const ShowListing: React.FC<ShowListingProps> = ({ items }) => {
   );
 };
 
-export default ShowListing;
+export default ShowListingSection;

@@ -3,7 +3,7 @@ import Head from 'next/head';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Layout from '@/common/layout/Layout';
 import { PageTypes, ShowTypes } from '@/types/ResponsesInterface';
-import ShowListing from '@/modules/show-listing/ShowListingChild';
+import ShowListing from '@/modules/show-listing/ShowListings';
 import { DataContext } from '@/context/DataContext';
 import { useContext } from 'react';
 

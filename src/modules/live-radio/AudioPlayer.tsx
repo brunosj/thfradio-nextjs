@@ -51,7 +51,6 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({
   };
 
   useEffect(() => {
-    // const url = isLiveShowScheduled() ? liveStreamUrl : getRandomShowUrl();
     const url = liveStreamUrl;
     audio.current = new Audio(url);
     audio.current.onplaying = () => {
@@ -63,18 +62,17 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({
         setIsPlaying(false);
       }
     };
-    audio.current.volume = volume;
-  }, [shows, calendarEntries, volume]);
+  }, [shows, calendarEntries]);
 
   const togglePlay = () => {
     if (audio.current) {
       if (isPlaying) {
         audio.current.pause();
-        setIsPlaying(false);
+        isPausedByUser.current = true;
       } else {
         audio.current.play();
-        setIsPlaying(true);
       }
+      setIsPlaying(!isPlaying);
     }
   };
 
@@ -83,12 +81,6 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({
     setVolume(newVolume);
     if (audio.current) {
       audio.current.volume = newVolume;
-      if (!isPlaying) {
-        // If audio is paused, updating the volume won't trigger play automatically,
-        // so we manually update the isPlaying state to false and mark it as paused by the user.
-        setIsPlaying(false);
-        isPausedByUser.current = true;
-      }
     }
   };
 
@@ -102,7 +94,7 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({
         )}
       </button>
 
-      <div className='hidden md:block mt-1'>
+      <div className='hidden lg:block mt-1'>
         <input
           type='range'
           min='0'

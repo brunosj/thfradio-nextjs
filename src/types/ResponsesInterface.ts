@@ -35,6 +35,13 @@ export interface ShowTypes {
     activeShow: boolean;
     locale: string;
     url: string;
+    startTime: string;
+    endTime: string;
+    frequency: string;
+    day: string;
+    instagram: string;
+    soundcloud: string;
+    mail: string;
     picture: {
       data: {
         id: number;

@@ -11,7 +11,7 @@ const Footer = ({ children }: Props) => {
   const extraMenu: MenuType = t('extraMenu', { returnObjects: true });
 
   return (
-    <footer className='bg-blue-500 py-6 md:py-12 layout'>
+    <footer className='bg-blue-500 py-6 lg:py-12 layout'>
       <nav className='text-white flex justify-between'>
         <div>
           {menu.map((item, i) => {

@@ -15,9 +15,9 @@ const ShowsArchive = ({ shows }: CloudShows) => {
     );
   };
   return (
-    <div className=''>
+    <>
       <ShowCards items={shows} onPlay={handlePlay} />
-    </div>
+    </>
   );
 };
 export default ShowsArchive;

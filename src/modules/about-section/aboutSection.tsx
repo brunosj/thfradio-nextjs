@@ -13,7 +13,7 @@ const AboutSection = ({ title, description, button, links }: AboutSection) => {
   return (
     <section className='layout bg-blue-800 sectionPy space-y-12'>
       <h1 className='text-white'>{title}</h1>
-      <div className='grid grid-cols-1 md:grid-cols-2 gap-x-12 '>
+      <div className='grid grid-cols-1 lg:grid-cols-2 gap-x-12 '>
         <div className='space-y-12'>
           <div className='text-white markdown'>
             <ReactMarkdown>{description}</ReactMarkdown>
@@ -31,7 +31,7 @@ const AboutSection = ({ title, description, button, links }: AboutSection) => {
 
         <div>
           {links && (
-            <div className='grid grid-cols-1 md:grid-cols-2 w-full md:w-2/3 m-auto space-y-12 md:space-y-0'>
+            <div className='grid grid-cols-1 lg:grid-cols-2 w-full lg:w-2/3 m-auto space-y-12 lg:space-y-0'>
               {links.data.map((link, i) => (
                 <div key={i} className='text-white markdown space-y-6'>
                   <h3 className=''>{link.attributes.title}</h3>

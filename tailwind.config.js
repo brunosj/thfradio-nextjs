@@ -7,6 +7,10 @@ module.exports = {
   ],
   theme: {
     extend: {
+      screens: {
+        lg: '1080px',
+        // => @media (min-width: 992px) { ... }
+      },
       fontFamily: {
         sans: ['NeueMachina'],
         mono: ['SpaceMono'],

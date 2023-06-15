@@ -34,8 +34,8 @@ const CalendarEntry = ({ entry }: { entry: CalendarEntryProps }) => {
   const timeClass = isCurrentShow ? ' bg-orange-500 text-white' : '';
 
   return (
-    <div className='flex flex-col md:flex-row gap-0 md:gap-12'>
-      <div className='w-full md:w-1/4 flex'>
+    <div className='flex flex-col lg:flex-row gap-0 lg:gap-12'>
+      <div className='w-full lg:w-1/4 flex'>
         <p className=''>
           {startTime}
           <span className='px-2 lg:px-3'>
@@ -44,7 +44,7 @@ const CalendarEntry = ({ entry }: { entry: CalendarEntryProps }) => {
           {endTime}
         </p>
       </div>
-      <div className='w-full md:w-3/4'>
+      <div className='w-full lg:w-3/4'>
         <p className={summaryClass}>{entry.summary}</p>
       </div>
     </div>

@@ -37,19 +37,19 @@
 
 
 h1 {
-  @apply text-3xl font-bold md:text-4xl mb-6 last:mb-0;
+  @apply text-3xl font-bold lg:text-4xl mb-6 last:mb-0;
 }
 
 h2 {
-  @apply mt-0 text-xl font-light md:text-3xl lg:mt-2;
+  @apply mt-0 text-xl font-light lg:text-3xl lg:mt-2;
 }
 
 h3 {
-  @apply text-lg md:text-2xl;
+  @apply text-lg lg:text-2xl;
 }
 
 h4 {
-  @apply text-base md:text-xl;
+  @apply text-base lg:text-xl;
 }
 
 h6 {
@@ -66,7 +66,7 @@ h6 {
 
 
 .layout {
-  @apply px-6 md:px-16;
+  @apply px-6 lg:px-16;
 }
 
 
@@ -75,7 +75,7 @@ h6 {
 }
 
 .markdown p {
-  @apply mb-3 md:mb-6
+  @apply mb-3 lg:mb-6
 }
 
 .markdown h5 {

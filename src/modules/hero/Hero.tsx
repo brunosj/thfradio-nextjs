@@ -22,14 +22,14 @@ const Hero = ({
   const { t } = useTranslation();
 
   return (
-    <section className='px-0 md:px-16 bg-blue-500 grid grid-cols-1 md:grid-cols-2 py-0 md:py-12 gap-6 md:gap-12'>
+    <section className='px-0 lg:px-16 bg-blue-500 grid grid-cols-1 lg:grid-cols-2 py-0 lg:py-12 gap-6 lg:gap-12'>
       <div
         className={clsx(
           picturePosition === 'right' ? 'order-1' : 'order-2',
-          'hidden border border-white md:flex h-full items-center'
+          'hidden border-2 border-white lg:flex h-full items-center rounded-xl'
         )}
       >
-        <div className='md:px-12 md:py-24 px-6 py-12 text-center text-white markdown'>
+        <div className='lg:px-12 lg:py-24 px-6 py-12 text-center text-white markdown'>
           <ReactMarkdown>{description}</ReactMarkdown>
         </div>
       </div>
@@ -37,10 +37,10 @@ const Hero = ({
       <div
         className={clsx(
           picturePosition === 'right' ? ' order-2' : 'order-1',
-          'md:border border-white relative'
+          'lg:border-2 border-white relative rounded-xl'
         )}
       >
-        <div className='md:hidden absolute inset-0 flex flex-col items-center justify-center md:px-12 md:py-24 px-6 py-12 text-center text-white markdown z-40'>
+        <div className='lg:hidden absolute inset-0 flex flex-col items-center justify-center lg:px-12 lg:py-24 px-6 py-12 text-center text-white markdown z-40'>
           <div className='text'>
             <ReactMarkdown>{description}</ReactMarkdown>
           </div>
@@ -51,19 +51,19 @@ const Hero = ({
               src={`${CMS_URL}${imageSrc}`}
               alt='THF Radio at Torhaus'
               fill
-              className='object-cover'
+              className='object-cover rounded-lg'
             />
           </div>
         </div>
       </div>
       {showButtons && (
         <>
-          <div className='flex justify-center order-3 pb-6 md:pb-0'>
+          <div className='flex justify-center order-3 pb-6 lg:pb-0'>
             <Button path='/about' color='white'>
               {t('aboutUs')}
             </Button>
           </div>
-          <div className='hidden md:flex justify-center order-4 pb-6 md:pb-0'>
+          <div className='hidden lg:flex justify-center order-4 pb-6 lg:pb-0'>
             <Button path='/#archive' color='white'>
               {t('fromTheArchive')}
             </Button>

@@ -1,5 +1,5 @@
 import SectionHeader from '@/common/layout/section/SectionHeader';
-import ShowListing from './ShowListingChild';
+import ShowListing from './ShowListings';
 import { ShowTypes, PictureType } from '@/types/ResponsesInterface';
 import Button from '@/common/ui/UIButton';
 import { useTranslation } from 'next-i18next';

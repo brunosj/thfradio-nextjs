@@ -17,7 +17,7 @@ const ShowCards = ({ items, onPlay }: ShowCardProps) => {
     setDisplayCount(displayCount + 20);
   };
   return (
-    <div className='justify-between gap-12 lg:grid lg:grid-cols-3 xl:grid-cols-4 space-y-6 lg:space-y-0'>
+    <div className='flex flex-wrap lg:gap-12 gap-6 justify-between'>
       {items.slice(0, displayCount).map((item, i) => {
         const showNameSplitted = item.name.split('//');
         const name = showNameSplitted[0].trim();
@@ -60,12 +60,12 @@ const ShowCards = ({ items, onPlay }: ShowCardProps) => {
 
         return (
           <button
-            className='flex flex-row w-full border border-blue-800 bg-white font-mono duration-200 lg:flex-col rounded-xl p-4 group items-center'
+            className='flex flex-row w-full md:w-[48%] lg:w-[29%] xl:w-[22%]  border border-blue-800 bg-white font-mono duration-200 lg:flex-col rounded-xl p-4 group items-center'
             key={i}
             onClick={() => onPlay(item.url)}
           >
             <div className='group relative flex h-full justify-around '>
-              <div className='w-24 lg:w-64 group-hover:opacity-20 duration-300'>
+              <div className='w-24 lg:w-40 xl:w-64 group-hover:opacity-20 duration-300'>
                 <Image
                   src={item.pictures.extra_large}
                   height={600}
@@ -91,7 +91,7 @@ const ShowCards = ({ items, onPlay }: ShowCardProps) => {
         );
       })}
       {displayCount < items.length && (
-        <div className='col-span-4  m-auto'>
+        <div className=' w-full flex justify-center'>
           <button
             className='flex font-mono rounded-xl text-sm shadow-sm border-blue-800 px-4 py-2 bg-white  duration-300 hover:bg-blue-100 '
             onClick={handleLoadMore}
