@@ -99,7 +99,7 @@ export const LiveTicker = () => {
           'HH:mm'
         );
         return (
-          <p className='text-sm italic'>
+          <span className='text-sm italic px-6'>
             <span className='uppercase'>
               {t('nowPlaying')}
               {' // '}
@@ -108,7 +108,7 @@ export const LiveTicker = () => {
               {t('nextShow')} {t('on')}{' '}
             </span>
             {formattedNextShowDate}
-          </p>
+          </span>
         );
       } else {
         return (
@@ -120,12 +120,12 @@ export const LiveTicker = () => {
   const currentShowName = getCurrentShowName();
 
   return (
-    <div className='md:sticky top-0  z-50'>
-      <div className='layout h-full md:h-12 border-blue-800 border-b font-mono flex items-center bg-white shadow-lg opacity-95 space-x-3 justify-between flex-col md:flex-row'>
+    <div className='md:sticky top-0 z-50'>
+      <div className='layout md:h-12 border-blue-800 border-b font-mono flex items-center bg-white shadow-lg opacity-95 space-x-3 justify-between flex-col md:flex-row'>
         <div className='hidden md:block w-full md:w-1/6 py-2 md:py-0 space-x-2 text-xs md:text-sm '>
           <span className='uppercase font-light'>Live from Airport Berlin</span>
         </div>
-        <div className='w-full md:w-4/6 py-2 md:py-0'>
+        <div className='w-full md:w-4/6 py-3 mt-1 md:mt-0'>
           <Marquee
             gradient={false}
             gradientWidth={25}

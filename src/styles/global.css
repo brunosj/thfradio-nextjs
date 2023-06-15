@@ -35,6 +35,7 @@
   font-display: swap;
 }
 
+
 h1 {
   @apply text-3xl font-bold md:text-4xl mb-6 last:mb-0;
 }
@@ -73,6 +74,9 @@ h6 {
   @apply  text-neutral-300  duration-300  hover:text-neutral-500 group-hover:text-neutral-500
 }
 
+.markdown p {
+  @apply mb-3 md:mb-6
+}
 
 .markdown h5 {
   @apply py-3;

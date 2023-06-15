@@ -35,11 +35,14 @@ const Home: NextPage<{
         <Hero
           description={page.attributes.heroText}
           imageSrc={page.attributes.heroPictures.data[0].attributes.url}
+          showButtons={true}
+          picturePosition='right'
         />
         <ShowsSection
           title={page.attributes.shows.title}
           subtitle={page.attributes.shows.subtitle}
           showListings={showListings}
+          pictures={page.attributes.pictureGallery.data}
         />
         <ProgrammeSection
           title={page.attributes.programme.title}

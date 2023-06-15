@@ -1,0 +1,71 @@
+.testimonial_embla {
+  --slide-spacing: 1rem;
+  --slide-size: 100%;
+  --slide-height: 19rem;
+  padding: 1.6rem;
+}
+.testimonial_embla__viewport {
+  overflow: hidden;
+}
+.testimonial_embla__container {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 100%; /* Each slide covers 80% of the viewport */
+}
+
+.embla__button {
+  -webkit-appearance: none;
+  background-color: transparent;
+  touch-action: manipulation;
+  display: inline-flex;
+  text-decoration: none;
+  cursor: pointer;
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+
+.embla__button {
+  z-index: 1;
+  background-color: #0f474d;
+  border-radius: 100%;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  width: 3rem;
+  height: 3rem;
+}
+.embla__button--prev {
+  left: 10rem;
+}
+.embla__button--next {
+  right: 10rem;
+}
+.embla__button:disabled {
+  opacity: 0.3;
+}
+.embla__button__svg {
+  width: 65%;
+  height: 45%;
+}
+
+@media (max-width: 1024px) {
+  .embla__button--prev {
+    left: 0.5rem;
+  }
+  .embla__button--next {
+    right: 0.5rem;
+  }
+
+  .embla__button {
+    top: 50%;
+    transform: translateY(-140%);
+    cursor: pointer;
+    width: 2rem;
+    height: 2rem;
+  }
+}

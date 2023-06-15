@@ -52,12 +52,38 @@ export interface Shows {
   shows: ShowTypes[];
 }
 
-export interface Section {
+export interface HomepageSection {
   title: string;
   subtitle: string;
   showListings?: ShowTypes[];
   calendarEntries?: CalendarEntry[];
   shows?: CloudShowTypes[];
+}
+
+export interface AboutSection {
+  title: string;
+  description: string;
+  button: Array<{
+    id: number;
+    text: string;
+    path: string;
+    color: 'white' | 'blue';
+  }>;
+  links: {
+    data: Array<{
+      id: number;
+      attributes: {
+        title: string;
+        links: string;
+      };
+    }>;
+  };
+}
+
+export interface PictureType {
+  attributes: {
+    url: string;
+  };
 }
 
 export interface HomepageTypes {
@@ -70,8 +96,45 @@ export interface HomepageTypes {
         };
       }>;
     };
-    shows: Section;
-    programme: Section;
-    archive: Section;
+    shows: HomepageSection;
+    programme: HomepageSection;
+    archive: HomepageSection;
+    pictureGallery: {
+      data: Array<{
+        attributes: {
+          url: string;
+        };
+      }>;
+    };
   };
+}
+
+export interface AboutTypes {
+  attributes: {
+    page: PageComponent;
+    heroText: string;
+    heroPictures: {
+      data: Array<{
+        attributes: {
+          url: string;
+        };
+      }>;
+    };
+    radioSection: AboutSection;
+    torhausSection: AboutSection;
+    imageBanner: {
+      data: {
+        attributes: {
+          url: string;
+        };
+      };
+    };
+  };
+}
+
+export interface PageComponent {
+  id: number;
+  title: string;
+  description: string;
+  slug: string;
 }

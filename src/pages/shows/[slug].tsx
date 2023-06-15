@@ -92,10 +92,18 @@ export async function getStaticPaths() {
     `${process.env.STRAPI_PUBLIC_API_URL}shows?locale=all&populate=localizations`
   );
   const items = await res.json();
-  const paths = items.data.map((item: ShowTypes) => ({
-    params: { slug: item.attributes.slug },
-    locale: item.attributes.locale,
-  }));
+
+  console.log(items);
+
+  const paths = items.data.map((item: ShowTypes) => {
+    console.log(item.attributes.slug);
+    return {
+      params: { slug: item.attributes.slug },
+      locale: item.attributes.locale,
+    };
+  });
+
+  console.log(paths); 
 
   return {
     paths,

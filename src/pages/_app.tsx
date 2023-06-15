@@ -1,5 +1,6 @@
 import { AppProps } from 'next/app';
 import '../styles/global.css';
+import '../modules/carousel/carousel.css';
 import { appWithTranslation } from 'next-i18next';
 import { DataProvider } from 'src/context/DataContext';
 

@@ -80,10 +80,11 @@ const ShowListing: React.FC<ShowListingProps> = ({ items }) => {
                 >
                   {item.attributes.picture.data && (
                     <div className='group relative flex h-full justify-around imageHover'>
-                      <div className='w-16 md:w-32'>
+                      <div className='relative w-16 md:w-32'>
                         <Image
                           src={`${CMS_URL}${item.attributes.picture.data.attributes.url}`}
                           fill
+                          sizes=''
                           className='object-cover rounded-l-xl'
                           alt={item.attributes.picture.data.attributes.name}
                         />

@@ -10,6 +10,9 @@ dependencies:
   date-fns:
     specifier: ^2.30.0
     version: 2.30.0
+  embla-carousel-react:
+    specifier: 8.0.0-rc07
+    version: 8.0.0-rc07(react@18.2.0)
   i18next:
     specifier: ^22.5.1
     version: 22.5.1
@@ -966,6 +969,28 @@ packages:
   /electron-to-chromium@1.4.428:
     resolution: {integrity: sha512-L7uUknyY286of0AYC8CKfgWstD0Smk2DvHDi9F0GWQhSH90Bzi7iDrmCbZKz75tYJxeGSAc7TYeKpmbjMDoh1w==}
     dev: true
+
+  /embla-carousel-react@8.0.0-rc07(react@18.2.0):
+    resolution: {integrity: sha512-8JX2kIMTbqHvsG6O0XRUHdZJ/66kyKCwFwFVZXZ1YpdrdMlrMHBNyIQP+ETBWgOsNtpbcBeWyZx29YtzCVLgJA==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.1 || ^18.0.0
+    dependencies:
+      embla-carousel: 8.0.0-rc07
+      embla-carousel-reactive-utils: 8.0.0-rc07(embla-carousel@8.0.0-rc07)
+      react: 18.2.0
+    dev: false
+
+  /embla-carousel-reactive-utils@8.0.0-rc07(embla-carousel@8.0.0-rc07):
+    resolution: {integrity: sha512-MfdReTR3p0GTcUqLY0DNF5mkYRHF/pler9yBUjRjjjBb1OTQjcFedXYhoCDO49009x/IPM00kcbQQuEtJWpQRQ==}
+    peerDependencies:
+      embla-carousel: 8.0.0-rc07
+    dependencies:
+      embla-carousel: 8.0.0-rc07
+    dev: false
+
+  /embla-carousel@8.0.0-rc07:
+    resolution: {integrity: sha512-IdGbZH042gRT0/3dOCbiv45jOt5E7jpM4h25VzyJujule/3GitJ1/Ib3U/X83auiI3aojKoBe13e1g5g7bwnjg==}
+    dev: false
 
   /emoji-regex@9.2.2:
     resolution: {integrity: sha512-L18DaJsXSUk2+42pv8mLs5jJT2hqFkFE4j21wOmgbUqsZ2hL72NsUU785g9RXgo3s0ZNgVl42TiHp3ZtOv/Vyg==}

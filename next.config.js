@@ -7,6 +7,7 @@ const nextConfig = {
   swcMinify: true,
   i18n,
   images: {
+    unoptimized: true,
     remotePatterns: [
       {
         protocol: 'https',

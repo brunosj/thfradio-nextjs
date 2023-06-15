@@ -23,7 +23,7 @@
     },
     {
       "name": "Programme",
-      "path": "/programme",
+      "path": "/#programme",
       "lang": "en"
     },
     {
@@ -38,7 +38,19 @@
     },
     {
       "name": "Chat",
-      "path": "/chat",
+      "path": "https://thfchat.chatango.com/",
+      "lang": "en"
+    }
+  ],
+  "extraMenu": [
+    {
+      "name": "Data privacy",
+      "path": "/privacy",
+      "lang": "en"
+    },
+    {
+      "name": "Imprint",
+      "path": "/imprint",
       "lang": "en"
     }
   ]

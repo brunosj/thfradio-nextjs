@@ -21,7 +21,7 @@ export const navLinks = [
   },
   {
     name: 'Chat',
-    path: '/chat',
+    path: 'https://thfchat.chatango.com/',
     lang: 'en',
   },
 ];
