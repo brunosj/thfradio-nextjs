@@ -35,6 +35,9 @@
   font-display: swap;
 }
 
+:root {
+  --menu-translate-x: 0;
+}
 
 h1 {
   @apply text-3xl font-bold lg:text-4xl mb-6 last:mb-0;

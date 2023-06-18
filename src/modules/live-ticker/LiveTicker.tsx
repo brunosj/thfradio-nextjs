@@ -9,6 +9,7 @@ import { DataContext } from '@/context/DataContext';
 import { ArrowRightLong } from '@/common/assets/ArrowRightLong';
 import AudioPlayer from '@/modules/live-radio/AudioPlayer';
 import LiveCircle from '@/common/assets/LiveCircle';
+import { PlayerContext } from '@/context/PlayerContext';
 
 export const LiveTicker = () => {
   const router = useRouter();
@@ -16,6 +17,7 @@ export const LiveTicker = () => {
   const locale = router.locale || 'en';
   const localeModule = locale === 'de' ? de : enUS;
   const { calendarEntries, shows } = useContext(DataContext)!;
+  const { playerState } = useContext(PlayerContext);
 
   const getCurrentShowName = (): JSX.Element => {
     const now = new Date();
@@ -149,6 +151,7 @@ export const LiveTicker = () => {
           </Marquee>
         </div>
         <div className='hidden lg:block ml-auto'>
+          {' '}
           <AudioPlayer
             shows={shows}
             calendarEntries={calendarEntries}

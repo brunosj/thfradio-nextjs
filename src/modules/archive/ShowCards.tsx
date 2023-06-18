@@ -17,7 +17,7 @@ const ShowCards = ({ items, onPlay }: ShowCardProps) => {
     setDisplayCount(displayCount + 20);
   };
   return (
-    <div className='flex flex-wrap lg:gap-12 gap-6 justify-between'>
+    <div className='flex flex-wrap lg:gap-12 gap-6 justify-start '>
       {items.slice(0, displayCount).map((item, i) => {
         const showNameSplitted = item.name.split('//');
         const name = showNameSplitted[0].trim();
@@ -60,7 +60,7 @@ const ShowCards = ({ items, onPlay }: ShowCardProps) => {
 
         return (
           <button
-            className='flex flex-row w-full md:w-[48%] lg:w-[29%] xl:w-[22%]  border border-blue-800 bg-white font-mono duration-200 lg:flex-col rounded-xl p-4 group items-center'
+            className='flex flex-row w-full md:w-[48%] lg:w-[29%] xl:w-[22%]  border border-blue-800 bg-white font-mono duration-200 lg:flex-col rounded-xl p-4 group items-center '
             key={i}
             onClick={() => onPlay(item.url)}
           >

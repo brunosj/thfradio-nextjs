@@ -18,15 +18,14 @@ const Footer = ({ children }: Props) => {
             const isExternal = item.path.slice(0, 4) === 'http';
 
             return (
-              <>
-                <Link
-                  href={item.path}
-                  rel={isExternal ? 'noopener noreferrer' : ''}
-                  target={isExternal ? '_blank' : ''}
-                >
-                  <p className='py-1 textHover'>{item.name}</p>
-                </Link>
-              </>
+              <Link
+                href={item.path}
+                rel={isExternal ? 'noopener noreferrer' : ''}
+                target={isExternal ? '_blank' : ''}
+                key={i}
+              >
+                <p className='py-1 textHover'>{item.name}</p>
+              </Link>
             );
           })}
         </div>
@@ -35,15 +34,14 @@ const Footer = ({ children }: Props) => {
             const isExternal = item.path.slice(0, 4) === 'http';
 
             return (
-              <>
-                <Link
-                  href={item.path}
-                  rel={isExternal ? 'noopener noreferrer' : ''}
-                  target={isExternal ? '_blank' : ''}
-                >
-                  <p className='py-1 textHover'>{item.name}</p>
-                </Link>
-              </>
+              <Link
+                href={item.path}
+                rel={isExternal ? 'noopener noreferrer' : ''}
+                target={isExternal ? '_blank' : ''}
+                key={i}
+              >
+                <p className='py-1 textHover'>{item.name}</p>
+              </Link>
             );
           })}
         </div>

@@ -11,6 +11,7 @@ import { AiOutlineInstagram } from 'react-icons/ai';
 import { CiMail } from 'react-icons/ci';
 import { SlSocialSoundcloud } from 'react-icons/sl';
 import Link from 'next/link';
+import { SEOComponent } from '@/utils/seo';
 
 interface ShowPage {
   content: ShowTypes;
@@ -58,6 +59,8 @@ const ShowPage: NextPage<ShowPage> = ({
     }
 
     switch (frequency) {
+      case 'bi-weekly':
+        return 'Zweiwöchentlich';
       case 'weekly':
         return 'Wöchentlich';
       case 'monthly':
@@ -78,13 +81,21 @@ const ShowPage: NextPage<ShowPage> = ({
   return (
     <>
       <Layout>
+        <SEOComponent
+          title={currentContent.attributes.title}
+          description={currentContent.attributes.description}
+        />
         <div className=''>
           <div className='bg-orange-500 text-white h-32 lg:h-64 flex items-center'>
             <div className='layout'>
               <h1 className=''>{currentContent.attributes.title}</h1>
             </div>
           </div>
-          <div className='bg-blue-500 text-white layout py-6 lg:py-12 space-y-2'>
+
+          <div
+            className='bg-blue-500 text-white layout py-6  space-y-2'
+            id='showDetails'
+          >
             {currentContent.attributes.frequency &&
               currentContent.attributes.day &&
               currentContent.attributes.startTime &&
@@ -124,12 +135,14 @@ const ShowPage: NextPage<ShowPage> = ({
             </div>
           </div>
           <div className='bg-blue-800  layout'>
-            <article className='py-6 lg:py-12 markdown text-white '>
+            <article className='pt-6 pb-0 lg:pt-12 lg:pb-6 markdown text-white '>
               <ReactMarkdown>
                 {currentContent.attributes.description}
               </ReactMarkdown>
             </article>
-            <div className='layout'>
+            <div
+              className={`layout ${shows.length >= 1 ? ' pb-6 lg:pb-12' : ''}`}
+            >
               <ShowsArchive shows={shows} />
             </div>
           </div>
@@ -185,7 +198,6 @@ export async function getStaticPaths() {
   const items = await res.json();
 
   const paths = items.data.map((item: ShowTypes) => {
-    console.log(item.attributes.slug);
     return {
       params: { slug: item.attributes.slug },
       locale: item.attributes.locale,

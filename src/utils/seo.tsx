@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import { siteMetadata } from '@/utils/siteMetadata';
 
-export const Seo = ({
+export const SEOComponent = ({
   title,
   description,
 }: {
@@ -10,9 +10,7 @@ export const Seo = ({
 }) => {
   return (
     <Head>
-      <title>
-        {title} {siteMetadata.title}
-      </title>
+      <title>{title || siteMetadata.title}</title>
       <link rel='icon' href='/favicon.ico' />
       <meta name='description' content={description} />
       <meta property='og:title' content={siteMetadata.title} />
