@@ -80,6 +80,18 @@ const Header: React.FC<HeaderProps> = ({ isOpen, setIsOpen }) => {
     setIsOpen(!isOpen);
   };
 
+  const handleLocaleChange = (
+    e: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
+    locale: string
+  ) => {
+    e.preventDefault();
+
+    router.push(router.asPath, undefined, {
+      locale: locale,
+      scroll: false,
+    });
+  };
+
   return (
     <header className='sticky w-full z-50 top-0 pt-4  bg-blue-500 text-white pb-4 lg:pb-0 opacity-95 h-16'>
       <div className={`layout flex items-center justify-between `}>
@@ -110,7 +122,9 @@ const Header: React.FC<HeaderProps> = ({ isOpen, setIsOpen }) => {
             })}
             <Link
               href={router.asPath}
-              locale={router.locale === 'en' ? 'de' : 'en'}
+              onClick={(e) =>
+                handleLocaleChange(e, router.locale === 'en' ? 'de' : 'en')
+              }
               className='hover:bg-white hover:text-neutral-900 duration-300 border-r border-l'
             >
               <button aria-label='change language'>
@@ -178,9 +192,11 @@ const Header: React.FC<HeaderProps> = ({ isOpen, setIsOpen }) => {
           })}
           <Link
             href={router.asPath}
-            locale={router.locale === 'en' ? 'de' : 'en'}
+            onClick={(e) => {
+              handleLocaleChange(e, router.locale === 'en' ? 'de' : 'en');
+              setIsOpen(false);
+            }}
             className='border-t border-white block  text-xl textHover '
-            onClick={() => setIsOpen(false)}
           >
             <p className='px-4 py-6'>
               <span

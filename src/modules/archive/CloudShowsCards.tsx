@@ -4,6 +4,7 @@ import { CloudShowTypes } from '@/types/ResponsesInterface';
 import { format, parseISO } from 'date-fns';
 import { Play } from '@/common/assets/PlayIcon';
 import Button from '@/common/ui/UIButton';
+import { useRouter } from 'next/router';
 
 interface ShowCardProps {
   items: CloudShowTypes[];
@@ -11,17 +12,20 @@ interface ShowCardProps {
 }
 
 const CloudShowsCards = ({ items, onPlay }: ShowCardProps) => {
+  const router = useRouter();
+  let locale = router.locale;
   const [displayCount, setDisplayCount] = useState(20);
   const [selectedTag, setSelectedTag] = useState<string | null>(null);
   const [showSidePanel, setShowSidePanel] = useState(false);
   const topRef = useRef<HTMLDivElement | null>(null);
+
   const handleLoadMore = () => {
     setDisplayCount(displayCount + 20);
   };
 
-  const toggleSidePanel = () => {
-    setShowSidePanel(!showSidePanel);
-    setSelectedTag(null);
+  // Tagging system
+  const getFilterButtonText = (locale: string) => {
+    return locale === 'de' ? 'Nach Tag filtern' : 'Filter by tag';
   };
 
   const handleTagClick = (tag: string) => {
@@ -57,6 +61,11 @@ const CloudShowsCards = ({ items, onPlay }: ShowCardProps) => {
     return tagCount;
   };
 
+  const toggleSidePanel = () => {
+    setShowSidePanel(!showSidePanel);
+    setSelectedTag(null);
+  };
+
   const sortedTags = () => {
     const tagCount = countTagOccurrences();
 
@@ -87,7 +96,7 @@ const CloudShowsCards = ({ items, onPlay }: ShowCardProps) => {
             } duration-300 `}
             onClick={toggleSidePanel}
           >
-            Filter by Tag
+            {getFilterButtonText(locale || 'en')}
           </button>
         </div>
       </div>
@@ -190,13 +199,13 @@ const CloudShowsCards = ({ items, onPlay }: ShowCardProps) => {
             <div className='bg-orange-500 py-2 rounded-t-xl text-white'>
               <h3 className='font-semibold mb-2 font-mono text-center'>Tags</h3>
             </div>
-            <div className='pl-4 py-4 max-h-screen overflow-auto'>
-              <div className='flex flex-wrap space-x-2'>
+            <div className='py-4 max-h-screen overflow-auto'>
+              <div className='flex flex-wrap space-x-2 px-4'>
                 {sortedTags().map((tag, index) => (
                   <button
                     key={index}
                     className={`border-blue-800 border text-sm font-mono rounded-xl px-2 py-1 mt-2 ${
-                      tag === selectedTag ? 'bg-blue-500 text-white' : ''
+                      tag === selectedTag ? 'bg-orange-500 text-white' : ''
                     }`}
                     onClick={() => handleTagClick(tag)}
                   >
