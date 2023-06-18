@@ -1,0 +1,181 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'NeueMachina';
+  src: url('./fonts/NeueMachina-Regular.ttf');
+  font-weight: 450;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'NeueMachina';
+  src: url('./fonts/NeueMachina-Ultrabold.ttf');
+  font-weight: 600;
+  font-style: bold;
+  font-display: swap;
+}
+
+
+@font-face {
+  font-family: 'SpaceMono';
+  src: url('./fonts/SpaceMono-Regular.ttf');
+  font-weight: 450;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'SpaceMono';
+  src: url('./fonts/SpaceMono-Regular.ttf');
+  font-weight: 300;
+  font-style: light;
+  font-display: swap;
+}
+
+:root {
+  --menu-translate-x: 0;
+}
+
+h1 {
+  @apply text-3xl font-bold lg:text-4xl mb-6 last:mb-0;
+}
+
+h2 {
+  @apply mt-0 text-xl font-light lg:text-3xl lg:mt-2;
+}
+
+h3 {
+  @apply text-lg lg:text-2xl;
+}
+
+h4 {
+  @apply text-base lg:text-xl;
+}
+
+h6 {
+@apply text-sm mb-2
+}
+
+.sectionPy {
+  @apply py-12 lg:py-20;
+}
+
+.sectionPb {
+@apply pb-12 lg:pb-20
+}
+
+
+.layout {
+  @apply px-6 lg:px-16;
+}
+
+
+.markdown a {
+  @apply  text-neutral-300  duration-300  hover:text-neutral-500 group-hover:text-neutral-500
+}
+
+.markdown p {
+  @apply mb-3 lg:mb-6
+}
+
+.markdown h5 {
+  @apply py-3;
+}
+
+.textHover {
+  @apply duration-300  hover:text-neutral-300 group-hover:text-neutral-300 
+}
+
+.imageHover {
+  @apply opacity-100 duration-300 group-hover:opacity-80 hover:opacity-80;
+}
+
+input[type="range"] {
+  -webkit-appearance: none;
+  width: 5rem;
+  height: 0.2rem;
+  background: #1200ff;
+  outline: none;
+  cursor: pointer;
+  margin: 0;
+  padding: 0;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+  height: 0.2rem;
+  cursor: pointer;
+  animate: 0.2s;
+  box-shadow: none;
+  background: #1200ff;
+  border-radius: 1.3px;
+  border: 0;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  height: 1rem;
+  width: 1rem;
+  border-radius: 100%;
+  background: #1200ff;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -3.9px;
+}
+
+input[type="range"]:focus::-webkit-slider-runnable-track {
+  background: #1200ff;
+}
+
+input[type="range"]::-moz-range-track {
+  height: 0.2rem;
+  cursor: pointer;
+  animate: 0.2s;
+  box-shadow: none;
+  background: #1200ff;
+  border-radius: 1.3px;
+  border: 0;
+}
+
+input[type="range"]::-moz-range-thumb {
+  height: 1rem;
+  width: 1rem;
+  border-radius: 100%;
+  background: #1200ff;
+  cursor: pointer;
+  -moz-appearance: none;
+}
+
+input[type="range"]:focus::-moz-range-track {
+  background: #1200ff;
+}
+
+input[type="range"]::-ms-track {
+  height: 0.2rem;
+  cursor: pointer;
+  animate: 0.2s;
+  box-shadow: none;
+  background: transparent;
+  border-color: transparent;
+  border-width: 6px 0;
+  color: transparent;
+}
+
+input[type="range"]::-ms-thumb {
+  height: 1rem;
+  width: 1rem;
+  border-radius: 100%;
+  background: #1200ff;
+  cursor: pointer;
+  -ms-appearance: none;
+}
+
+input[type="range"]:focus::-ms-fill-lower {
+  background: #1200ff;
+}
+
+input[type="range"]:focus::-ms-fill-upper {
+  background: #1200ff;
+}
+
