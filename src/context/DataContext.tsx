@@ -12,9 +12,9 @@ interface DataContextProps {
 }
 
 interface DataContextValue {
-  shows: CloudShowTypes[];
+  cloudShows: CloudShowTypes[];
   calendarEntries: CalendarEntry[];
-  showListings: ShowTypes[];
+  programmeShows: ShowTypes[];
 }
 
 export const DataContext = createContext<DataContextValue | undefined>(
@@ -22,34 +22,36 @@ export const DataContext = createContext<DataContextValue | undefined>(
 );
 
 export const DataProvider: React.FC<DataContextProps> = ({ children }) => {
-  const [shows, setShows] = useState<CloudShowTypes[]>([]);
+  const [cloudShows, setCloudShows] = useState<CloudShowTypes[]>([]);
   const [calendarEntries, setCalendarEntries] = useState<CalendarEntry[]>([]);
-  const [showListings, setShowListings] = useState<ShowTypes[]>([]);
+  const [programmeShows, setProgrammeShows] = useState<ShowTypes[]>([]);
   const router = useRouter();
   const { locale = 'en' } = router;
 
   useEffect(() => {
-    fetch('/api/shows')
+    fetch('/api/fetchCloudShows')
       .then((res) => res.json())
-      .then((data) => setShows(data));
+      .then((data) => setCloudShows(data));
 
-    fetch('/api/calendar')
+    fetch('/api/fetchCalendar')
       .then((res) => {
         return res.json();
       })
       .then((data) => setCalendarEntries(data))
       .catch((err) => console.error(err));
 
-    fetch(`/api/showListings?locale=${locale}`)
+    fetch(`/api/fetchProgrammeShows?locale=${locale}`)
       .then((res) => {
         return res.json();
       })
-      .then((data) => setShowListings(data))
+      .then((data) => setProgrammeShows(data))
       .catch((err) => console.error(err));
   }, [locale]);
 
   return (
-    <DataContext.Provider value={{ shows, calendarEntries, showListings }}>
+    <DataContext.Provider
+      value={{ cloudShows, calendarEntries, programmeShows }}
+    >
       {children}
     </DataContext.Provider>
   );

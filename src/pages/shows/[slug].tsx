@@ -4,7 +4,7 @@ import { useTranslation } from 'next-i18next';
 import { useRouter } from 'next/router';
 import { ShowTypes, CloudShowTypes } from '@/types/ResponsesInterface';
 import Layout from '@/common/layout/Layout';
-import ShowsArchive from '@/modules/archive/ShowsArchive';
+import ShowsArchive from '@/modules/archive/CloudShowsArchive';
 import ReactMarkdown from 'react-markdown';
 import getAllShows from '@/utils/getAllShows';
 import { AiOutlineInstagram } from 'react-icons/ai';
@@ -127,7 +127,7 @@ const ShowPage: NextPage<ShowPage> = ({
             )}
           </div>
         </div>
-        <div className='bg-blue-800 min-h-[40vh] layout'>
+        <div className='bg-blue-800 min-h-[60vh] lg:min-h-[40vh] layout'>
           <article className='pt-6 pb-0 lg:pt-12 lg:pb-6 markdown text-white '>
             <ReactMarkdown>
               {currentContent.attributes.description}

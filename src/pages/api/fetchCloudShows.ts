@@ -6,7 +6,7 @@ interface MixcloudResponse {
   data: CloudShowTypes[];
 }
 
-const fetchShows = async (req: NextApiRequest, res: NextApiResponse) => {
+const fetchCloudShows = async (req: NextApiRequest, res: NextApiResponse) => {
   let shows: CloudShowTypes[] = [];
   let offset = 0;
 
@@ -33,4 +33,4 @@ const fetchShows = async (req: NextApiRequest, res: NextApiResponse) => {
   return res.status(200).json(shows);
 };
 
-export default fetchShows;
+export default fetchCloudShows;

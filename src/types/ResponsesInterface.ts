@@ -20,6 +20,11 @@ export interface CloudShowTypes {
     extra_large: string;
   };
   slug: string;
+  tags: Array<{
+    key: string;
+    name: string;
+    url: string;
+  }>;
 }
 
 export interface CloudShows {

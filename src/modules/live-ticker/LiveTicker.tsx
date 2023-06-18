@@ -10,13 +10,14 @@ import { ArrowRightLong } from '@/common/assets/ArrowRightLong';
 import AudioPlayer from '@/modules/live-radio/AudioPlayer';
 import LiveCircle from '@/common/assets/LiveCircle';
 import { PlayerContext } from '@/context/PlayerContext';
+import BarsSpinner from '@/common/ui/BarsSpinner';
 
 export const LiveTicker = () => {
   const router = useRouter();
   const { t } = useTranslation();
   const locale = router.locale || 'en';
   const localeModule = locale === 'de' ? de : enUS;
-  const { calendarEntries, shows } = useContext(DataContext)!;
+  const { calendarEntries, cloudShows } = useContext(DataContext)!;
   const { playerState } = useContext(PlayerContext);
 
   const getCurrentShowName = (): JSX.Element => {
@@ -33,7 +34,11 @@ export const LiveTicker = () => {
     });
 
     if (!currentShow && !nextShow) {
-      return <span>...</span>;
+      return (
+        <span>
+          <BarsSpinner color='#1200ff' />
+        </span>
+      );
     } else {
       if (currentShow) {
         const formattedStartHour = format(
@@ -62,8 +67,8 @@ export const LiveTicker = () => {
             })
           : '';
         return (
-          <div className='italic text-sm space-x-3 flex items-center font-bold'>
-            <LiveCircle className='w-6 h-6 animate-pulse' />
+          <div className='uppercase text-sm lg:text-base space-x-3 flex items-center '>
+            <LiveCircle className='w-6 h-6 animate-pulse ml-4 ' />
             <span className=''>
               {t('nowPlaying')}: {currentShow.summary}
             </span>
@@ -135,7 +140,7 @@ export const LiveTicker = () => {
 
   return (
     <div className=' fixed top-16 z-50 w-full bg-white shadow-lg opacity-95 border-blue-800 border-b'>
-      <div className='layout lg:h-12  font-mono flex items-center    space-x-3 justify-between flex-col lg:flex-row'>
+      <div className='layout lg:h-12  font-mono flex items-center   space-x-3 justify-between flex-col lg:flex-row'>
         <div className='hidden lg:block w-full lg:w-1/6 py-2 lg:py-0 space-x-2 text-xs lg:text-sm '>
           <span className='uppercase font-light'>Live from Airport Berlin</span>
         </div>
@@ -145,15 +150,15 @@ export const LiveTicker = () => {
             gradientWidth={25}
             speed={50}
             pauseOnHover={true}
-            className='bg-white'
+            className=''
           >
-            <div className=''>{currentShowName}</div>
+            <div className=''>{currentShowName} </div>
           </Marquee>
         </div>
         <div className='hidden lg:block ml-auto'>
           {' '}
           <AudioPlayer
-            iconClassName='w-6 h-6 lg:w-12 lg:h-12'
+            iconClassName='w-6 h-6 lg:w-10 lg:h-10'
             iconFill='#1200ff'
           />
         </div>

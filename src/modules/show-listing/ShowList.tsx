@@ -11,7 +11,7 @@ interface ShowListingSectionProps {
   locale: string;
 }
 
-const ShowListingSection: React.FC<ShowListingSectionProps> = ({
+const ShowList: React.FC<ShowListingSectionProps> = ({
   items,
   isActive,
   locale,
@@ -112,4 +112,4 @@ const ShowListingSection: React.FC<ShowListingSectionProps> = ({
   );
 };
 
-export default ShowListingSection;
+export default ShowList;

@@ -28,7 +28,7 @@ const CalendarEntry = ({ entry }: { entry: CalendarEntryProps }) => {
     entryStartDate <= currentTime && entryEndDate >= currentTime;
 
   const summaryClass = isCurrentShow
-    ? 'bg-orange-500 text-white font-bold p-1'
+    ? 'bg-orange-500 text-white font-bold px-1'
     : '';
 
   const timeClass = isCurrentShow ? ' bg-orange-500 text-white' : '';
@@ -45,7 +45,7 @@ const CalendarEntry = ({ entry }: { entry: CalendarEntryProps }) => {
         </p>
       </div>
       <div className='w-full lg:w-3/4'>
-        <p className={summaryClass}>{entry.summary}</p>
+        <span className={summaryClass}>{entry.summary}</span>
       </div>
     </div>
   );

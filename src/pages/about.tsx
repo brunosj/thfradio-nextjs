@@ -1,9 +1,6 @@
-import Head from 'next/head';
 import { useRouter } from 'next/router';
-import { useContext } from 'react';
 import type { NextPage } from 'next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import { DataContext } from '@/context/DataContext';
 import Layout from '@/common/layout/Layout';
 import Hero from '@/modules/hero/Hero';
 import { AboutTypes } from '@/types/ResponsesInterface';

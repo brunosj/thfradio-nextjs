@@ -11,7 +11,13 @@ export const Layout = ({ children }: Props) => {
   return (
     <div className='relative'>
       <Header isOpen={isMobileMenuOpen} setIsOpen={setMobileMenuOpen} />
-      <main className={isMobileMenuOpen ? ' pt-12 filter blur-sm' : 'pt-12'}>
+      <main
+        className={
+          isMobileMenuOpen
+            ? ' pt-12 filter blur-sm duration-700 ease-in-out'
+            : 'pt-12'
+        }
+      >
         {/* <LiveTicker /> */}
         <article>{children}</article>
       </main>

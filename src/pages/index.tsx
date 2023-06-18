@@ -1,21 +1,14 @@
-import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useContext } from 'react';
 import type { NextPage } from 'next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { DataContext } from '@/context/DataContext';
 import Layout from '@/common/layout/Layout';
-import ShowsArchive from '@/modules/archive/ShowsArchive';
-import Timetable from '@/modules/timetable/Timetable';
-import {
-  PageTypes,
-  CloudShowTypes,
-  HomepageTypes,
-} from '@/types/ResponsesInterface';
+import { HomepageTypes } from '@/types/ResponsesInterface';
 import Hero from '@/modules/hero/Hero';
-import ShowsSection from '@/modules/show-listing/ShowSection';
-import ProgrammeSection from '@/modules/timetable/ProgrammeSection';
-import ArchiveSection from '@/modules/archive/ArchiveSection';
+import HomeShowSection from '@/modules/show-listing/HomeShowSection';
+import HomeProgrammeSection from '@/modules/timetable/HomeProgrammeSection';
+import HomeArchiveSection from '@/modules/archive/HomeArchiveSection';
 import { SEOComponent } from '@/utils/seo';
 
 const Home: NextPage<{
@@ -23,7 +16,8 @@ const Home: NextPage<{
 }> = ({ page }) => {
   const router = useRouter();
   const { locale: currentLocale = 'en' } = router;
-  const { shows, calendarEntries, showListings } = useContext(DataContext)!;
+  const { cloudShows, calendarEntries, programmeShows } =
+    useContext(DataContext)!;
 
   return (
     <>
@@ -35,21 +29,21 @@ const Home: NextPage<{
           showButtons={true}
           picturePosition='right'
         />
-        <ShowsSection
+        <HomeShowSection
           title={page.attributes.shows.title}
           subtitle={page.attributes.shows.subtitle}
-          showListings={showListings}
+          showListings={programmeShows}
           pictures={page.attributes.pictureGallery.data}
         />
-        <ProgrammeSection
+        <HomeProgrammeSection
           title={page.attributes.programme.title}
           subtitle={page.attributes.programme.subtitle}
           calendarEntries={calendarEntries}
         />
-        <ArchiveSection
+        <HomeArchiveSection
           title={page.attributes.archive.title}
           subtitle={page.attributes.archive.subtitle}
-          shows={shows}
+          shows={cloudShows}
         />
       </Layout>
     </>

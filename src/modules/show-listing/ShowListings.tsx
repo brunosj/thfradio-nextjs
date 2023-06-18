@@ -1,9 +1,9 @@
 import React from 'react';
 import { useRouter } from 'next/router';
 import { ShowTypes } from '@/types/ResponsesInterface';
-import ShowListingSection from './ShowListingsSection';
 import useShowListings from '@/hooks/useShowListings';
 import { CMS_URL } from '@/utils/constants';
+import ShowList from './ShowList';
 
 interface ShowListingProps {
   items: ShowTypes[];
@@ -27,12 +27,8 @@ const ShowListing: React.FC<ShowListingProps> = ({ items }) => {
 
   return (
     <>
-      <ShowListingSection items={activeShows} isActive={true} locale={locale} />
-      <ShowListingSection
-        items={inactiveShows}
-        isActive={false}
-        locale={locale}
-      />
+      <ShowList items={activeShows} isActive={true} locale={locale} />
+      <ShowList items={inactiveShows} isActive={false} locale={locale} />
     </>
   );
 };

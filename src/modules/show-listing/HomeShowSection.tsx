@@ -12,7 +12,7 @@ interface ShowsProps {
   pictures: PictureType[];
 }
 
-const ShowsSection = ({ title, subtitle, pictures }: ShowsProps) => {
+const HomeShowSection = ({ title, subtitle, pictures }: ShowsProps) => {
   const { t } = useTranslation();
 
   return (
@@ -28,4 +28,4 @@ const ShowsSection = ({ title, subtitle, pictures }: ShowsProps) => {
   );
 };
 
-export default ShowsSection;
+export default HomeShowSection;

@@ -14,7 +14,7 @@ import { Bars3Icon } from '@/common/assets/Bars3Icon';
 import { XMarkIcon } from '@/common/assets/XMarkIcon';
 
 interface HeaderProps {
-  shows?: CloudShowTypes[];
+  cloudShows?: CloudShowTypes[];
   calendarEntries?: CalendarEntry[];
   isOpen: boolean;
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
@@ -24,7 +24,7 @@ const Header: React.FC<HeaderProps> = ({ isOpen, setIsOpen }) => {
   const router = useRouter();
   const { t } = useTranslation();
   const menu: MenuType = t('menu', { returnObjects: true });
-  const { shows, calendarEntries } = useContext(DataContext)!;
+  const { cloudShows, calendarEntries } = useContext(DataContext)!;
 
   // Anchor links smooth behaviour
   const handleAnchorLinkClick = (
@@ -76,13 +76,13 @@ const Header: React.FC<HeaderProps> = ({ isOpen, setIsOpen }) => {
     };
   }, [menuWidth]);
 
+  const handleToggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
     <header className='sticky w-full z-50 top-0 pt-4  bg-blue-500 text-white pb-4 lg:pb-0 opacity-95 h-16'>
-      <div
-        className={`layout flex items-center justify-between  ${
-          isOpen ? 'filter blur-sm' : ''
-        }`}
-      >
+      <div className={`layout flex items-center justify-between `}>
         <Link className='w-24 lg:w-32 pb-2 lg:pb-4' href='/' aria-label='logo'>
           <Image src={logo} alt='THF Radio Logo' />
         </Link>
@@ -143,11 +143,11 @@ const Header: React.FC<HeaderProps> = ({ isOpen, setIsOpen }) => {
             <div className='flex space-x-3'>
               <AudioPlayer iconFill='white' iconClassName='w-6 h-6' />
               <button
-                onClick={() => setIsOpen(!isOpen)}
+                onClick={handleToggleMenu}
                 className='text-white'
                 aria-label='Menu'
               >
-                <Bars3Icon />
+                {isOpen ? <XMarkIcon /> : <Bars3Icon />}{' '}
               </button>
             </div>
           </nav>
@@ -155,20 +155,11 @@ const Header: React.FC<HeaderProps> = ({ isOpen, setIsOpen }) => {
       </div>
       <div
         ref={menuRef}
-        className={`fixed top-0 right-0 h-full bg-blue-500 text-white w-4/5 overflow-auto  transform duration-300 ease-in-out ${
+        className={`fixed top-12 right-0 h-full bg-blue-500 text-white w-4/5 overflow-auto  transform  duration-700 ease-in-out z-50 ${
           isOpen ? 'translate-x-0' : `translate-x-full`
         } transition-transform`}
       >
-        <div className='flex justify-end'>
-          <button
-            className='px-6 pt-5'
-            onClick={() => setIsOpen(false)}
-            aria-label='Close menu'
-          >
-            <XMarkIcon />
-          </button>
-        </div>
-        <div className='flex flex-col items-center justify-center -mt-5 h-full space-y-3'>
+        <div className='flex flex-col items-center justify-center h-full space-y-3'>
           {menu.map((item, i) => {
             const isExternal = item.path.slice(0, 4) === 'http';
 
@@ -188,10 +179,26 @@ const Header: React.FC<HeaderProps> = ({ isOpen, setIsOpen }) => {
           <Link
             href={router.asPath}
             locale={router.locale === 'en' ? 'de' : 'en'}
-            className='border-t border-white block px-4 py-6 text-xl textHover '
+            className='border-t border-white block  text-xl textHover '
             onClick={() => setIsOpen(false)}
           >
-            EN / DE
+            <p className='px-4 py-6'>
+              <span
+                className={
+                  router.locale === 'en' ? 'underline underline-offset-4' : ''
+                }
+              >
+                EN
+              </span>{' '}
+              /{' '}
+              <span
+                className={
+                  router.locale === 'de' ? 'underline underline-offset-4' : ''
+                }
+              >
+                DE
+              </span>
+            </p>
           </Link>
         </div>
       </div>
