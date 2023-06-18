@@ -12,6 +12,7 @@ export const Layout = ({ children }: Props) => {
     <div className='relative'>
       <Header isOpen={isMobileMenuOpen} setIsOpen={setMobileMenuOpen} />
       <main className={isMobileMenuOpen ? 'filter blur-sm' : ''}>
+        <LiveTicker />
         <article>{children}</article>
       </main>
       <Footer />

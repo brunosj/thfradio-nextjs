@@ -84,7 +84,7 @@ const ShowPage: NextPage<ShowPage> = ({
         title={currentContent.attributes.title}
         description={currentContent.attributes.description}
       />
-      <div className=''>
+      <Layout>
         <div className='bg-orange-500 text-white h-32 lg:h-64 flex items-center'>
           <div className='layout'>
             <h1 className=''>{currentContent.attributes.title}</h1>
@@ -139,7 +139,7 @@ const ShowPage: NextPage<ShowPage> = ({
             <ShowsArchive shows={shows} />
           </div>
         </div>
-      </div>
+      </Layout>
     </>
   );
 };

@@ -18,12 +18,14 @@ const Shows: NextPage<{
         title={page.attributes.title}
         description={page.attributes.description}
       />
-      <div className='bg-blue-800 relative'>
-        <div className='layout sectionPy'>
-          <h1 className='text-white'>{page.attributes.title}</h1>
+      <Layout>
+        <div className='bg-blue-800 relative'>
+          <div className='layout sectionPy'>
+            <h1 className='text-white'>{page.attributes.title}</h1>
+          </div>
         </div>
-      </div>
-      <ShowListing items={showListings} />
+        <ShowListing items={showListings} />
+      </Layout>
     </>
   );
 };

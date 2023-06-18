@@ -20,33 +20,35 @@ const About: NextPage<{
 
   return (
     <>
-      <SEOComponent
-        title={page.attributes.page.title}
-        description={page.attributes.page.description}
-      />
-      <Hero
-        description={page.attributes.heroText}
-        imageSrc={page.attributes.heroPictures.data[0].attributes.url}
-        picturePosition='left'
-        showButtons={false}
-      />
-      <AboutSection
-        title={page.attributes.radioSection.title}
-        description={page.attributes.radioSection.description}
-        button={page.attributes.radioSection.button}
-        links={page.attributes.radioSection.links}
-      />
-      <CodeOfConduct />
-      <ImageBanner
-        src={page.attributes.imageBanner.data.attributes.url}
-        alt='THF Radio at Torhaus'
-      />
-      <AboutSection
-        title={page.attributes.torhausSection.title}
-        description={page.attributes.torhausSection.description}
-        button={page.attributes.torhausSection.button}
-        links={page.attributes.torhausSection.links}
-      />
+      <Layout>
+        <SEOComponent
+          title={page.attributes.page.title}
+          description={page.attributes.page.description}
+        />
+        <Hero
+          description={page.attributes.heroText}
+          imageSrc={page.attributes.heroPictures.data[0].attributes.url}
+          picturePosition='left'
+          showButtons={false}
+        />
+        <AboutSection
+          title={page.attributes.radioSection.title}
+          description={page.attributes.radioSection.description}
+          button={page.attributes.radioSection.button}
+          links={page.attributes.radioSection.links}
+        />
+        <CodeOfConduct />
+        <ImageBanner
+          src={page.attributes.imageBanner.data.attributes.url}
+          alt='THF Radio at Torhaus'
+        />
+        <AboutSection
+          title={page.attributes.torhausSection.title}
+          description={page.attributes.torhausSection.description}
+          button={page.attributes.torhausSection.button}
+          links={page.attributes.torhausSection.links}
+        />
+      </Layout>
     </>
   );
 };

@@ -28,28 +28,30 @@ const Home: NextPage<{
   return (
     <>
       <SEOComponent />
-      <Hero
-        description={page.attributes.heroText}
-        imageSrc={page.attributes.heroPictures.data[0].attributes.url}
-        showButtons={true}
-        picturePosition='right'
-      />
-      <ShowsSection
-        title={page.attributes.shows.title}
-        subtitle={page.attributes.shows.subtitle}
-        showListings={showListings}
-        pictures={page.attributes.pictureGallery.data}
-      />
-      <ProgrammeSection
-        title={page.attributes.programme.title}
-        subtitle={page.attributes.programme.subtitle}
-        calendarEntries={calendarEntries}
-      />
-      <ArchiveSection
-        title={page.attributes.archive.title}
-        subtitle={page.attributes.archive.subtitle}
-        shows={shows}
-      />
+      <Layout>
+        <Hero
+          description={page.attributes.heroText}
+          imageSrc={page.attributes.heroPictures.data[0].attributes.url}
+          showButtons={true}
+          picturePosition='right'
+        />
+        <ShowsSection
+          title={page.attributes.shows.title}
+          subtitle={page.attributes.shows.subtitle}
+          showListings={showListings}
+          pictures={page.attributes.pictureGallery.data}
+        />
+        <ProgrammeSection
+          title={page.attributes.programme.title}
+          subtitle={page.attributes.programme.subtitle}
+          calendarEntries={calendarEntries}
+        />
+        <ArchiveSection
+          title={page.attributes.archive.title}
+          subtitle={page.attributes.archive.subtitle}
+          shows={shows}
+        />
+      </Layout>
     </>
   );
 };
