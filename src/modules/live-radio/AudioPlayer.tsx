@@ -38,6 +38,7 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({
         volume={playerState.volume}
         width='0' // set to 0 for audio-only player
         height='0' // set to 0 for audio-only player
+        playsinline
       />
 
       <div className='hidden lg:block -mt-2'>

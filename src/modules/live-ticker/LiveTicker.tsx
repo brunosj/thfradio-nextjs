@@ -134,8 +134,8 @@ export const LiveTicker = () => {
   const currentShowName = getCurrentShowName();
 
   return (
-    <div className=' fixed top-16 z-50 w-full'>
-      <div className='layout lg:h-12 border-blue-800 border-b font-mono flex items-center bg-white shadow-lg opacity-95 space-x-3 justify-between flex-col lg:flex-row'>
+    <div className=' fixed top-16 z-50 w-full bg-white shadow-lg opacity-95 border-blue-800 border-b'>
+      <div className='layout lg:h-12  font-mono flex items-center    space-x-3 justify-between flex-col lg:flex-row'>
         <div className='hidden lg:block w-full lg:w-1/6 py-2 lg:py-0 space-x-2 text-xs lg:text-sm '>
           <span className='uppercase font-light'>Live from Airport Berlin</span>
         </div>
