@@ -127,7 +127,7 @@ const ShowPage: NextPage<ShowPage> = ({
             )}
           </div>
         </div>
-        <div className='bg-blue-800  layout'>
+        <div className='bg-blue-800 min-h-[40vh] layout'>
           <article className='pt-6 pb-0 lg:pt-12 lg:pb-6 markdown text-white '>
             <ReactMarkdown>
               {currentContent.attributes.description}

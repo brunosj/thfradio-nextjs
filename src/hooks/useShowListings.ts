@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect, createRef } from 'react';
 import { ShowTypes } from '@/types/ResponsesInterface';
 
 interface RefsObject {
@@ -11,6 +11,12 @@ const useShowListings = (
   const [activeLetter, setActiveLetter] = useState<string>('');
   const refs = useRef<RefsObject>({});
 
+  useEffect(() => {
+    items.forEach((item) => {
+      refs.current[item.id] = createRef();
+    });
+  }, [items]);
+
   const scrollToShow = (letter: string) => {
     setActiveLetter(letter);
     const show = items.find(
@@ -22,7 +28,7 @@ const useShowListings = (
         refs.current[show.id]?.current?.getBoundingClientRect();
 
       if (boundingRect) {
-        const top = boundingRect.top + window.scrollY - 90;
+        const top = boundingRect.top + window.scrollY - 160;
         window.scrollTo({ top, behavior: 'smooth' });
       }
     }
