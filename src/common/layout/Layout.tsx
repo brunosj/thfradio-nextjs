@@ -11,12 +11,12 @@ export const Layout = ({ children }: Props) => {
   return (
     <div className='relative'>
       <Header isOpen={isMobileMenuOpen} setIsOpen={setMobileMenuOpen} />
-      <main className={isMobileMenuOpen ? 'filter blur-sm' : ''}>
-        <LiveTicker />
+      <main className={isMobileMenuOpen ? ' pt-12 filter blur-sm' : 'pt-12'}>
+        {/* <LiveTicker /> */}
         <article>{children}</article>
       </main>
       <Footer />
-      <MixcloudWidget />
+      {/* <MixcloudWidget /> */}
       <ScrollToTopButton />
     </div>
   );

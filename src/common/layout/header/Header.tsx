@@ -77,7 +77,7 @@ const Header: React.FC<HeaderProps> = ({ isOpen, setIsOpen }) => {
   }, [menuWidth]);
 
   return (
-    <header className='relative z-50 top-0 pt-4  bg-blue-500 text-white pb-4 lg:pb-0 h-16 md:h-full'>
+    <header className='sticky w-full z-50 top-0 pt-4  bg-blue-500 text-white pb-4 lg:pb-0 opacity-95 h-16'>
       <div
         className={`layout flex items-center justify-between  ${
           isOpen ? 'filter blur-sm' : ''

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { Pause } from '@/common/assets/PauseIcon';
 import { Play } from '@/common/assets/PlayIcon';
 import { PlayerContext } from '@/context/PlayerContext';
@@ -20,12 +20,6 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({
   const router = useRouter();
   const liveStreamUrl: string = 'https://thfradio2.out.airtime.pro/thfradio2_b';
   const { playerState, togglePlay, handleVolumeChange } = useAudioPlayer();
-  const { setPlayerState } = useContext(PlayerContext); // Consume the PlayerContext
-
-  useEffect(() => {
-    // Update the playerState in the context when it changes
-    setPlayerState(playerState);
-  }, [playerState, setPlayerState]);
 
   return (
     <div className='flex items-center'>

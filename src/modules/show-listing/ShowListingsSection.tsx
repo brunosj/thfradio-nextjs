@@ -42,8 +42,8 @@ const ShowListingSection: React.FC<ShowListingSectionProps> = ({
   return (
     <div className='relative'>
       {isActive && (
-        <div className='bg-blue-500 lg:sticky top-12 z-50 opacity-90'>
-          <div className='layout space-x-2 text-white py-2'>
+        <div className='bg-blue-500 lg:sticky top-[7rem] z-50 opacity-90 w-full'>
+          <div className=' layout space-x-2 text-white py-2'>
             {alphabet.map((letter) =>
               lettersWithShows.includes(letter) ? (
                 <button key={letter} onClick={() => scrollToShow(letter)}>

@@ -20,7 +20,7 @@ const ScrollToTopButton: React.FC = () => {
 
   return (
     <button
-      className={`fixed bottom-5 right-5 z-50 hover:text-white bg-white hover:bg-blue-500 p-1 rounded-full shadow-md  ${
+      className={`fixed bottom-16 right-5 z-50 hover:text-white bg-white hover:bg-blue-500 p-1 rounded-full shadow-md  ${
         isVisible
           ? 'opacity-100 visible transition transform duration-500 ease-in-out'
           : 'opacity-0 invisible transition transform duration-500 ease-in-out'

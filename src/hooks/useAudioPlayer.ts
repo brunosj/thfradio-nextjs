@@ -1,30 +1,28 @@
 import { useState, useCallback } from 'react';
 
-interface PlayerState {
-  isPlaying: boolean;
-  volume: number;
-}
-
 const useAudioPlayer = () => {
-  const [playerState, setPlayerState] = useState<PlayerState>({
+  const [playerState, setPlayerState] = useState({
     isPlaying: false,
     volume: 1,
   });
 
-  const togglePlay = () => {
+  const togglePlay = useCallback(() => {
     setPlayerState((prevState) => ({
       ...prevState,
       isPlaying: !prevState.isPlaying,
     }));
-  };
+  }, []);
 
-  const handleVolumeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const newVolume = parseFloat(event.target.value);
-    setPlayerState((prevState) => ({
-      ...prevState,
-      volume: newVolume,
-    }));
-  };
+  const handleVolumeChange = useCallback(
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+      const newVolume = parseFloat(event.target.value);
+      setPlayerState((prevState) => ({
+        ...prevState,
+        volume: newVolume,
+      }));
+    },
+    []
+  );
 
   return { playerState, togglePlay, handleVolumeChange };
 };

@@ -5,6 +5,7 @@ import React, { createContext, useState, ReactNode } from 'react';
 interface PlayerState {
   isPlaying: boolean;
   volume: number;
+  position: number;
 }
 
 interface PlayerContextProps {
@@ -14,8 +15,10 @@ interface PlayerContextProps {
 
 const initialPlayerState: PlayerState = {
   isPlaying: false,
-  volume: 1, // Add the initial volume here
+  volume: 1,
+  position: 0,
 };
+
 
 export const PlayerContext = createContext<PlayerContextProps>({
   playerState: initialPlayerState,
