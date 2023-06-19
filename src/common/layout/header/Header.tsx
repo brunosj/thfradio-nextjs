@@ -37,13 +37,16 @@ const Header: React.FC<HeaderProps> = ({ isOpen, setIsOpen }) => {
       const element = document.getElementById(href.slice(2));
 
       if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
+        const elementPositionY = element.getBoundingClientRect().top;
+        window.scrollTo({
+          top: elementPositionY + window.scrollY - 110,
+          behavior: 'smooth',
+        });
       }
     } else {
       router.push(href);
     }
   };
-
   // Mobile menu events
   const menuRef = useRef<HTMLDivElement>(null);
 

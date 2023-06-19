@@ -4,7 +4,7 @@ import { useTranslation } from 'next-i18next';
 import { useRouter } from 'next/router';
 import { ShowTypes, CloudShowTypes } from '@/types/ResponsesInterface';
 import Layout from '@/common/layout/Layout';
-import ShowsArchive from '@/modules/archive/CloudShowsArchive';
+import CloudShowsArchive from '@/modules/archive/CloudShowsArchive';
 import ReactMarkdown from 'react-markdown';
 import getAllShows from '@/utils/getAllShows';
 import { AiOutlineInstagram } from 'react-icons/ai';
@@ -136,7 +136,7 @@ const ShowPage: NextPage<ShowPage> = ({
           <div
             className={`layout ${shows.length >= 1 ? ' pb-6 lg:pb-12' : ''}`}
           >
-            <ShowsArchive shows={shows} />
+            <CloudShowsArchive shows={shows} />
           </div>
         </div>
       </Layout>

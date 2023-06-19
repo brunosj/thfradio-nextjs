@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import SectionHeader from '@/common/layout/section/SectionHeader';
 import { CloudShowTypes } from '@/types/ResponsesInterface';
-import ShowsArchive from './CloudShowsArchive';
+import CloudShowsArchive from './CloudShowsArchive';
 import BarsSpinner from '@/common/ui/BarsSpinner';
 
 interface ShowsProps {
@@ -27,7 +27,7 @@ const HomeArchiveSection = ({ title, subtitle, shows }: ShowsProps) => {
             <BarsSpinner color='#1200ff' />
           </div>
         ) : (
-          <ShowsArchive shows={shows} />
+          <CloudShowsArchive shows={shows} />
         )}
       </div>
     </section>

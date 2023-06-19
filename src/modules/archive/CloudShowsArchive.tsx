@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { useState } from 'react';
-import ShowCards from './CloudShowsCards';
+import CloudShowsComponent from './CloudShowsComponent';
 import { CloudShows } from '@/types/ResponsesInterface';
 
 const CloudShowsArchive = ({ shows }: CloudShows) => {
@@ -15,7 +15,7 @@ const CloudShowsArchive = ({ shows }: CloudShows) => {
   };
   return (
     <>
-      <ShowCards items={shows} onPlay={handlePlay} />
+      <CloudShowsComponent items={shows} onPlay={handlePlay} />
     </>
   );
 };
