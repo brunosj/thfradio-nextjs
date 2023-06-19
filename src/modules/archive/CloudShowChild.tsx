@@ -19,17 +19,17 @@ const CloudShowChild = ({ item, onPlay }: ShowCardProps) => {
     if (date) {
       const dateParts = date.split('.');
       let day, month, year;
-      if (dateParts[2] && dateParts[2].length === 4) {
+      if (dateParts.length === 3) {
         // Format: dd.mm.yyyy
         day = dateParts[0].trim();
         month = dateParts[1].trim();
         year = dateParts[2].trim();
-      } else if (dateParts[2] && dateParts[2].length === 2) {
+      } else if (dateParts.length === 2) {
         // Format: dd.mm.yy
         day = dateParts[0].trim();
         month = dateParts[1].trim();
         year =
-          new Date().getFullYear().toString().slice(0, 2) + dateParts[2].trim();
+          new Date().getFullYear().toString().slice(0, 2) + dateParts[1].trim();
       } else {
         // Format: dd.mm. (year not provided)
         const currentYear = new Date().getFullYear();
@@ -45,6 +45,7 @@ const CloudShowChild = ({ item, onPlay }: ShowCardProps) => {
   } catch (error) {
     console.error('Date parsing failed:', error);
   }
+
 
   return (
     <button

@@ -16,7 +16,7 @@ const HomeShowSection = ({ title, subtitle, pictures }: ShowsProps) => {
   const { t } = useTranslation();
 
   return (
-    <section className='bg-orange-500 layout sectionPb'>
+    <section className='bg-orange-500 sectionPb'>
       <SectionHeader title={title} subtitle={subtitle} />
       <ImageGallery items={pictures} />
       <div className='pt-12 flex justify-center'>

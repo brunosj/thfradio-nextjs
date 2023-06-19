@@ -23,7 +23,7 @@ const HomeProgrammeSection = ({
     }
   }, [calendarEntries]);
   return (
-    <section className='bg-blue-500 layout sectionPb' id='programme'>
+    <section className='bg-blue-500 sectionPb' id='programme'>
       <SectionHeader title={title} subtitle={subtitle} />
       <div className='flex max-w-6xl m-auto'>
         {isLoading ? (

@@ -10,6 +10,7 @@ import CloudShowCardList from './CloudShowsList';
 import SidePanel from './SidePanel';
 import { DataContext } from '@/context/DataContext';
 import normalizeTagName from '@/utils/normalizeTagName';
+import CloudShowsFilter from './CloudShowsFilter';
 
 interface ShowCardProps {
   items: CloudShowTypes[];
@@ -63,7 +64,7 @@ const CloudShowsComponent = ({ items, onPlay, tagsList }: ShowCardProps) => {
     if (topRef.current) {
       const elementPositionY = topRef.current.getBoundingClientRect().top;
       window.scrollTo({
-        top: elementPositionY + window.scrollY - 160,
+        top: elementPositionY + window.scrollY - 100,
         behavior: 'smooth',
       });
     }
@@ -84,21 +85,26 @@ const CloudShowsComponent = ({ items, onPlay, tagsList }: ShowCardProps) => {
   return (
     <div className='relative' ref={topRef}>
       {isHomePage && (
-        <div className='hidden lg:flex justify-between mb-4 pb-12 -mt-8'>
+        <div className='hidden lg:sticky top-[7rem] z-50 opacity-100 lg:flex  mb-4 pb-12 -mt-8'>
           <div className=' m-auto'>
-            <button
+            {/* <button
               className={`flex font-mono rounded-xl text-sm shadow-sm border-blue-800 px-4 py-2 text-white ${
                 showSidePanel ? 'bg-orange-700 ' : 'bg-orange-500 '
               } duration-300 `}
               onClick={toggleSidePanel}
             >
               {getFilterButtonText(locale || 'en')}
-            </button>
+            </button> */}
           </div>
+          <CloudShowsFilter
+            sortedTags={sortedTags}
+            selectedTag={selectedTag}
+            handleTagClick={handleTagClick}
+          />
         </div>
       )}
 
-      <div className='flex items-start gap-6'>
+      <div className='layout flex items-start gap-6'>
         <div className={`w-${showSidePanel ? '4/5' : 'full'}`}>
           <CloudShowCardList items={filteredItems} onPlay={onPlay} />
         </div>

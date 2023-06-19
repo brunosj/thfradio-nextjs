@@ -41,7 +41,12 @@ const useShowFilter = ({
 
   // Check if a tag or its synonyms match the given value
   const tagMatches = (tag: CloudShowTag, selectedTag: TagTypes) => {
-    const tagName = normalizeTagName(tag.name).toLowerCase().trim();
+    const escapeRegExp = (string: string) =>
+      string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); // $& means the whole matched string
+    const tagName = escapeRegExp(normalizeTagName(tag.name))
+      .toLowerCase()
+      .trim();
+
     const selectedTagName = normalizeTagName(selectedTag.name);
     if (!tagName) {
       return false;
