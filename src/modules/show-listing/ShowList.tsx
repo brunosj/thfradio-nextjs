@@ -89,7 +89,11 @@ const ShowList: React.FC<ShowListingSectionProps> = ({
                 a.attributes.title.localeCompare(b.attributes.title)
               )
               .map((item) => (
-                <ShowListingChild key={item.id} item={item} />
+                <ShowListingChild
+                  key={item.id}
+                  item={item}
+                  ref={refs[item.id]}
+                />
               ))}
           </>
         )}

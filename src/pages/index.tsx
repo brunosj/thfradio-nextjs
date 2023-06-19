@@ -4,7 +4,7 @@ import type { NextPage } from 'next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { DataContext } from '@/context/DataContext';
 import Layout from '@/common/layout/Layout';
-import { HomepageTypes } from '@/types/ResponsesInterface';
+import { HomepageTypes, TagsList } from '@/types/ResponsesInterface';
 import Hero from '@/modules/hero/Hero';
 import HomeShowSection from '@/modules/show-listing/HomeShowSection';
 import HomeProgrammeSection from '@/modules/timetable/HomeProgrammeSection';
@@ -16,7 +16,7 @@ const Home: NextPage<{
 }> = ({ page }) => {
   const router = useRouter();
   const { locale: currentLocale = 'en' } = router;
-  const { cloudShows, calendarEntries, programmeShows } =
+  const { cloudShows, calendarEntries, programmeShows, tagsList } =
     useContext(DataContext)!;
 
   return (
@@ -44,6 +44,7 @@ const Home: NextPage<{
           title={page.attributes.archive.title}
           subtitle={page.attributes.archive.subtitle}
           shows={cloudShows}
+          tagsList={tagsList}
         />
       </Layout>
     </>

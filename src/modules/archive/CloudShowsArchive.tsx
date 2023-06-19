@@ -1,9 +1,14 @@
 import Image from 'next/image';
 import { useState } from 'react';
 import CloudShowsComponent from './CloudShowsComponent';
-import { CloudShows } from '@/types/ResponsesInterface';
+import { CloudShowTypes, TagsList } from '@/types/ResponsesInterface';
 
-const CloudShowsArchive = ({ shows }: CloudShows) => {
+type CloudShowsArchiveProps = {
+  shows: CloudShowTypes[];
+  tagsList: TagsList;
+};
+
+const CloudShowsArchive = ({ shows, tagsList }: CloudShowsArchiveProps) => {
   const [selectedShowUrl, setSelectedShowUrl] = useState<string | null>(null);
   const [isWidgetVisible, setWidgetVisible] = useState(false);
   const handlePlay = (url: string) => {
@@ -15,7 +20,11 @@ const CloudShowsArchive = ({ shows }: CloudShows) => {
   };
   return (
     <>
-      <CloudShowsComponent items={shows} onPlay={handlePlay} />
+      <CloudShowsComponent
+        items={shows}
+        onPlay={handlePlay}
+        tagsList={tagsList}
+      />
     </>
   );
 };

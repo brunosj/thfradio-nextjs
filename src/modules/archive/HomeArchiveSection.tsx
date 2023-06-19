@@ -1,16 +1,22 @@
 import { useState, useEffect } from 'react';
 import SectionHeader from '@/common/layout/section/SectionHeader';
-import { CloudShowTypes } from '@/types/ResponsesInterface';
+import { CloudShowTypes, TagsList } from '@/types/ResponsesInterface';
 import CloudShowsArchive from './CloudShowsArchive';
 import BarsSpinner from '@/common/ui/BarsSpinner';
 
-interface ShowsProps {
+interface ArchiveProps {
   title: string;
   subtitle: string;
   shows: CloudShowTypes[];
+  tagsList: TagsList;
 }
 
-const HomeArchiveSection = ({ title, subtitle, shows }: ShowsProps) => {
+const HomeArchiveSection = ({
+  title,
+  subtitle,
+  shows,
+  tagsList,
+}: ArchiveProps) => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -27,7 +33,7 @@ const HomeArchiveSection = ({ title, subtitle, shows }: ShowsProps) => {
             <BarsSpinner color='#1200ff' />
           </div>
         ) : (
-          <CloudShowsArchive shows={shows} />
+          <CloudShowsArchive shows={shows} tagsList={tagsList} />
         )}
       </div>
     </section>

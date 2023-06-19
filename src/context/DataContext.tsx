@@ -4,6 +4,7 @@ import {
   CloudShowTypes,
   CalendarEntry,
   ShowTypes,
+  TagsList,
 } from '@/types/ResponsesInterface';
 import { useRouter } from 'next/router';
 
@@ -15,6 +16,7 @@ interface DataContextValue {
   cloudShows: CloudShowTypes[];
   calendarEntries: CalendarEntry[];
   programmeShows: ShowTypes[];
+  tagsList: TagsList;
 }
 
 export const DataContext = createContext<DataContextValue | undefined>(
@@ -25,6 +27,10 @@ export const DataProvider: React.FC<DataContextProps> = ({ children }) => {
   const [cloudShows, setCloudShows] = useState<CloudShowTypes[]>([]);
   const [calendarEntries, setCalendarEntries] = useState<CalendarEntry[]>([]);
   const [programmeShows, setProgrammeShows] = useState<ShowTypes[]>([]);
+  const [tagsList, setTagsList] = useState<TagsList>({
+    attributes: { tag: [] },
+  });
+
   const router = useRouter();
   const { locale = 'en' } = router;
 
@@ -32,6 +38,10 @@ export const DataProvider: React.FC<DataContextProps> = ({ children }) => {
     fetch('/api/fetchCloudShows')
       .then((res) => res.json())
       .then((data) => setCloudShows(data));
+
+    fetch('/api/fetchTagList')
+      .then((res) => res.json())
+      .then((data) => setTagsList(data));
 
     fetch('/api/fetchCalendar')
       .then((res) => {
@@ -50,7 +60,7 @@ export const DataProvider: React.FC<DataContextProps> = ({ children }) => {
 
   return (
     <DataContext.Provider
-      value={{ cloudShows, calendarEntries, programmeShows }}
+      value={{ cloudShows, calendarEntries, programmeShows, tagsList }}
     >
       {children}
     </DataContext.Provider>

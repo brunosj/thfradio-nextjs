@@ -1,9 +1,10 @@
+import { TagTypes } from '@/types/ResponsesInterface';
 import React from 'react';
 
 interface SidePanelProps {
-  sortedTags: string[];
-  selectedTag: string | null;
-  handleTagClick: (tag: string) => void;
+  sortedTags: TagTypes[];
+  selectedTag: TagTypes | null;
+  handleTagClick: (tag: TagTypes) => void;
 }
 
 const SidePanel = ({
@@ -14,19 +15,19 @@ const SidePanel = ({
   return (
     <div className='sticky top-32 w-1/5 rounded-xl bg-white'>
       <div className='bg-orange-500 py-2 rounded-t-xl text-white'>
-        <h3 className='font-semibold mb-2 font-mono text-center'>Tags</h3>
+        <h3 className='font-semibold my-1 font-mono text-center'>Tags</h3>
       </div>
       <div className='py-4 max-h-screen overflow-auto'>
-        <div className='flex flex-wrap space-x-2 px-4'>
-          {sortedTags.map((tag, index) => (
+        <div className='flex flex-wrap space-x-2   justify-evenly jupx-4'>
+          {sortedTags.map((tag) => (
             <button
-              key={index}
+              key={tag.name}
               className={`border-blue-800 border text-sm font-mono rounded-xl px-2 py-1 mt-2 ${
-                tag === selectedTag ? 'bg-orange-500 text-white' : ''
+                tag.name === selectedTag?.name ? 'bg-orange-500 text-white' : ''
               }`}
               onClick={() => handleTagClick(tag)}
             >
-              {tag}
+              {tag.name}
             </button>
           ))}
         </div>

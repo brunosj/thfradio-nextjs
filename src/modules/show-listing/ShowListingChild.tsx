@@ -8,14 +8,17 @@ interface ShowListingChildProps {
   item: ShowTypes;
 }
 
-const ShowListingChild: React.FC<ShowListingChildProps> = ({ item }) => {
+const ShowListingChild = React.forwardRef<
+  HTMLDivElement,
+  ShowListingChildProps
+>(function ShowListingChild({ item }, ref) {
   const hasPicture = item.attributes.picture.data;
   const showContentClass = hasPicture
     ? 'pr-3 pl-4 lg:pl-12 space-y-2'
     : 'pl-[5rem] lg:pl-[11rem] pr-3 space-y-2';
 
   return (
-    <div key={item.id}>
+    <div key={item.id} ref={ref}>
       <Link
         className='group flex items-center flex-row border rounded-xl border-blue-600 bg-white hover:bg-blue-500 hover:text-white font-mono duration-200 h-16 lg:h-32'
         href={`/shows/${item.attributes.slug}`}
@@ -42,6 +45,6 @@ const ShowListingChild: React.FC<ShowListingChildProps> = ({ item }) => {
       </Link>
     </div>
   );
-};
+});
 
 export default ShowListingChild;

@@ -7,6 +7,19 @@ export interface PageTypes {
   id: number;
 }
 
+export interface TagsList {
+  attributes: {
+    tag: TagTypes[];
+  };
+}
+
+export interface TagTypes {
+  name: string;
+  synonyms: Array<{
+    name: string;
+  }>;
+}
+
 export interface CalendarEntry {
   start: string;
   end: string;
@@ -25,6 +38,12 @@ export interface CloudShowTypes {
     name: string;
     url: string;
   }>;
+}
+
+export interface CloudShowTag {
+  key: string;
+  name: string;
+  url: string;
 }
 
 export interface CloudShows {
@@ -70,6 +89,7 @@ export interface HomepageSection {
   showListings?: ShowTypes[];
   calendarEntries?: CalendarEntry[];
   shows?: CloudShowTypes[];
+  tagsList?: TagsList;
 }
 
 export interface AboutSection {
