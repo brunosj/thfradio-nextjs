@@ -2,7 +2,11 @@ import type { NextPage } from 'next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useTranslation } from 'next-i18next';
 import { useRouter } from 'next/router';
-import { ShowTypes, CloudShowTypes } from '@/types/ResponsesInterface';
+import {
+  ShowTypes,
+  CloudShowTypes,
+  TagsList,
+} from '@/types/ResponsesInterface';
 import Layout from '@/common/layout/Layout';
 import CloudShowsArchive from '@/modules/archive/CloudShowsArchive';
 import ReactMarkdown from 'react-markdown';
@@ -17,11 +21,13 @@ interface ShowPage {
   content: ShowTypes;
   otherLocaleContent: ShowTypes;
   shows: CloudShowTypes[];
+  tagsList: TagsList;
 }
 const ShowPage: NextPage<ShowPage> = ({
   content,
   otherLocaleContent,
   shows,
+  tagsList,
 }) => {
   const { t } = useTranslation();
   const router = useRouter();
@@ -136,7 +142,7 @@ const ShowPage: NextPage<ShowPage> = ({
           <div
             className={`layout ${shows.length >= 1 ? ' pb-6 lg:pb-12' : ''}`}
           >
-            <CloudShowsArchive shows={shows} />
+            <CloudShowsArchive shows={shows} tagsList={tagsList} />
           </div>
         </div>
       </Layout>

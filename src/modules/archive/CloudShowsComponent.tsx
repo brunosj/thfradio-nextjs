@@ -99,7 +99,7 @@ const CloudShowsComponent = ({ items, onPlay, tagsList }: ShowCardProps) => {
       )}
 
       <div className='flex items-start gap-6'>
-        <div className={`w-${showSidePanel ? '4/5' : 'full'} f`}>
+        <div className={`w-${showSidePanel ? '4/5' : 'full'}`}>
           <CloudShowCardList items={filteredItems} onPlay={onPlay} />
         </div>
         {showSidePanel && (

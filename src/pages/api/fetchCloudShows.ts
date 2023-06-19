@@ -11,7 +11,7 @@ const fetchCloudShows = async (req: NextApiRequest, res: NextApiResponse) => {
   let offset = 0;
 
   try {
-    while (shows.length < 150) {
+    while (shows.length < 350) {
       const response = await fetch(
         `${process.env.MIXCLOUD_API}?offset=${offset}`
       );
@@ -21,7 +21,7 @@ const fetchCloudShows = async (req: NextApiRequest, res: NextApiResponse) => {
         // Stop when there are no more results
         break;
       } else {
-        shows = [...shows, ...data.data.slice(0, 150 - shows.length)]; // Add new results while not exceeding 150
+        shows = [...shows, ...data.data.slice(0, 350 - shows.length)]; // Add new results while not exceeding 150
         offset += 20; // Increase the offset for the next fetch
       }
     }

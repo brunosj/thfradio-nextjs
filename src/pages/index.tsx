@@ -19,6 +19,7 @@ const Home: NextPage<{
   const { cloudShows, calendarEntries, programmeShows, tagsList } =
     useContext(DataContext)!;
 
+    console.log(cloudShows);
   return (
     <>
       <SEOComponent />

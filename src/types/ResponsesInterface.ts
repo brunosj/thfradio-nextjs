@@ -29,6 +29,7 @@ export interface CalendarEntry {
 export interface CloudShowTypes {
   name: string;
   url: string;
+  key: string;
   pictures: {
     extra_large: string;
   };
