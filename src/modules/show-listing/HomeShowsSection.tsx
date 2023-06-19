@@ -18,7 +18,9 @@ const HomeShowSection = ({ title, subtitle, pictures }: ShowsProps) => {
   return (
     <section className='bg-orange-500 sectionPb'>
       <SectionHeader title={title} subtitle={subtitle} />
-      <ImageGallery items={pictures} />
+      <div className='layout'>
+        <ImageGallery items={pictures} />
+      </div>
       <div className='pt-12 flex justify-center'>
         <Button path='/shows' color='white'>
           {t('allShows')}
