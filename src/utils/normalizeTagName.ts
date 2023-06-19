@@ -1,4 +1,8 @@
-const normalizeTagName = (name: string) => {
+const normalizeTagName = (name: string | null) => {
+  if (!name || name.trim() === '') {
+    return ''; // Return empty string for null or empty values
+  }
+
   // Remove leading and trailing spaces
   let normalized = name.trim();
 

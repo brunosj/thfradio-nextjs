@@ -16,6 +16,8 @@ import { CiMail } from 'react-icons/ci';
 import { SlSocialSoundcloud } from 'react-icons/sl';
 import Link from 'next/link';
 import { SEOComponent } from '@/utils/seo';
+import CloudShowCardList from '@/modules/archive/CloudShowsList';
+import CloudShowChild from '@/modules/archive/CloudShowChild';
 
 interface ShowPage {
   content: ShowTypes;
@@ -84,6 +86,14 @@ const ShowPage: NextPage<ShowPage> = ({
     return time ? time.slice(0, 5) : '';
   };
 
+  const handlePlay = (url: string) => {
+    document.dispatchEvent(
+      new CustomEvent('mixcloud-show-change', {
+        detail: { url },
+      })
+    );
+  };
+
   return (
     <>
       <SEOComponent
@@ -134,15 +144,19 @@ const ShowPage: NextPage<ShowPage> = ({
           </div>
         </div>
         <div className='bg-blue-800 min-h-[60vh] lg:min-h-[40vh] layout'>
-          <article className='pt-6 pb-0 lg:pt-12 lg:pb-6 markdown text-white '>
+          <article className='pt-12 pb-6 lg:pt-12 lg:pb-6 markdown text-white '>
             <ReactMarkdown>
               {currentContent.attributes.description}
             </ReactMarkdown>
           </article>
           <div
-            className={`layout ${shows.length >= 1 ? ' pb-6 lg:pb-12' : ''}`}
+            className={` w-full flex flex-wrap gap-6 lg:gap-12 justify-around ${
+              shows.length >= 1 ? ' pb-6 lg:pb-12' : ''
+            }`}
           >
-            <CloudShowsArchive shows={shows} tagsList={tagsList} />
+            {shows.map((item, i) => (
+              <CloudShowChild key={i} item={item} onPlay={handlePlay} />
+            ))}
           </div>
         </div>
       </Layout>

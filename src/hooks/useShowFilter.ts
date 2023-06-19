@@ -25,10 +25,14 @@ const useShowFilter = ({
     if (selectedTag) {
       const normalizedTag = normalizeTagName(selectedTag.name);
       filteredItems = items.filter((item) => {
-        const matchingTags = item.tags.filter((tag) =>
-          tagMatches(tag, selectedTag)
-        );
-        return matchingTags.length > 0;
+        // Check if the show has tags and if it does, filter based on tags
+        if (item.tags && item.tags.length > 0) {
+          const matchingTags = item.tags.filter((tag) =>
+            tagMatches(tag, selectedTag)
+          );
+          return matchingTags.length > 0;
+        }
+        return false; // If the show doesn't have tags, ignore it
       });
     }
 
@@ -39,6 +43,9 @@ const useShowFilter = ({
   const tagMatches = (tag: CloudShowTag, selectedTag: TagTypes) => {
     const tagName = normalizeTagName(tag.name).toLowerCase().trim();
     const selectedTagName = normalizeTagName(selectedTag.name);
+    if (!tagName) {
+      return false;
+    }
     const regex = new RegExp(tagName, 'i');
 
     if (regex.test(selectedTagName)) {
