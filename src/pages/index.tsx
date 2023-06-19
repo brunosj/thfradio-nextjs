@@ -6,7 +6,7 @@ import { DataContext } from '@/context/DataContext';
 import Layout from '@/common/layout/Layout';
 import { HomepageTypes, TagsList } from '@/types/ResponsesInterface';
 import Hero from '@/modules/hero/Hero';
-import HomeShowSection from '@/modules/show-listing/HomeShowSection';
+import HomeShowSection from '@/modules/show-listing/HomeShowsSection';
 import HomeProgrammeSection from '@/modules/timetable/HomeProgrammeSection';
 import HomeArchiveSection from '@/modules/archive/HomeArchiveSection';
 import { SEOComponent } from '@/utils/seo';

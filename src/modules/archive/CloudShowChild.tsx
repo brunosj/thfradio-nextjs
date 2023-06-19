@@ -33,8 +33,8 @@ const CloudShowChild = ({ item, onPlay }: ShowCardProps) => {
       } else {
         // Format: dd.mm. (year not provided)
         const currentYear = new Date().getFullYear();
-        day = dateParts[0].trim();
-        month = dateParts[1].trim();
+        day = dateParts[0]?.trim();
+        month = dateParts[1]?.trim();
         year = currentYear.toString();
       }
 

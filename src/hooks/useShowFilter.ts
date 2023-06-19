@@ -25,14 +25,13 @@ const useShowFilter = ({
     if (selectedTag) {
       const normalizedTag = normalizeTagName(selectedTag.name);
       filteredItems = items.filter((item) => {
-        // Check if the show has tags and if it does, filter based on tags
         if (item.tags && item.tags.length > 0) {
           const matchingTags = item.tags.filter((tag) =>
             tagMatches(tag, selectedTag)
           );
           return matchingTags.length > 0;
         }
-        return false; // If the show doesn't have tags, ignore it
+        return false;
       });
     }
 
@@ -42,7 +41,7 @@ const useShowFilter = ({
   // Check if a tag or its synonyms match the given value
   const tagMatches = (tag: CloudShowTag, selectedTag: TagTypes) => {
     const escapeRegExp = (string: string) =>
-      string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); // $& means the whole matched string
+      string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
     const tagName = escapeRegExp(normalizeTagName(tag.name))
       .toLowerCase()
       .trim();
@@ -59,7 +58,7 @@ const useShowFilter = ({
 
     if (selectedTag.synonyms && selectedTag.synonyms.length > 0) {
       const synonymMatches = selectedTag.synonyms.some((synonym) => {
-        const normalizedSynonym = normalizeTagName(synonym.name); // Normalize the synonym name
+        const normalizedSynonym = normalizeTagName(synonym.name);
         return regex.test(normalizedSynonym);
       });
       if (synonymMatches) {

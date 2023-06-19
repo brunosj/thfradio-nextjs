@@ -3,13 +3,13 @@ import { useRouter } from 'next/router';
 import { ShowTypes } from '@/types/ResponsesInterface';
 import useShowListings from '@/hooks/useShowListings';
 import { CMS_URL } from '@/utils/constants';
-import ShowList from './ShowList';
+import ShowList from './ProgrammeShowsList';
 
-interface ShowListingProps {
+interface ProgrammeShowsProps {
   items: ShowTypes[];
 }
 
-const ShowListing: React.FC<ShowListingProps> = ({ items }) => {
+const ProgrammeShows: React.FC<ProgrammeShowsProps> = ({ items }) => {
   const router = useRouter();
   const locale = router.locale || 'en';
   const [refs, activeLetter, scrollToShow] = useShowListings(items);
@@ -33,4 +33,4 @@ const ShowListing: React.FC<ShowListingProps> = ({ items }) => {
   );
 };
 
-export default ShowListing;
+export default ProgrammeShows;

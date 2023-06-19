@@ -6,15 +6,15 @@ import { ShowTypes } from '@/types/ResponsesInterface';
 import { CMS_URL } from '@/utils/constants';
 import useShowListings from '@/hooks/useShowListings';
 import BarsSpinner from '@/common/ui/BarsSpinner';
-import ShowListingChild from './ShowListingChild';
+import ShowListingChild from './ProgrammeShowsChild';
 
-interface ShowListingSectionProps {
+interface ProgrammeShowsListProps {
   items: ShowTypes[];
   isActive: boolean;
   locale: string;
 }
 
-const ShowList: React.FC<ShowListingSectionProps> = ({
+const ProgrammeShowsList: React.FC<ProgrammeShowsListProps> = ({
   items,
   isActive,
   locale,
@@ -102,4 +102,4 @@ const ShowList: React.FC<ShowListingSectionProps> = ({
   );
 };
 
-export default ShowList;
+export default ProgrammeShowsList;

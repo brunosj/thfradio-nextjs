@@ -36,7 +36,10 @@ const CloudShowsComponent = ({ items, onPlay, tagsList }: ShowCardProps) => {
   };
 
   const handleTagClick = (tag: TagTypes) => {
-    setSelectedTag(tag === selectedTag ? null : tag);
+    console.log(tag, selectedTag);
+    setSelectedTag((prevTag) =>
+      prevTag && prevTag.name === tag.name ? null : tag
+    );
     setDisplayCount(20);
   };
 
@@ -83,7 +86,7 @@ const CloudShowsComponent = ({ items, onPlay, tagsList }: ShowCardProps) => {
   const isHomePage = router.pathname === '/';
 
   return (
-    <div className='relative' ref={topRef}>
+    <div className='relative w-full' ref={topRef}>
       {isHomePage && (
         <div className='hidden lg:sticky top-[7rem] z-50 opacity-100 lg:flex  mb-4 pb-12 -mt-8'>
           <div className=' m-auto'>
@@ -116,17 +119,16 @@ const CloudShowsComponent = ({ items, onPlay, tagsList }: ShowCardProps) => {
           />
         )}
       </div>
-      {(selectedTag && filteredItems.length > 20) ||
-        (!selectedTag && displayCount < items.length && (
-          <div className='pt-12 w-full flex justify-center'>
-            <button
-              className='flex font-mono rounded-xl text-sm shadow-sm border-blue-800 px-4 py-2 bg-white  duration-300 hover:bg-blue-100 '
-              onClick={handleLoadMore}
-            >
-              Load More
-            </button>
-          </div>
-        ))}
+      {displayCount <= filteredItems.length ? (
+        <div className='pt-12 w-full flex justify-center'>
+          <button
+            className='flex font-mono rounded-xl text-sm shadow-sm border-blue-800 px-4 py-2 bg-white  duration-300 hover:bg-blue-100 '
+            onClick={handleLoadMore}
+          >
+            Load More
+          </button>
+        </div>
+      ) : null}
     </div>
   );
 };

@@ -3,7 +3,7 @@ import { useContext } from 'react';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Layout from '@/common/layout/Layout';
 import { PageTypes } from '@/types/ResponsesInterface';
-import ShowListing from '@/modules/show-listing/ShowListings';
+import ShowListing from '@/modules/show-listing/ProgrammeShows';
 import { DataContext } from '@/context/DataContext';
 import { SEOComponent } from '@/utils/seo';
 

@@ -4,13 +4,13 @@ import Link from 'next/link';
 import { ShowTypes } from '@/types/ResponsesInterface';
 import { CMS_URL } from '@/utils/constants';
 
-interface ShowListingChildProps {
+interface ProgrammeShowsProps {
   item: ShowTypes;
 }
 
-const ShowListingChild = React.forwardRef<
+const ProgrammeShowsChild = React.forwardRef<
   HTMLDivElement,
-  ShowListingChildProps
+  ProgrammeShowsProps
 >(function ShowListingChild({ item }, ref) {
   const hasPicture = item.attributes.picture.data;
   const showContentClass = hasPicture
@@ -47,4 +47,4 @@ const ShowListingChild = React.forwardRef<
   );
 });
 
-export default ShowListingChild;
+export default ProgrammeShowsChild;
