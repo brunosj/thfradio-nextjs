@@ -123,16 +123,17 @@ const CloudShowsComponent = ({ items, onPlay }: ShowCardProps) => {
           />
         )}
       </div>
-      {displayCount < items.length && (
-        <div className='pt-12 w-full flex justify-center'>
-          <button
-            className='flex font-mono rounded-xl text-sm shadow-sm border-blue-800 px-4 py-2 bg-white  duration-300 hover:bg-blue-100 '
-            onClick={handleLoadMore}
-          >
-            Load More
-          </button>
-        </div>
-      )}
+      {(selectedTag && filteredItems.length > 20) ||
+        (!selectedTag && displayCount < items.length && (
+          <div className='pt-12 w-full flex justify-center'>
+            <button
+              className='flex font-mono rounded-xl text-sm shadow-sm border-blue-800 px-4 py-2 bg-white  duration-300 hover:bg-blue-100 '
+              onClick={handleLoadMore}
+            >
+              Load More
+            </button>
+          </div>
+        ))}
     </div>
   );
 };
