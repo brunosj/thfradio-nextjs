@@ -51,11 +51,16 @@ export interface CloudShows {
   shows: CloudShowTypes[];
 }
 
+export interface ValidShow extends CloudShowTypes {
+  date: Date;
+}
+
 export interface ShowTypes {
   attributes: {
     title: string;
     description: string;
     slug: string;
+    keyword: string;
     teaserSentence: string;
     activeShow: boolean;
     locale: string;

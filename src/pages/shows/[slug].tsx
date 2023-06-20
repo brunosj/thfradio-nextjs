@@ -1,40 +1,58 @@
+import { useContext } from 'react';
 import type { NextPage } from 'next';
+import Link from 'next/link';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useTranslation } from 'next-i18next';
 import { useRouter } from 'next/router';
+import ReactMarkdown from 'react-markdown';
+import { CiMail } from 'react-icons/ci';
+import Layout from '@/common/layout/Layout';
+import CloudShowsArchive from '@/modules/archive/CloudShowsArchive';
+import getAllShows from '@/utils/getAllShows';
+import { AiOutlineInstagram } from 'react-icons/ai';
+import { SlSocialSoundcloud } from 'react-icons/sl';
+import { SEOComponent } from '@/utils/seo';
+import CloudShowCardList from '@/modules/archive/CloudShowsList';
+import CloudShowChild from '@/modules/archive/CloudShowChild';
+import { DataContext } from '@/context/DataContext';
+import BarsSpinner from '@/common/ui/BarsSpinner';
 import {
   ShowTypes,
   CloudShowTypes,
   TagsList,
 } from '@/types/ResponsesInterface';
-import Layout from '@/common/layout/Layout';
-import CloudShowsArchive from '@/modules/archive/CloudShowsArchive';
-import ReactMarkdown from 'react-markdown';
-import getAllShows from '@/utils/getAllShows';
-import { AiOutlineInstagram } from 'react-icons/ai';
-import { CiMail } from 'react-icons/ci';
-import { SlSocialSoundcloud } from 'react-icons/sl';
-import Link from 'next/link';
-import { SEOComponent } from '@/utils/seo';
-import CloudShowCardList from '@/modules/archive/CloudShowsList';
-import CloudShowChild from '@/modules/archive/CloudShowChild';
+import { processShows } from '@/utils/sortShows';
 
 interface ShowPage {
   content: ShowTypes;
   otherLocaleContent: ShowTypes;
   shows: CloudShowTypes[];
   tagsList: TagsList;
+  filteredPodcasts: CloudShowTypes[];
 }
 const ShowPage: NextPage<ShowPage> = ({
   content,
   otherLocaleContent,
   shows,
-  tagsList,
 }) => {
   const { t } = useTranslation();
   const router = useRouter();
   let locale = router.locale;
   const currentContent = locale === 'en' ? content : otherLocaleContent;
+
+  const dataContext = useContext(DataContext);
+
+  if (!dataContext) {
+    return <BarsSpinner color='#1200ff' />;
+  }
+
+  const { cloudShows } = dataContext;
+
+  const filteredCloudcasts = cloudShows.filter((cloudcast: CloudShowTypes) =>
+    new RegExp(currentContent.attributes.keyword, 'i').test(cloudcast.name)
+  );
+
+  const sortedShows = processShows(filteredCloudcasts);
 
   const getGermanDay = (day: string): string => {
     if (locale === 'en') {
@@ -151,10 +169,10 @@ const ShowPage: NextPage<ShowPage> = ({
           </article>
           <div
             className={` w-full flex flex-wrap gap-6 lg:gap-12 justify-around ${
-              shows.length >= 1 ? ' pb-6 lg:pb-12' : ''
+              sortedShows.length >= 1 ? ' pb-6 lg:pb-12' : ''
             }`}
           >
-            {shows.map((item, i) => (
+            {sortedShows.map((item, i) => (
               <CloudShowChild key={i} item={item} onPlay={handlePlay} />
             ))}
           </div>
@@ -187,16 +205,10 @@ export async function getStaticProps({
   // Find the entry for the other locale
   const otherLocaleEntry = currentLocaleEntry.attributes.localizations.data[0];
 
-  const cloudShows = await getAllShows();
-  const filteredCloudcasts = cloudShows.filter((cloudcast: CloudShowTypes) =>
-    new RegExp(currentLocaleEntry.attributes.keyword, 'i').test(cloudcast.name)
-  );
-
   return {
     props: {
       content: currentLocaleEntry,
       otherLocaleContent: otherLocaleEntry,
-      shows: filteredCloudcasts,
       ...(await serverSideTranslations(locale ?? 'en', ['common'])),
     },
     revalidate: 10,

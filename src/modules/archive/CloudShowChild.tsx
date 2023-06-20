@@ -2,6 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import { CloudShowTypes } from '@/types/ResponsesInterface';
 import { Play } from '@/common/assets/PlayIcon';
+import { parse, compareAsc, toDate, getDate } from 'date-fns';
 
 interface ShowCardProps {
   item: CloudShowTypes;
@@ -45,7 +46,6 @@ const CloudShowChild = ({ item, onPlay }: ShowCardProps) => {
   } catch (error) {
     console.error('Date parsing failed:', error);
   }
-
 
   return (
     <button

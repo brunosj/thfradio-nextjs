@@ -3,7 +3,7 @@ import { useContext } from 'react';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Layout from '@/common/layout/Layout';
 import { PageTypes } from '@/types/ResponsesInterface';
-import ShowListing from '@/modules/show-listing/ProgrammeShows';
+import ProgrammeShows from '@/modules/show-listing/ProgrammeShows';
 import { DataContext } from '@/context/DataContext';
 import { SEOComponent } from '@/utils/seo';
 
@@ -24,7 +24,7 @@ const Shows: NextPage<{
             <h1 className='text-white'>{page.attributes.title}</h1>
           </div>
         </div>
-        <ShowListing items={programmeShows} />
+        <ProgrammeShows items={programmeShows} />
       </Layout>
     </>
   );
