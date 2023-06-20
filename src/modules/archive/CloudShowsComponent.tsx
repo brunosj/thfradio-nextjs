@@ -1,16 +1,11 @@
-import React, { useState, useRef, useEffect, useContext } from 'react';
-import Image from 'next/image';
+import React, { useState, useRef, useEffect } from 'react';
 import { CloudShowTypes, TagTypes, TagsList } from '@/types/ResponsesInterface';
-import { format, parseISO } from 'date-fns';
-import { Play } from '@/common/assets/PlayIcon';
-import Button from '@/common/ui/UIButton';
 import { useRouter } from 'next/router';
 import useShowFilter from '@/hooks/useShowFilter';
 import CloudShowCardList from './CloudShowsList';
 import SidePanel from './SidePanel';
-import { DataContext } from '@/context/DataContext';
-import normalizeTagName from '@/utils/normalizeTagName';
 import CloudShowsFilter from './CloudShowsFilter';
+import { useTranslation } from 'next-i18next';
 
 interface ShowCardProps {
   items: CloudShowTypes[];
@@ -19,6 +14,7 @@ interface ShowCardProps {
 
 const CloudShowsComponent = ({ items, tagsList }: ShowCardProps) => {
   const router = useRouter();
+  const { t } = useTranslation();
   let locale = router.locale;
   const [displayCount, setDisplayCount] = useState(20);
   const [selectedTag, setSelectedTag] = useState<TagTypes | null>(null);
@@ -30,9 +26,9 @@ const CloudShowsComponent = ({ items, tagsList }: ShowCardProps) => {
   };
 
   // Tagging system
-  const getFilterButtonText = (locale: string) => {
-    return locale === 'de' ? 'Nach Tag filtern' : 'Filter by tag';
-  };
+  // const getFilterButtonText = (locale: string) => {
+  //   return locale === 'de' ? 'Nach Tag filtern' : 'Filter by tag';
+  // };
 
   const handleTagClick = (tag: TagTypes) => {
     console.log(tag, selectedTag);
@@ -48,10 +44,10 @@ const CloudShowsComponent = ({ items, tagsList }: ShowCardProps) => {
     displayCount,
   });
 
-  const toggleSidePanel = () => {
-    setShowSidePanel(!showSidePanel);
-    setSelectedTag(null);
-  };
+  // const toggleSidePanel = () => {
+  //   setShowSidePanel(!showSidePanel);
+  //   setSelectedTag(null);
+  // };
 
   const sortedTags = tagsList.attributes.tag
     .map((tag) => ({
@@ -59,8 +55,6 @@ const CloudShowsComponent = ({ items, tagsList }: ShowCardProps) => {
       synonyms: tag.synonyms || [],
     }))
     .sort((a, b) => a.name.localeCompare(b.name));
-
-  const unnormalizedTags = tagsList.attributes.tag.map((tag) => tag.name);
 
   const scrollToTop = () => {
     if (topRef.current) {
@@ -110,13 +104,13 @@ const CloudShowsComponent = ({ items, tagsList }: ShowCardProps) => {
         <div className={`w-${showSidePanel ? '4/5' : 'full'}`}>
           <CloudShowCardList items={filteredItems} />
         </div>
-        {showSidePanel && (
+        {/* {showSidePanel && (
           <SidePanel
             sortedTags={sortedTags}
             selectedTag={selectedTag}
             handleTagClick={handleTagClick}
           />
-        )}
+        )} */}
       </div>
       {displayCount <= filteredItems.length ? (
         <div className='pt-12 w-full flex justify-center'>
@@ -124,7 +118,7 @@ const CloudShowsComponent = ({ items, tagsList }: ShowCardProps) => {
             className='flex font-mono rounded-xl text-sm shadow-sm border-blue-800 px-4 py-2 bg-white  duration-300 hover:bg-blue-100 '
             onClick={handleLoadMore}
           >
-            Load More
+            {t('loadMore')}
           </button>
         </div>
       ) : null}
