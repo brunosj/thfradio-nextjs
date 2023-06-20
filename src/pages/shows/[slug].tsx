@@ -48,10 +48,15 @@ const ShowPage: NextPage<ShowPage> = ({
 
   const { cloudShows } = dataContext;
 
-  const filteredCloudcasts = cloudShows.filter((cloudcast: CloudShowTypes) =>
-    new RegExp(currentContent.attributes.keyword, 'i').test(cloudcast.name)
-  );
+  const filteredCloudcasts = cloudShows.filter((cloudcast: CloudShowTypes) => {
+    const name = cloudcast.name.replace(/[\s-]/g, '').toLowerCase();
+    const keyword = currentContent.attributes.keyword
+      .replace(/[\s-]/g, '')
+      .toLowerCase();
 
+    return new RegExp(keyword, 'i').test(name);
+  });
+  
   const sortedShows = processShows(filteredCloudcasts);
 
   const getGermanDay = (day: string): string => {

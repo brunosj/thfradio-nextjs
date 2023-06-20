@@ -2,7 +2,8 @@ import React from 'react';
 import Image from 'next/image';
 import { CloudShowTypes } from '@/types/ResponsesInterface';
 import { Play } from '@/common/assets/PlayIcon';
-import { parse, compareAsc, toDate, getDate } from 'date-fns';
+import { format } from 'date-fns';
+import { getShowName, getFormattedDateString } from '@/utils/sortShows';
 
 interface ShowCardProps {
   item: CloudShowTypes;
@@ -10,42 +11,8 @@ interface ShowCardProps {
 }
 
 const CloudShowChild = ({ item, onPlay }: ShowCardProps) => {
-  const showNameSplitted = item.name.split('//');
-  const name = showNameSplitted[0].trim();
-  const date = showNameSplitted.length > 1 ? showNameSplitted[1].trim() : null;
-
-  let formattedDate = null;
-
-  try {
-    if (date) {
-      const dateParts = date.split('.');
-      let day, month, year;
-      if (dateParts.length === 3) {
-        // Format: dd.mm.yyyy
-        day = dateParts[0].trim();
-        month = dateParts[1].trim();
-        year = dateParts[2].trim();
-      } else if (dateParts.length === 2) {
-        // Format: dd.mm.yy
-        day = dateParts[0].trim();
-        month = dateParts[1].trim();
-        year =
-          new Date().getFullYear().toString().slice(0, 2) + dateParts[1].trim();
-      } else {
-        // Format: dd.mm. (year not provided)
-        const currentYear = new Date().getFullYear();
-        day = dateParts[0]?.trim();
-        month = dateParts[1]?.trim();
-        year = currentYear.toString();
-      }
-
-      if (day && month && year) {
-        formattedDate = `${day}.${month}.${year}`;
-      }
-    }
-  } catch (error) {
-    console.error('Date parsing failed:', error);
-  }
+  const name = getShowName(item);
+  const formattedDate = getFormattedDateString(item);
 
   return (
     <button

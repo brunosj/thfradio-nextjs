@@ -1,7 +1,15 @@
 import { CloudShowTypes, ValidShow } from '@/types/ResponsesInterface';
-import { parse, toDate } from 'date-fns';
+import { parse, toDate, isValid, format } from 'date-fns';
 
-const getDateFromShow = (item: CloudShowTypes): Date | null => {
+export const getShowName = (item: CloudShowTypes): string | null => {
+  if (!item.name.includes('//')) {
+    return null;
+  }
+  const showNameSplitted = item.name.split('//');
+  return showNameSplitted[0].trim();
+};
+
+export const getDateFromShow = (item: CloudShowTypes): Date | null => {
   if (!item.name.includes('//')) {
     return null;
   }
@@ -10,12 +18,26 @@ const getDateFromShow = (item: CloudShowTypes): Date | null => {
   const dateStr =
     showNameSplitted.length > 0 ? showNameSplitted[1]?.trim() : null;
 
-  if (dateStr && dateStr.length >= 8) {
-    const parsedDate = parse(dateStr, 'dd.MM.yy', new Date());
-    return toDate(parsedDate);
+  if (dateStr) {
+    // First try to parse as 'dd.MM.yy'
+    let parsedDate = parse(dateStr, 'dd.MM.yy', new Date());
+
+    if (!isValid(parsedDate)) {
+      // If it was invalid, try to parse as 'dd.MM.yyyy'
+      parsedDate = parse(dateStr, 'dd.MM.yyyy', new Date());
+    }
+
+    if (isValid(parsedDate)) {
+      return toDate(parsedDate);
+    }
   }
 
   return null;
+};
+
+export const getFormattedDateString = (item: CloudShowTypes): string | null => {
+  const date = getDateFromShow(item);
+  return date ? format(date, 'dd.MM.yyyy') : null;
 };
 
 const getValidShows = (shows: CloudShowTypes[]): ValidShow[] => {
