@@ -9,7 +9,6 @@ import { DataContext } from '@/context/DataContext';
 import { ArrowRightLong } from '@/common/assets/ArrowRightLong';
 import AudioPlayer from '@/modules/live-radio/AudioPlayer';
 import LiveCircle from '@/common/assets/LiveCircle';
-import { PlayerContext } from '@/context/PlayerContext';
 import BarsSpinner from '@/common/ui/BarsSpinner';
 
 export const LiveTicker = () => {
@@ -18,7 +17,6 @@ export const LiveTicker = () => {
   const locale = router.locale || 'en';
   const localeModule = locale === 'de' ? de : enUS;
   const { calendarEntries, cloudShows } = useContext(DataContext)!;
-  const { playerState } = useContext(PlayerContext);
 
   const getCurrentShowName = (): JSX.Element => {
     const now = new Date();

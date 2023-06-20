@@ -178,7 +178,7 @@ const ShowPage: NextPage<ShowPage> = ({
             }`}
           >
             {sortedShows.map((item, i) => (
-              <CloudShowChild key={i} item={item} onPlay={handlePlay} />
+              <CloudShowChild key={i} item={item} />
             ))}
           </div>
         </div>

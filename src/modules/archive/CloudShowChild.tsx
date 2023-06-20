@@ -1,18 +1,49 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Image from 'next/image';
 import { CloudShowTypes } from '@/types/ResponsesInterface';
 import { Play } from '@/common/assets/PlayIcon';
 import { format } from 'date-fns';
 import { getShowName, getFormattedDateString } from '@/utils/sortShows';
+import useAudioStore from '@/hooks/useAudioStore';
 
 interface ShowCardProps {
   item: CloudShowTypes;
-  onPlay: (url: string) => void;
 }
 
-const CloudShowChild = ({ item, onPlay }: ShowCardProps) => {
+const CloudShowChild = ({ item }: ShowCardProps) => {
   const name = getShowName(item);
   const formattedDate = getFormattedDateString(item);
+  const {
+    isPlaying,
+    url,
+    togglePlay,
+    setUrl,
+    setSource,
+    isMixcloudPlaying,
+    setMixcloudPlay,
+  } = useAudioStore();
+
+  let isCurrentShowPlaying = url === item.url;
+
+  const onPlay = (selectedUrl: string) => {
+    if (isMixcloudPlaying && selectedUrl === url) {
+      // If the Mixcloud show is already playing, pause it
+      // need to fix this functionality and display a PAUSE sign when a show is playing
+      // setMixcloudPlay(false);
+      // isCurrentShowPlaying = false;
+    } else {
+      if (isPlaying) {
+        togglePlay();
+      }
+      if (selectedUrl !== url) {
+        setUrl(selectedUrl);
+        setSource('archive');
+      }
+      if (!isMixcloudPlaying) {
+        setMixcloudPlay(true);
+      }
+    }
+  };
 
   return (
     <button
@@ -21,7 +52,13 @@ const CloudShowChild = ({ item, onPlay }: ShowCardProps) => {
     >
       {/* Image */}
       <div className='group relative flex justify-around items-center'>
-        <div className='w-24 lg:w-40 xl:w-56 group-hover:opacity-20 duration-300'>
+        <div
+          className={`w-24 lg:w-40 xl:w-56 ${
+            isCurrentShowPlaying
+              ? 'opacity-50'
+              : 'group-hover:opacity-50 duration-300'
+          }`}
+        >
           <Image
             src={item.pictures.extra_large}
             height={600}
@@ -29,7 +66,12 @@ const CloudShowChild = ({ item, onPlay }: ShowCardProps) => {
             alt=''
           />
         </div>
-        <div className='absolute inset-0 m-auto flex w-1/3 items-center justify-center opacity-0 duration-300 group-hover:opacity-100'>
+
+        <div
+          className={`absolute inset-0 m-auto flex w-1/3 items-center justify-center duration-300 opacity-0 group-hover:opacity-100 ${
+            isCurrentShowPlaying ? 'opacity-100' : ' '
+          }`}
+        >
           <Play className='' fill='#1200ff' />
         </div>
       </div>

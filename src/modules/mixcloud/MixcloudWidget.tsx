@@ -1,11 +1,13 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
+import useAudioStore from '@/hooks/useAudioStore';
 
 const MixcloudWidget = () => {
-  const [selectedShowUrl, setSelectedShowUrl] = useState<string | null>(null);
+  const { url, isMixcloudPlaying, setMixcloudPlay } = useAudioStore();
 
   useEffect(() => {
     const handleShowChange = (url: string) => {
-      setSelectedShowUrl(url);
+      useAudioStore.setState({ url, source: 'archive' });
+      setMixcloudPlay(true);
     };
 
     document.addEventListener('mixcloud-show-change', (event: any) => {
@@ -17,28 +19,28 @@ const MixcloudWidget = () => {
         handleShowChange(event.detail.url)
       );
     };
-  }, []);
+  }, [setMixcloudPlay]);
 
   useEffect(() => {
-    if (selectedShowUrl) {
+    if (url && isMixcloudPlaying) {
       const iframe = document.getElementById(
         'mixcloud-widget-iframe'
       ) as HTMLIFrameElement;
       if (iframe) {
         iframe.src = `https://www.mixcloud.com/widget/iframe/?hide_cover=1&mini=1&autoplay=1&feed=${encodeURIComponent(
-          selectedShowUrl
+          url
         )}`;
       }
     }
-  }, [selectedShowUrl]);
+  }, [url, isMixcloudPlaying]);
 
   return (
-    <div className='mixcloud-widget fixed bottom-0 left-0 w-full  flex items-end justify-center bg-transparent z-0'>
-      {selectedShowUrl && (
+    <div className='mixcloud-widget fixed bottom-0 left-0 w-full flex items-end justify-center bg-transparent z-0'>
+      {url && isMixcloudPlaying && (
         <iframe
           id='mixcloud-widget-iframe'
           src={`https://www.mixcloud.com/widget/iframe/?hide_cover=1&mini=1&autoplay=1&feed=${encodeURIComponent(
-            selectedShowUrl
+            url
           )}`}
           frameBorder='0'
           width='100%'
