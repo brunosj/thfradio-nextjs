@@ -55,6 +55,10 @@ h6 {
 @apply text-sm mb-2
 }
 
+/* a {
+  @apply  text-neutral-300  duration-300  hover:text-neutral-500 group-hover:text-neutral-500
+} */
+
 .sectionPy {
   @apply py-12 lg:py-20;
 }

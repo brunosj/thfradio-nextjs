@@ -46,6 +46,28 @@ const Footer = ({ children }: Props) => {
           })}
         </div>
       </nav>
+      {/* <div className='ml-auto text-right text-white text-sm'>
+        <p>
+          Built by{' '}
+          <Link
+            href='https://www.landozone.net/'
+            target='_blank'
+            className='textHover text-neutral-300 hover:text-neutral-500'
+          >
+            landozone
+          </Link>
+        </p>
+        <p>
+          Check out the code on{' '}
+          <Link
+            href='https://github.com/brunosj/thfradio-nextjs/'
+            target='_blank'
+            className='textHover text-neutral-300 hover:text-neutral-500'
+          >
+            Github
+          </Link>
+        </p>
+      </div> */}
     </footer>
   );
 };
