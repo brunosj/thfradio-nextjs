@@ -8,7 +8,7 @@ interface ShowCardListProps {
 
 const CloudShowCardList = ({ items }: ShowCardListProps) => {
   return (
-    <div className='w-full flex flex-wrap gap-12 justify-center'>
+    <div className='w-full flex flex-wrap gap-6 lg:gap-12 justify-center'>
       {items.map((item, i) => (
         <CloudShowChild key={i} item={item} />
       ))}
