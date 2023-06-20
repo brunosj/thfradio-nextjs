@@ -45,19 +45,19 @@ const useAudioStore = create<AudioStore>((set) => ({
     });
   },
   setVolume: (volume) => {
-    set((state) => ({ volume }));
+    set(() => ({ volume }));
   },
 
   setUrl: (url) => {
-    set((state) => ({ url }));
+    set(() => ({ url }));
   },
 
   setSource: (source) => {
-    set((state) => ({ source }));
+    set(() => ({ source }));
   },
 
   setMixcloudPlay: (isPlaying) => {
-    set((state) => ({ isMixcloudPlaying: isPlaying }));
+    set(() => ({ isMixcloudPlaying: isPlaying }));
   },
 }));
 

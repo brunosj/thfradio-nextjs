@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import type { NextPage } from 'next';
 import Link from 'next/link';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
@@ -7,12 +7,9 @@ import { useRouter } from 'next/router';
 import ReactMarkdown from 'react-markdown';
 import { CiMail } from 'react-icons/ci';
 import Layout from '@/common/layout/Layout';
-import CloudShowsArchive from '@/modules/archive/CloudShowsArchive';
-import getAllShows from '@/utils/getAllShows';
 import { AiOutlineInstagram } from 'react-icons/ai';
 import { SlSocialSoundcloud } from 'react-icons/sl';
 import { SEOComponent } from '@/utils/seo';
-import CloudShowCardList from '@/modules/archive/CloudShowsList';
 import CloudShowChild from '@/modules/archive/CloudShowChild';
 import { DataContext } from '@/context/DataContext';
 import BarsSpinner from '@/common/ui/BarsSpinner';
@@ -21,7 +18,7 @@ import {
   CloudShowTypes,
   TagsList,
 } from '@/types/ResponsesInterface';
-import { processShows } from '@/utils/sortShows';
+import { processShows } from '@/utils/showUtils';
 
 interface ShowPage {
   content: ShowTypes;
@@ -30,23 +27,19 @@ interface ShowPage {
   tagsList: TagsList;
   filteredPodcasts: CloudShowTypes[];
 }
-const ShowPage: NextPage<ShowPage> = ({
-  content,
-  otherLocaleContent,
-  shows,
-}) => {
+const ShowPage: NextPage<ShowPage> = ({ content, otherLocaleContent }) => {
   const { t } = useTranslation();
   const router = useRouter();
   let locale = router.locale;
   const currentContent = locale === 'en' ? content : otherLocaleContent;
+  const { cloudShows } = useContext(DataContext)!;
 
-  const dataContext = useContext(DataContext);
-
-  if (!dataContext) {
-    return <BarsSpinner color='#1200ff' />;
-  }
-
-  const { cloudShows } = dataContext;
+  const [isLoading, setIsLoading] = useState(true);
+  useEffect(() => {
+    if (cloudShows && cloudShows.length > 0) {
+      setIsLoading(false);
+    }
+  }, [cloudShows]);
 
   const filteredCloudcasts = cloudShows.filter((cloudcast: CloudShowTypes) => {
     const name = cloudcast.name.replace(/[\s-]/g, '').toLowerCase();
@@ -56,7 +49,7 @@ const ShowPage: NextPage<ShowPage> = ({
 
     return new RegExp(keyword, 'i').test(name);
   });
-  
+
   const sortedShows = processShows(filteredCloudcasts);
 
   const getGermanDay = (day: string): string => {
@@ -107,14 +100,6 @@ const ShowPage: NextPage<ShowPage> = ({
 
   const formatTime = (time: string): string => {
     return time ? time.slice(0, 5) : '';
-  };
-
-  const handlePlay = (url: string) => {
-    document.dispatchEvent(
-      new CustomEvent('mixcloud-show-change', {
-        detail: { url },
-      })
-    );
   };
 
   return (
@@ -177,9 +162,17 @@ const ShowPage: NextPage<ShowPage> = ({
               sortedShows.length >= 1 ? ' pb-6 lg:pb-12' : ''
             }`}
           >
-            {sortedShows.map((item, i) => (
-              <CloudShowChild key={i} item={item} />
-            ))}
+            {isLoading ? (
+              <div className='m-auto text-center'>
+                <BarsSpinner color='#ff6314' />
+              </div>
+            ) : (
+              <>
+                {sortedShows.map((item, i) => (
+                  <CloudShowChild key={i} item={item} />
+                ))}
+              </>
+            )}
           </div>
         </div>
       </Layout>

@@ -1,10 +1,10 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import Image from 'next/image';
 import { CloudShowTypes } from '@/types/ResponsesInterface';
 import { Play } from '@/common/assets/PlayIcon';
-import { format } from 'date-fns';
-import { getShowName, getFormattedDateString } from '@/utils/sortShows';
+import { getShowName, getFormattedDateString } from '@/utils/showUtils';
 import useAudioStore from '@/hooks/useAudioStore';
+import BarsSpinner from '@/common/ui/BarsSpinner';
 
 interface ShowCardProps {
   item: CloudShowTypes;
@@ -72,7 +72,11 @@ const CloudShowChild = ({ item }: ShowCardProps) => {
             isCurrentShowPlaying ? 'opacity-100' : ' '
           }`}
         >
-          <Play className='' fill='#1200ff' />
+          {isCurrentShowPlaying ? (
+            <BarsSpinner color='#1200ff' />
+          ) : (
+            <Play className='' fill='#1200ff' />
+          )}
         </div>
       </div>
 

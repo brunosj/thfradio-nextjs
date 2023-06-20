@@ -1,6 +1,6 @@
 import CloudShowsComponent from './CloudShowsComponent';
 import { CloudShowTypes, TagsList } from '@/types/ResponsesInterface';
-import { processShows } from '@/utils/sortShows';
+import { processShows } from '@/utils/showUtils';
 
 type CloudShowsArchiveProps = {
   shows: CloudShowTypes[];
@@ -9,14 +9,6 @@ type CloudShowsArchiveProps = {
 
 const CloudShowsArchive = ({ shows, tagsList }: CloudShowsArchiveProps) => {
   const sortedShows = processShows(shows);
-
-  const handlePlay = (url: string) => {
-    document.dispatchEvent(
-      new CustomEvent('mixcloud-show-change', {
-        detail: { url },
-      })
-    );
-  };
 
   return (
     <>
