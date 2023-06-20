@@ -6,17 +6,14 @@ import { appWithTranslation } from 'next-i18next';
 import { DataProvider } from 'src/context/DataContext';
 import LiveTicker from '@/modules/live-ticker/LiveTicker';
 import MixcloudWidget from '@/modules/mixcloud/MixcloudWidget';
-import AudioContextProvider from '@/context/AudioContext';
 
 function THFRadioApp({ Component, pageProps }: AppProps) {
   return (
     <DataProvider>
       <PlayerProvider>
-        <AudioContextProvider>
-          <LiveTicker />
-          <Component {...pageProps} />
-          <MixcloudWidget />
-        </AudioContextProvider>
+        <LiveTicker />
+        <Component {...pageProps} />
+        <MixcloudWidget />
       </PlayerProvider>
     </DataProvider>
   );

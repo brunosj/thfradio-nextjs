@@ -20,11 +20,7 @@ const CloudShowsArchive = ({ shows, tagsList }: CloudShowsArchiveProps) => {
 
   return (
     <>
-      <CloudShowsComponent
-        items={sortedShows}
-        onPlay={handlePlay}
-        tagsList={tagsList}
-      />
+      <CloudShowsComponent items={sortedShows} tagsList={tagsList} />
     </>
   );
 };

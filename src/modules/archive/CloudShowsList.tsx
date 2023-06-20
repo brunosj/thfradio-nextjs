@@ -4,14 +4,13 @@ import CloudShowChild from './CloudShowChild';
 
 interface ShowCardListProps {
   items: CloudShowTypes[];
-  onPlay: (url: string) => void;
 }
 
-const CloudShowCardList = ({ items, onPlay }: ShowCardListProps) => {
+const CloudShowCardList = ({ items }: ShowCardListProps) => {
   return (
     <div className='w-full flex flex-wrap gap-12 justify-center'>
       {items.map((item, i) => (
-        <CloudShowChild key={i} item={item} onPlay={onPlay} />
+        <CloudShowChild key={i} item={item} />
       ))}
     </div>
   );

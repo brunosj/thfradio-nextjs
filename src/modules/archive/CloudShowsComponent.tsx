@@ -14,11 +14,10 @@ import CloudShowsFilter from './CloudShowsFilter';
 
 interface ShowCardProps {
   items: CloudShowTypes[];
-  onPlay: (url: string) => void;
   tagsList: TagsList;
 }
 
-const CloudShowsComponent = ({ items, onPlay, tagsList }: ShowCardProps) => {
+const CloudShowsComponent = ({ items, tagsList }: ShowCardProps) => {
   const router = useRouter();
   let locale = router.locale;
   const [displayCount, setDisplayCount] = useState(20);
@@ -109,7 +108,7 @@ const CloudShowsComponent = ({ items, onPlay, tagsList }: ShowCardProps) => {
 
       <div className='layout flex items-start gap-6'>
         <div className={`w-${showSidePanel ? '4/5' : 'full'}`}>
-          <CloudShowCardList items={filteredItems} onPlay={onPlay} />
+          <CloudShowCardList items={filteredItems} />
         </div>
         {showSidePanel && (
           <SidePanel
