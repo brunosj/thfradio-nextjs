@@ -5,14 +5,13 @@ import { Play } from '@/common/assets/PlayIcon';
 import { getShowName, getFormattedDateString } from '@/utils/showUtils';
 import useAudioStore from '@/hooks/useAudioStore';
 import BarsSpinner from '@/common/ui/BarsSpinner';
+import { useState, useEffect } from 'react';
 
 interface ShowCardProps {
   item: CloudShowTypes;
 }
 
 const CloudShowChild = ({ item }: ShowCardProps) => {
-  const name = getShowName(item);
-  const formattedDate = getFormattedDateString(item);
   const {
     isPlaying,
     url,
@@ -23,8 +22,19 @@ const CloudShowChild = ({ item }: ShowCardProps) => {
     setMixcloudPlay,
   } = useAudioStore();
 
-  let isCurrentShowPlaying = url === item.url;
+  // Fixes inconsistencies between show title and images during loading after selecting tags
+  const [imageLoaded, setImageLoaded] = useState(false);
 
+  useEffect(() => {
+    setImageLoaded(false);
+  }, [item]);
+
+  // Show info rendering
+  const name = getShowName(item);
+  const formattedDate = getFormattedDateString(item);
+
+  // Store state functionality
+  let isCurrentShowPlaying = url === item.url;
   const onPlay = (selectedUrl: string) => {
     if (isMixcloudPlaying && selectedUrl === url) {
       // If the Mixcloud show is already playing, pause it
@@ -64,9 +74,9 @@ const CloudShowChild = ({ item }: ShowCardProps) => {
             height={600}
             width={600}
             alt=''
+            onLoad={() => setImageLoaded(true)}
           />
         </div>
-
         <div
           className={`absolute inset-0 m-auto flex w-1/3 items-center justify-center duration-300 opacity-0 group-hover:opacity-100 ${
             isCurrentShowPlaying ? 'opacity-100' : ' '
@@ -80,7 +90,7 @@ const CloudShowChild = ({ item }: ShowCardProps) => {
         </div>
       </div>
 
-      {/* Show Details */}
+      {/* {imageLoaded && ( */}
       <div className='mt-3 lg:mt-6 flex h-full w-2/3 flex-grow  flex-col  lg:w-full px-6 text-left lg:text-center space-y-3 lg:space-y-6 mb-3 justify-center lg:justify-between'>
         <div className='flex space-y-3 flex-col'>
           <span className='font-light opacity-70 text-sm'>{formattedDate}</span>
@@ -100,6 +110,7 @@ const CloudShowChild = ({ item }: ShowCardProps) => {
           </ul>
         )}
       </div>
+      {/* )} */}
     </button>
   );
 };

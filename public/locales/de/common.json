@@ -8,6 +8,7 @@
   "allShows": "Alle THF Shows",
   "aboutUs": "Über uns",
   "fromTheArchive": "Aus dem Archiv",
+  "latestShows": "Neueste Sendungen",
   "loadMore": "Mehr laden",
   "supportUs": "Unterstütze uns",
   "becomeMember": "Werde Vereinsmitglied",
@@ -18,8 +19,8 @@
       "lang": "de"
     },
     {
-      "name": "Archiv",
-      "path": "/#archive",
+      "name": "Neueste",
+      "path": "/#latest",
       "lang": "de"
     },
     {

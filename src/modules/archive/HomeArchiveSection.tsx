@@ -25,7 +25,7 @@ const HomeArchiveSection = ({
     }
   }, [shows]);
   return (
-    <section className='bg-blue-800 sectionPb' id='archive'>
+    <section className='bg-blue-800 sectionPb' id='latest'>
       <SectionHeader title={title} subtitle={subtitle} />
       <div className='flex w-full m-auto'>
         {isLoading ? (

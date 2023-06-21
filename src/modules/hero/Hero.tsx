@@ -69,8 +69,8 @@ const Hero = ({
             </Button>
           </div>
           <div className='hidden lg:flex justify-center order-4 pb-6 lg:pb-0'>
-            <Button path='/#archive' color='white'>
-              {t('fromTheArchive')}
+            <Button path='/#latest' color='white'>
+              {t('latestShows')}
             </Button>
           </div>
         </>

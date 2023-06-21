@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { CloudShowTypes, TagTypes, TagsList } from '@/types/ResponsesInterface';
 import { useRouter } from 'next/router';
 import useShowFilter from '@/hooks/useShowFilter';
-import CloudShowCardList from './CloudShowsList';
+import CloudShowsList from './CloudShowsList';
 import CloudShowsFilter from './CloudShowsFilter';
 import { useTranslation } from 'next-i18next';
 
@@ -85,7 +85,7 @@ const CloudShowsComponent = ({ items, tagsList }: ShowCardProps) => {
 
       <div className='layout flex items-start gap-6'>
         <div className='full'>
-          <CloudShowCardList items={filteredItems} />
+          <CloudShowsList items={filteredItems} />
         </div>
       </div>
       {displayCount <= filteredItems.length ? (
