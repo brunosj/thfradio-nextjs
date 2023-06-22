@@ -42,8 +42,9 @@ const Pagination: React.FC<PaginationProps> = ({
     if (middleEnd < totalPages - 1) pageNumbers.push('...');
 
     // Always include the last page if it's not 1
-    if (totalPages !== 1) pageNumbers.push(totalPages);
-
+    if (totalPages !== 1 && currentPage !== totalPages)
+      pageNumbers.push(totalPages);
+    
     return pageNumbers;
   };
 
