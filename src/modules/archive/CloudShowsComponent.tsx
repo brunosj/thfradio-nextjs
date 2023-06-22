@@ -5,11 +5,14 @@ import useShowFilter from '@/hooks/useShowFilter';
 import CloudShowsList from './CloudShowsList';
 import CloudShowsFilter from './CloudShowsFilter';
 import { useTranslation } from 'next-i18next';
+import Pagination from '@/common/ui/Pagination';
 
 interface ShowCardProps {
   items: CloudShowTypes[];
   tagsList: TagsList;
 }
+
+const ITEMS_PER_PAGE = 28;
 
 const CloudShowsComponent = ({ items, tagsList }: ShowCardProps) => {
   // i18n
@@ -18,18 +21,20 @@ const CloudShowsComponent = ({ items, tagsList }: ShowCardProps) => {
   let locale = router.locale;
 
   // State variables
-  const [displayCount, setDisplayCount] = useState(20);
   const [selectedTag, setSelectedTag] = useState<TagTypes | null>(null);
-  const [pageLoaded, setPageLoaded] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(
+    Math.ceil(items.length / ITEMS_PER_PAGE)
+  );
 
   const topRef = useRef<HTMLDivElement | null>(null);
 
   // Use hook
-  const filteredItems = useShowFilter({
-    items,
-    selectedTag,
-    displayCount,
-  });
+  const allFilteredItems = useShowFilter({ items, selectedTag });
+
+  const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+  const endIndex = startIndex + ITEMS_PER_PAGE;
+  const itemsToDisplay = allFilteredItems.slice(startIndex, endIndex);
 
   // Genre tags
   const sortedTags = tagsList.attributes.tag
@@ -43,7 +48,7 @@ const CloudShowsComponent = ({ items, tagsList }: ShowCardProps) => {
     setSelectedTag((prevTag) =>
       prevTag && prevTag.name === tag.name ? null : tag
     );
-    setDisplayCount(20);
+    setCurrentPage(1);
   };
 
   // A-Z scrolling
@@ -58,46 +63,46 @@ const CloudShowsComponent = ({ items, tagsList }: ShowCardProps) => {
   };
 
   useEffect(() => {
-    setPageLoaded(true);
-  }, []);
-
-  useEffect(() => {
-    if (selectedTag && pageLoaded) {
+    if (selectedTag) {
       scrollToTop();
     }
-  }, [selectedTag, pageLoaded]);
+  }, [selectedTag]);
 
-  // Load more
-  const handleLoadMore = () => {
-    setDisplayCount(displayCount + 20);
+  // Pagination
+  const handlePageChange = (pageNumber: number) => {
+    setCurrentPage(pageNumber);
+    scrollToTop();
   };
+
+  useEffect(() => {
+    if (selectedTag) {
+      setTotalPages(Math.ceil(allFilteredItems.length / ITEMS_PER_PAGE));
+    }
+    if (currentPage > totalPages) {
+      setCurrentPage(totalPages);
+    }
+  }, [selectedTag, allFilteredItems, currentPage, totalPages]);
 
   return (
     <div className='relative w-full' ref={topRef}>
-      <div className='hidden lg:sticky top-[7rem] z-50 opacity-100 lg:flex  mb-4 pb-12 -mt-8'>
-        <div className=' m-auto'></div>
+      <div className='block lg:sticky top-[7rem] z-50 opacity-100 lg:flex pb-12  '>
         <CloudShowsFilter
           sortedTags={sortedTags}
           selectedTag={selectedTag}
           handleTagClick={handleTagClick}
         />
       </div>
-
-      <div className='layout flex items-start gap-6'>
-        <div className='full'>
-          <CloudShowsList items={filteredItems} />
+      <div className='layout'>
+        <div className='flex items-start gap-6'>
+          <CloudShowsList items={itemsToDisplay} />
         </div>
+        <Pagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          handlePageChange={handlePageChange}
+          className='py-12'
+        />
       </div>
-      {displayCount <= filteredItems.length ? (
-        <div className='pt-12 w-full flex justify-center'>
-          <button
-            className='flex font-mono rounded-xl text-sm shadow-sm border-blue-800 px-4 py-2 bg-white  duration-300 hover:bg-blue-100 '
-            onClick={handleLoadMore}
-          >
-            {t('loadMore')}
-          </button>
-        </div>
-      ) : null}
     </div>
   );
 };

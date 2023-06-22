@@ -3,7 +3,7 @@
   "de": "German",
   "nextShow": "Next show",
   "nowPlaying": "Now playing",
-  "archivePlaying": "Now playing the radio archive",
+  "archivePlaying": "THF Radio Archive",
   "on": "on",
   "allShows": "All THF shows",
   "aboutUs": "About us",
@@ -12,16 +12,14 @@
   "loadMore": "Load more",
   "supportUs": "Support us",
   "becomeMember": "Become a member",
+  "footerDescription": "We are a non-profit community radio at the former Tempelhof airport",
+  "menuTitle": "Menu",
+  "contactTitle": "Contact",
   "menu": [
     {
-      "name": "About",
-      "path": "/about",
+      "name": "Shows",
+      "path": "/shows",
       "lang": "en"
-    },
-    {
-      "name": "Latest",
-      "path": "/#latest",
-      "lang": "de"
     },
     {
       "name": "Programme",
@@ -29,8 +27,13 @@
       "lang": "en"
     },
     {
-      "name": "Shows",
-      "path": "/shows",
+      "name": "Latest",
+      "path": "/#latest",
+      "lang": "en"
+    },
+    {
+      "name": "About",
+      "path": "/about",
       "lang": "en"
     },
     {
@@ -41,6 +44,35 @@
     {
       "name": "Chat",
       "path": "https://thfchat.chatango.com/",
+      "lang": "en"
+    }
+  ],
+  "followMenu": [
+    {
+      "name": "Instagram",
+      "path": "https://www.instagram.com/thfradio/",
+      "lang": "en"
+    },
+    {
+      "name": "Facebook",
+      "path": "https://www.facebook.com/thfradio/",
+      "lang": "en"
+    },
+    {
+      "name": "Mixcloud",
+      "path": "https://www.mixcloud.com/THFRadio/",
+      "lang": "en"
+    }
+  ],
+  "contactMenu": [
+    {
+      "name": "Support us",
+      "path": "mailto:info@thfradio.de",
+      "lang": "en"
+    },
+    {
+      "name": "Show request",
+      "path": "https://forms.gle/eJsPSY5AZDMDKmpA9",
       "lang": "en"
     }
   ],

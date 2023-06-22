@@ -45,7 +45,7 @@ const Hero = ({
             <ReactMarkdown>{description}</ReactMarkdown>
           </div>
           <div className='pt-6 flex justify-center order-3 '>
-            <Button path='/about' color='white'>
+            <Button path='/about' color='white-orange'>
               {t('aboutUs')}
             </Button>
           </div>
@@ -64,12 +64,12 @@ const Hero = ({
       {showButtons && (
         <>
           <div className='hidden lg:flex justify-center order-3 pb-6 lg:pb-0'>
-            <Button path='/about' color='white'>
+            <Button path='/about' color='white-orange'>
               {t('aboutUs')}
             </Button>
           </div>
           <div className='hidden lg:flex justify-center order-4 pb-6 lg:pb-0'>
-            <Button path='/#latest' color='white'>
+            <Button path='/#latest' color='white-orange'>
               {t('latestShows')}
             </Button>
           </div>

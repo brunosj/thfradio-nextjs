@@ -29,10 +29,8 @@ const ProgrammeShowsList: React.FC<ProgrammeShowsListProps> = ({
     item.attributes.title[0].toUpperCase()
   );
 
-  const sectionTitleEnglish = isActive ? 'Current Shows' : 'Past Shows';
-  const sectionTitleGerman = isActive
-    ? 'Aktuelle Sendungen'
-    : 'Vergangene Sendungen';
+  const sectionTitleEnglish = isActive ? 'Current Shows' : 'Archive';
+  const sectionTitleGerman = isActive ? 'Aktuelle Sendungen' : 'Archiv';
 
   const getTitleByLocale = () => {
     if (locale === 'de') {

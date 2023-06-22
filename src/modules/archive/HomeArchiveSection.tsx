@@ -25,11 +25,11 @@ const HomeArchiveSection = ({
     }
   }, [shows]);
   return (
-    <section className='bg-blue-800 sectionPb' id='latest'>
+    <section className='bg-blue-800' id='latest'>
       <SectionHeader title={title} subtitle={subtitle} />
       <div className='flex w-full m-auto'>
         {isLoading ? (
-          <div className='m-auto text-center'>
+          <div className='m-auto text-center pb-12'>
             <BarsSpinner color='#1200ff' />
           </div>
         ) : (

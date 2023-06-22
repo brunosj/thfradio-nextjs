@@ -9,14 +9,9 @@ import normalizeTagName from '@/utils/normalizeTagName';
 interface UseShowFilterProps {
   items: CloudShowTypes[];
   selectedTag: TagTypes | null;
-  displayCount: number;
 }
 
-const useShowFilter = ({
-  items,
-  selectedTag,
-  displayCount,
-}: UseShowFilterProps) => {
+const useShowFilter = ({ items, selectedTag }: UseShowFilterProps) => {
   const [filteredItems, setFilteredItems] = useState<CloudShowTypes[]>([]);
 
   useEffect(() => {
@@ -35,8 +30,8 @@ const useShowFilter = ({
       });
     }
 
-    setFilteredItems(filteredItems.slice(0, displayCount));
-  }, [items, selectedTag, displayCount]);
+    setFilteredItems(filteredItems);
+  }, [items, selectedTag]);
 
   // Check if a tag or its synonyms match the given value
   const tagMatches = (tag: CloudShowTag, selectedTag: TagTypes) => {

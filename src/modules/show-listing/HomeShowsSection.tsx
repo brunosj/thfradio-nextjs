@@ -22,7 +22,7 @@ const HomeShowSection = ({ title, subtitle, pictures }: ShowsProps) => {
         <ImageGallery items={pictures} />
       </div>
       <div className='pt-12 flex justify-center'>
-        <Button path='/shows' color='white'>
+        <Button path='/shows' color='white-blue'>
           {t('allShows')}
         </Button>
       </div>

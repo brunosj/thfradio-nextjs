@@ -67,9 +67,7 @@ export const LiveTicker = () => {
         return (
           <div className='uppercase text-sm lg:text-base space-x-3 flex items-center '>
             <LiveCircle className='w-6 h-6 animate-pulse ml-4 ' />
-            <span className=''>
-              {t('nowPlaying')}: {currentShow.summary}
-            </span>
+            <span className=''>{currentShow.summary}</span>
             <span className=''>
               {formattedStartHour}-{formattedEndHour}
             </span>
@@ -127,7 +125,7 @@ export const LiveTicker = () => {
         } else {
           return (
             <span className='text-xs lg:text-sm italic font-light'>
-              NOW PLAYING THF RADIO ARCHIVE // Next show time not available
+              THF RADIO ARCHIVE // Next show time not available
             </span>
           );
         }
@@ -139,8 +137,9 @@ export const LiveTicker = () => {
   return (
     <div className=' fixed top-16 z-50 w-full bg-white shadow-lg opacity-100 border-blue-800 border-b'>
       <div className='layout lg:h-12  font-mono flex items-center   space-x-3 justify-between flex-col lg:flex-row'>
-        <div className='hidden lg:block w-full lg:w-1/6 py-2 lg:py-0 space-x-2 text-xs lg:text-sm '>
+        <div className='hidden lg:block w-full lg:w-1/4 py-2 lg:py-0 space-x-2 text-xs lg:text-sm '>
           <span className='uppercase font-light'>Live from Airport Berlin</span>
+          <span className='uppercase font-bold italic'>Now Playing</span>
         </div>
         <div className='w-full lg:w-4/6 py-3 mt-1 lg:mt-0'>
           <Marquee
