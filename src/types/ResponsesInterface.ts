@@ -105,7 +105,7 @@ export interface AboutSection {
     id: number;
     text: string;
     path: string;
-    color: 'white' | 'blue';
+    color: 'white-orange' | 'white-blue' | 'blue';
   }>;
   links: {
     data: Array<{
