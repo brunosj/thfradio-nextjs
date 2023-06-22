@@ -11,7 +11,7 @@ const AboutSection = ({ title, description, button, links }: AboutSection) => {
   const { t } = useTranslation();
 
   return (
-    <section className='layout bg-blue-800 sectionPy space-y-12'>
+    <section className='layout bg-darkBlue sectionPy space-y-12'>
       <h1 className='text-white'>{title}</h1>
       <div className='grid grid-cols-1 lg:grid-cols-2 gap-x-12 '>
         <div className='space-y-12'>

@@ -19,7 +19,7 @@ const Shows: NextPage<{
         description={page.attributes.description}
       />
       <Layout>
-        <div className='bg-blue-800 relative'>
+        <div className='bg-darkBlue relative'>
           <div className='layout sectionPy'>
             <h1 className='text-white'>{page.attributes.title}</h1>
           </div>

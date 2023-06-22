@@ -57,7 +57,7 @@ const CloudShowChild = ({ item }: ShowCardProps) => {
 
   return (
     <button
-      className='flex flex-row w-full md:w-[48%] lg:w-[29%] xl:w-[22%]  border border-blue-800 bg-white font-mono duration-200 lg:flex-col rounded-xl p-4 group items-center '
+      className='flex flex-row w-full md:w-[48%] lg:w-[29%] xl:w-[22%]  border border-darkBlue bg-white font-mono duration-200 lg:flex-col rounded-xl p-4 group items-center '
       onClick={() => onPlay(item.url)}
     >
       {/* Image */}
@@ -103,7 +103,7 @@ const CloudShowChild = ({ item }: ShowCardProps) => {
         {item.tags && (
           <ul className='flex mt-auto flex-wrap text-xs gap-2 justify-start lg:justify-center'>
             {item.tags.map((item, i) => (
-              <li key={i} className='rounded-xl border-blue-800 border px-2 '>
+              <li key={i} className='rounded-xl border-darkBlue border px-2 '>
                 {item.name}
               </li>
             ))}

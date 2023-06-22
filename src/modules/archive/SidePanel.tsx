@@ -22,7 +22,7 @@ const SidePanel = ({
           {sortedTags.map((tag) => (
             <button
               key={tag.name}
-              className={`border-blue-800 border text-sm font-mono rounded-xl px-2 py-1 mt-2 ${
+              className={`border-darkBlue border text-sm font-mono rounded-xl px-2 py-1 mt-2 ${
                 tag.name === selectedTag?.name ? 'bg-orange-500 text-white' : ''
               }`}
               onClick={() => handleTagClick(tag)}

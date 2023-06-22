@@ -9,7 +9,7 @@ interface Props {
 }
 const ImageGallery = ({ items }: Props) => {
   return (
-    <div className='border border-blue-800 rounded-xl'>
+    <div className='border border-darkBlue rounded-xl'>
       <div className='flex border-4 lg:border-8 border-white rounded-xl '>
         {items.map((item, i) => (
           <div key={i} className='relative h-48 lg:h-96 w-full'>

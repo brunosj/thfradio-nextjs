@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import { ShowTypes } from '@/types/ResponsesInterface';
 import useShowListings from '@/hooks/useShowListings';
 import { CMS_URL } from '@/utils/constants';
-import ShowList from './ProgrammeShowsList';
+import ProgrammeShowsList from './ProgrammeShowsList';
 
 interface ProgrammeShowsProps {
   items: ShowTypes[];
@@ -27,8 +27,12 @@ const ProgrammeShows: React.FC<ProgrammeShowsProps> = ({ items }) => {
 
   return (
     <>
-      <ShowList items={activeShows} isActive={true} locale={locale} />
-      <ShowList items={inactiveShows} isActive={false} locale={locale} />
+      <ProgrammeShowsList items={activeShows} isActive={true} locale={locale} />
+      <ProgrammeShowsList
+        items={inactiveShows}
+        isActive={false}
+        locale={locale}
+      />
     </>
   );
 };

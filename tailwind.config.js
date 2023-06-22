@@ -16,6 +16,7 @@ module.exports = {
         mono: ['SpaceMono'],
       },
       colors: {
+        darkBlue: '#140A46',
         blue: {
           100: '#d0ccff',
           200: '#a099ff',

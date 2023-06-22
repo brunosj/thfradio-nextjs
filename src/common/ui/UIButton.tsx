@@ -8,7 +8,7 @@ const Button = ({ children, path, color, className }: Button) => {
   return (
     <button
       className={clsx(
-        'flex font-mono rounded-xl text-sm shadow-sm border border-blue-800 px-4 py-2',
+        'flex font-mono rounded-xl text-sm shadow-sm border border-darkBlue px-4 py-2',
         className,
         {
           'bg-white duration-300 hover:bg-orange-500 hover:text-white':

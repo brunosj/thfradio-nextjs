@@ -23,7 +23,7 @@ const DateEntry = ({ date, entriesForDate }: DateEntryProps) => {
   const formattedDate = `${day}.${month}.${year}`;
 
   return (
-    <div className='layout flex flex-col lg:flex-row gap-6 lg:gap-12 font-mono w-full bg-white rounded-xl border border-blue-800 py-6'>
+    <div className='layout flex flex-col lg:flex-row gap-6 lg:gap-12 font-mono w-full bg-white rounded-xl border border-darkBlue py-6'>
       <div className='w-full lg:w-1/4 flex justify-between around'>
         <p className='font-bold'>{dayName}</p>
         <p className=''>{formattedDate}</p>

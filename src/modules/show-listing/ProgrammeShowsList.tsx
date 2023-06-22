@@ -61,7 +61,7 @@ const ProgrammeShowsList: React.FC<ProgrammeShowsListProps> = ({
                 <button
                   key={letter}
                   disabled
-                  className='disabled:cursor-not-allowed text-neutral-400'
+                  className='disabled:cursor-not-allowed text-darkBlue'
                 >
                   {letter}
                 </button>

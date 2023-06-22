@@ -151,7 +151,7 @@ const ShowPage: NextPage<ShowPage> = ({ content, otherLocaleContent }) => {
             )}
           </div>
         </div>
-        <div className='bg-blue-800 min-h-[60vh] lg:min-h-[40vh] layout'>
+        <div className='bg-darkBlue min-h-[60vh] lg:min-h-[40vh] layout'>
           <article className='pt-12 pb-6 lg:pt-12 lg:pb-6 markdown text-white '>
             <ReactMarkdown>
               {currentContent.attributes.description}
