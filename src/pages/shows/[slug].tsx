@@ -1,14 +1,10 @@
 import { useContext, useState, useEffect } from 'react';
 import type { NextPage } from 'next';
-import Link from 'next/link';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useTranslation } from 'next-i18next';
 import { useRouter } from 'next/router';
 import ReactMarkdown from 'react-markdown';
-import { CiMail } from 'react-icons/ci';
 import Layout from '@/common/layout/Layout';
-import { AiOutlineInstagram } from 'react-icons/ai';
-import { SlSocialSoundcloud } from 'react-icons/sl';
 import { SEOComponent } from '@/utils/seo';
 import CloudShowChild from '@/modules/archive/CloudShowChild';
 import { DataContext } from '@/context/DataContext';
@@ -19,6 +15,9 @@ import {
   TagsList,
 } from '@/types/ResponsesInterface';
 import { processShows } from '@/utils/showUtils';
+import Image from 'next/image';
+import { CMS_URL } from '@/utils/constants';
+import ShowDetails from '@/modules/show-listing/ProgrammeShowDetails';
 
 interface ShowPage {
   content: ShowTypes;
@@ -51,57 +50,7 @@ const ShowPage: NextPage<ShowPage> = ({ content, otherLocaleContent }) => {
   });
 
   const sortedShows = processShows(filteredCloudcasts);
-
-  const getGermanDay = (day: string): string => {
-    if (locale === 'en') {
-      return day.charAt(0).toUpperCase() + day.slice(1);
-    }
-
-    switch (day) {
-      case 'monday':
-        return 'Montag';
-      case 'tuesday':
-        return 'Dienstag';
-      case 'wednesday':
-        return 'Mittwoch';
-      case 'thursday':
-        return 'Donnerstag';
-      case 'friday':
-        return 'Freitag';
-      case 'saturday':
-        return 'Samstag';
-      case 'sunday':
-        return 'Sonntag';
-      default:
-        return day;
-    }
-  };
-
-  const getGermanFrequency = (frequency: string): string => {
-    if (locale === 'en') {
-      return frequency.charAt(0).toUpperCase() + frequency.slice(1);
-    }
-
-    switch (frequency) {
-      case 'bi-weekly':
-        return 'Zweiwöchentlich';
-      case 'weekly':
-        return 'Wöchentlich';
-      case 'monthly':
-        return 'Monatlich';
-      case 'bi-monthly':
-        return 'Zweimonatlich';
-      case 'occasionally':
-        return 'Gelegentlich';
-      default:
-        return frequency;
-    }
-  };
-
-  const formatTime = (time: string): string => {
-    return time ? time.slice(0, 5) : '';
-  };
-
+  console.log(currentContent);
   return (
     <>
       <SEOComponent
@@ -109,50 +58,31 @@ const ShowPage: NextPage<ShowPage> = ({ content, otherLocaleContent }) => {
         description={currentContent.attributes.description}
       />
       <Layout>
-        <div className='bg-orange-500 text-white h-32 lg:h-64 flex items-center'>
-          <div className='layout'>
-            <h1 className=''>{currentContent.attributes.title}</h1>
-          </div>
+        <div className='relative'>
+          {currentContent.attributes.pictureFullWidth?.data ? (
+            <div className='relative h-[60vh] w-full'>
+              <Image
+                src={`${CMS_URL}${currentContent.attributes.pictureFullWidth.data.attributes.url}`}
+                fill
+                sizes=''
+                className='object-cover object-center'
+                alt={currentContent.attributes.title}
+              />
+              <div className='layout'>
+                <ShowDetails currentContent={currentContent} />
+              </div>
+            </div>
+          ) : (
+            <div className='relative h-[60vh] w-full bg-blue-500'>
+              <div className='layout'>
+                <ShowDetails currentContent={currentContent} />
+              </div>
+            </div>
+          )}
         </div>
 
-        <div
-          className='bg-blue-500 text-white layout py-6  space-y-2'
-          id='showDetails'
-        >
-          {currentContent.attributes.frequency &&
-            currentContent.attributes.day &&
-            currentContent.attributes.startTime &&
-            currentContent.attributes.endTime && (
-              <h4>
-                {getGermanFrequency(currentContent.attributes.frequency)},{' '}
-                {getGermanDay(currentContent.attributes.day)}{' '}
-                {formatTime(currentContent.attributes.startTime)} -{' '}
-                {formatTime(currentContent.attributes.endTime)}
-              </h4>
-            )}
-          <div className='flex space-x-3'>
-            {currentContent.attributes.instagram && (
-              <Link href={currentContent.attributes.instagram} target='_blank'>
-                <AiOutlineInstagram className='w-6 h-6 textHover' />
-              </Link>
-            )}
-            {currentContent.attributes.mail && (
-              <Link
-                href={`mailto:${currentContent.attributes.mail}`}
-                target='_blank'
-              >
-                <CiMail className='w-6 h-6 textHover' />
-              </Link>
-            )}
-            {currentContent.attributes.soundcloud && (
-              <Link href={currentContent.attributes.soundcloud} target='_blank'>
-                <SlSocialSoundcloud className='w-6 h-6 textHover' />
-              </Link>
-            )}
-          </div>
-        </div>
         <div className='bg-darkBlue min-h-[60vh] lg:min-h-[40vh] layout'>
-          <article className='pt-12 pb-6 lg:pt-12 lg:pb-6 markdown text-white '>
+          <article className='pt-24 pb-6 lg:pb-6 markdown text-white '>
             <ReactMarkdown>
               {currentContent.attributes.description}
             </ReactMarkdown>
@@ -191,7 +121,7 @@ export async function getStaticProps({
 }) {
   const { slug } = params;
   const initialRes = await fetch(
-    `${process.env.STRAPI_PUBLIC_API_URL}shows?locale=all&populate=localizations`
+    `${process.env.STRAPI_PUBLIC_API_URL}shows?locale=all&populate=*`
   );
   const initial = await initialRes.json();
   // Find the entry for the current locale
@@ -202,6 +132,10 @@ export async function getStaticProps({
 
   // Find the entry for the other locale
   const otherLocaleEntry = currentLocaleEntry.attributes.localizations.data[0];
+
+  // Extract the pictureFullWidth data from currentLocaleEntry and add it to otherLocaleEntry
+  const pictureFullWidth = currentLocaleEntry.attributes.pictureFullWidth;
+  otherLocaleEntry.attributes.pictureFullWidth = pictureFullWidth;
 
   return {
     props: {

@@ -81,6 +81,15 @@ export interface ShowTypes {
         };
       };
     };
+    pictureFullWidth: {
+      data: {
+        id: number;
+        attributes: {
+          name: string;
+          url: string;
+        };
+      };
+    };
   };
   id: number;
 }
