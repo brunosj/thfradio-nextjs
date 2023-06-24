@@ -3,6 +3,7 @@ import { AiOutlineInstagram } from 'react-icons/ai';
 import { CiMail } from 'react-icons/ci';
 import { SlSocialSoundcloud } from 'react-icons/sl';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 interface ShowDetailsProps {
   currentContent: {
@@ -20,7 +21,13 @@ interface ShowDetailsProps {
 }
 
 const ShowDetails: React.FC<ShowDetailsProps> = ({ currentContent }) => {
+  const router = useRouter();
+  let locale = router.locale;
+
   const getGermanDay = (day: string): string => {
+    if (locale === 'en') {
+      return day.charAt(0).toUpperCase() + day.slice(1);
+    }
     switch (day) {
       case 'monday':
         return 'Montag';
@@ -42,6 +49,9 @@ const ShowDetails: React.FC<ShowDetailsProps> = ({ currentContent }) => {
   };
 
   const getGermanFrequency = (frequency: string): string => {
+    if (locale === 'en') {
+      return frequency.charAt(0).toUpperCase() + frequency.slice(1);
+    }
     switch (frequency) {
       case 'bi-weekly':
         return 'Zweiwöchentlich';
