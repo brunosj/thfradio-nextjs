@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
-import { MenuType, MenuItem } from '@/types/uiInterface';
+import { MenuType } from '@/types/uiInterface';
 import logo from '@/assets/logo_white.png';
 import AudioPlayer from '@/modules/live-radio/AudioPlayer';
 import { CalendarEntry, CloudShowTypes } from '@/types/ResponsesInterface';
@@ -21,12 +21,10 @@ interface HeaderProps {
 }
 
 const Header: React.FC<HeaderProps> = ({ isOpen, setIsOpen }) => {
-  const { cloudShows, calendarEntries } = useContext(DataContext)!;
   const router = useRouter();
-
-  // Menu translation
-  const { t, i18n } = useTranslation();
-  const [menu, setMenu] = useState<MenuItem[]>([]);
+  const { t } = useTranslation();
+  const menu: MenuType = t('menu', { returnObjects: true });
+  const { cloudShows, calendarEntries } = useContext(DataContext)!;
 
   // Anchor links smooth behaviour
   const handleAnchorLinkClick = (
@@ -80,16 +78,6 @@ const Header: React.FC<HeaderProps> = ({ isOpen, setIsOpen }) => {
       window.removeEventListener('resize', handleResize);
     };
   }, [menuWidth]);
-
-  useEffect(() => {
-    if (i18n.language) {
-      setMenu(t('menu', { returnObjects: true }));
-    }
-  }, [i18n.language, t]);
-
-  if (!menu) {
-    return null; // Or a loading spinner, or some other placeholder
-  }
 
   const handleToggleMenu = () => {
     setIsOpen(!isOpen);
