@@ -21,7 +21,7 @@ export const Layout = ({ children }: Props) => {
         {/* <LiveTicker /> */}
         <article>{children}</article>
       </main>
-      <Footer />
+      {/* <Footer /> */}
       {/* <MixcloudWidget /> */}
       <ScrollToTopButton />
     </div>

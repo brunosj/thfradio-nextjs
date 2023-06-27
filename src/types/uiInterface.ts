@@ -7,7 +7,7 @@ export interface Button {
   className?: string;
 }
 
-interface MenuItem {
+export interface MenuItem {
   name: string;
   path: string;
   lang: string;
