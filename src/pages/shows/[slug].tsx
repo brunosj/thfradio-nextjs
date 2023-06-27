@@ -67,24 +67,22 @@ const ShowPage: NextPage<ShowPage> = ({ content, otherLocaleContent }) => {
                 className='object-cover object-center'
                 alt={currentContent.attributes.title}
               />
-              <div className='layout'>
+              <div className='layout overflow-hidden'>
                 <ShowDetails currentContent={currentContent} />
               </div>
             </div>
           ) : (
-            <div className='relative h-[60vh] w-full bg-blue-500'>
-              <div className='layout'>
-                <ShowDetails currentContent={currentContent} />
-              </div>
+            <div className='layout relative h-[60vh] w-full bg-orange-500'>
+              <ShowDetails currentContent={currentContent} />
             </div>
           )}
         </div>
 
         <div className='bg-darkBlue min-h-[60vh] lg:min-h-[40vh] layout'>
-          <article className='pt-24 pb-6 lg:pb-6 markdown text-white '>
-            <ReactMarkdown>
+          <article className='pt-40 pb-6 lg:pb-12 markdown text-white w-1/2'>
+            {/* <ReactMarkdown>
               {currentContent.attributes.description}
-            </ReactMarkdown>
+            </ReactMarkdown> */}
           </article>
           <div
             className={` w-full flex flex-wrap gap-6 lg:gap-12 justify-around ${

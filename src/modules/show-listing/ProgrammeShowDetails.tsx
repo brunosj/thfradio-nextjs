@@ -4,11 +4,13 @@ import { CiMail } from 'react-icons/ci';
 import { SlSocialSoundcloud } from 'react-icons/sl';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import ReactMarkdown from 'react-markdown';
 
 interface ShowDetailsProps {
   currentContent: {
     attributes: {
       title: string;
+      description: string;
       frequency?: string;
       day?: string;
       startTime?: string;
@@ -73,11 +75,9 @@ const ShowDetails: React.FC<ShowDetailsProps> = ({ currentContent }) => {
   };
 
   return (
-    <div className='bg-orange-500 rounded-xl text-white h-32 lg:h-56 flex items-center absolute -bottom-12 py-3'>
-      <div className='layout'>
-        <span className='text-3xl font-bold lg:text-4xl'>
-          {currentContent.attributes.title}
-        </span>
+    <div className='bg-blue-500 rounded-l-xl rounded-r-none lg:rounded-r-xl text-white lg:w-1/2 max-h-fit absolute -bottom-40'>
+      <div className='layout py-6 lg:py-12 space-y-6'>
+        <h1 className='font-bold'>{currentContent.attributes.title}</h1>
         <div className=' text-white z-0' id='showDetails'>
           {currentContent.attributes.frequency &&
             currentContent.attributes.day &&
@@ -119,6 +119,7 @@ const ShowDetails: React.FC<ShowDetailsProps> = ({ currentContent }) => {
               </div>
             )}
         </div>
+        <ReactMarkdown>{currentContent.attributes.description}</ReactMarkdown>
       </div>
     </div>
   );
