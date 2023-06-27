@@ -50,7 +50,6 @@ const ShowPage: NextPage<ShowPage> = ({ content, otherLocaleContent }) => {
   });
 
   const sortedShows = processShows(filteredCloudcasts);
-  console.log(currentContent);
   return (
     <>
       <SEOComponent
@@ -124,16 +123,13 @@ export async function getStaticProps({
     `${process.env.STRAPI_PUBLIC_API_URL}shows?locale=all&populate=*`
   );
   const initial = await initialRes.json();
-  // Find the entry for the current locale
   const currentLocaleEntry = initial.data.find(
     (entry: ShowTypes) =>
       entry.attributes.slug === slug && entry.attributes.locale === 'en'
   );
 
-  // Find the entry for the other locale
   const otherLocaleEntry = currentLocaleEntry.attributes.localizations.data[0];
 
-  // Extract the pictureFullWidth data from currentLocaleEntry and add it to otherLocaleEntry
   const pictureFullWidth = currentLocaleEntry.attributes.pictureFullWidth;
   otherLocaleEntry.attributes.pictureFullWidth = pictureFullWidth;
 
@@ -141,7 +137,7 @@ export async function getStaticProps({
     props: {
       content: currentLocaleEntry,
       otherLocaleContent: otherLocaleEntry,
-      ...(await serverSideTranslations(locale ?? 'en', ['common'])),
+      ...(await serverSideTranslations(locale, ['common'], null, ['en', 'de'])),
     },
     revalidate: 10,
   };
