@@ -5,6 +5,7 @@ import { SlSocialSoundcloud } from 'react-icons/sl';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import ReactMarkdown from 'react-markdown';
+import { Wave } from '@/common/assets/WaveSVG';
 
 interface ShowDetailsProps {
   currentContent: {
@@ -85,10 +86,10 @@ const ShowDetails: React.FC<ShowDetailsProps> = ({ currentContent }) => {
             currentContent.attributes.endTime && (
               <div className='mt-6'>
                 <p>
-                  {getGermanFrequency(currentContent.attributes.frequency)},{' '}
                   {getGermanDay(currentContent.attributes.day)}{' '}
-                  {formatTime(currentContent.attributes.startTime)} -{' '}
-                  {formatTime(currentContent.attributes.endTime)}
+                  {formatTime(currentContent.attributes.startTime)} <Wave />{' '}
+                  {formatTime(currentContent.attributes.endTime)} (
+                  {getGermanFrequency(currentContent.attributes.frequency)})
                 </p>
                 <div className='flex space-x-3 mt-1'>
                   {currentContent.attributes.instagram && (
