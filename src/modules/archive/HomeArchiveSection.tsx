@@ -7,6 +7,7 @@ import BarsSpinner from '@/common/ui/BarsSpinner';
 interface ArchiveProps {
   title: string;
   subtitle: string;
+  text: string;
   shows: CloudShowTypes[];
   tagsList: TagsList;
 }
@@ -16,6 +17,7 @@ const HomeArchiveSection = ({
   subtitle,
   shows,
   tagsList,
+  text,
 }: ArchiveProps) => {
   const [isLoading, setIsLoading] = useState(true);
 
@@ -26,7 +28,7 @@ const HomeArchiveSection = ({
   }, [shows]);
   return (
     <section className='bg-darkBlue' id='latest'>
-      <SectionHeader title={title} subtitle={subtitle} />
+      <SectionHeader title={title} subtitle={subtitle} text={text} />
       <div className='flex w-full m-auto'>
         {isLoading ? (
           <div className='m-auto text-center pb-12'>

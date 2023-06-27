@@ -43,6 +43,7 @@ const Home: NextPage<{
         <HomeArchiveSection
           title={page.attributes.archive.title}
           subtitle={page.attributes.archive.subtitle}
+          text={page.attributes.archive.text}
           shows={cloudShows}
           tagsList={tagsList}
         />

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
-import { useContext } from 'react';
+import { useContext, useMemo } from 'react';
 import Marquee from 'react-fast-marquee';
 import { format, isWithinInterval, parseISO } from 'date-fns';
 import { enUS, de } from 'date-fns/locale';
@@ -18,7 +18,7 @@ export const LiveTicker = () => {
   const localeModule = locale === 'de' ? de : enUS;
   const { calendarEntries, cloudShows } = useContext(DataContext)!;
 
-  const getCurrentShowName = (): JSX.Element => {
+  const getCurrentShowName = useMemo(() => {
     const now = new Date();
     const currentShow = calendarEntries.find((entry) => {
       const showStart = new Date(entry.start);
@@ -32,11 +32,7 @@ export const LiveTicker = () => {
     });
 
     if (!currentShow && !nextShow) {
-      return (
-        <span>
-          <BarsSpinner color='#1200ff' />
-        </span>
-      );
+      return <span>{/* <BarsSpinner color='#1200ff' /> */}</span>;
     } else {
       if (currentShow) {
         const formattedStartHour = format(
@@ -131,8 +127,7 @@ export const LiveTicker = () => {
         }
       }
     }
-  };
-  const currentShowName = getCurrentShowName();
+  }, [calendarEntries, localeModule, t]);
 
   return (
     <div className=' fixed top-16 z-50 w-full bg-white shadow-lg opacity-100 border-darkBlue border-b'>
@@ -149,7 +144,7 @@ export const LiveTicker = () => {
             pauseOnHover={true}
             className=''
           >
-            <div className=''>{currentShowName} </div>
+            <div>{getCurrentShowName} </div>
           </Marquee>
         </div>
         <div className='hidden lg:block ml-auto'>

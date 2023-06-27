@@ -101,6 +101,7 @@ export interface Shows {
 export interface HomepageSection {
   title: string;
   subtitle: string;
+  text: string;
   showListings?: ShowTypes[];
   calendarEntries?: CalendarEntry[];
   shows?: CloudShowTypes[];
