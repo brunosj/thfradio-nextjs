@@ -25,7 +25,7 @@ const Home: NextPage<{
       <Layout>
         <Hero
           description={page.attributes.heroText}
-          imageSrc={page.attributes.heroPictures.data[0].attributes.url}
+          images={page.attributes.heroPictures}
           showButtons={true}
           picturePosition='right'
         />

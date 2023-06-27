@@ -1,21 +1,16 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import useEmblaCarousel, { EmblaOptionsType } from 'embla-carousel-react';
-import { PrevButton, NextButton } from './CarouselNavigation';
+import useEmblaCarousel, {
+  EmblaCarouselType,
+  EmblaOptionsType,
+} from 'embla-carousel-react';
+import { DotButton } from './CarouselNavigation';
 import Image from 'next/image';
+import { Pictures } from '@/types/ResponsesInterface';
+import { CMS_URL } from '@/utils/constants';
 
 type PropType = {
   options?: EmblaOptionsType;
-  slides: [
-    {
-      image: string;
-      clientOrganisation: string;
-      clientOrganisationLink: string;
-      text: string;
-      clientOrganisationLogo: {
-        sourceUrl: string;
-      };
-    }
-  ];
+  slides: Pictures;
 };
 
 const EmblaCarousel: React.FC<PropType> = (props) => {
@@ -39,62 +34,66 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
     [emblaApi]
   );
 
-  const onSelect = useCallback(() => {
-    if (!emblaApi) return;
+  const onInit = useCallback((emblaApi: EmblaCarouselType) => {
+    setScrollSnaps(emblaApi.scrollSnapList());
+  }, []);
+
+  const onSelect = useCallback((emblaApi: EmblaCarouselType) => {
     setSelectedIndex(emblaApi.selectedScrollSnap());
     setPrevBtnEnabled(emblaApi.canScrollPrev());
     setNextBtnEnabled(emblaApi.canScrollNext());
-  }, [emblaApi, setSelectedIndex]);
+  }, []);
 
   useEffect(() => {
     if (!emblaApi) return;
-    onSelect();
-    setScrollSnaps(emblaApi.scrollSnapList());
-    emblaApi.on('select', onSelect);
-    emblaApi.on('reInit', onSelect);
-  }, [emblaApi, setScrollSnaps, onSelect]);
 
-  const groupTestimonials = (slides: any[]) => {
-    const groupedSlides = [];
-    let group = [];
-    for (let i = 0; i < slides.length; i++) {
-      group.push(slides[i]);
-      if (group.length === 3) {
-        groupedSlides.push(group);
-        group = [];
-      }
+    onInit(emblaApi);
+    onSelect(emblaApi);
+    emblaApi.on('reInit', onInit);
+    emblaApi.on('reInit', onSelect);
+    emblaApi.on('select', onSelect);
+  }, [emblaApi, onInit, onSelect]);
+
+  const imageByIndex = (pictures: Pictures, index: number): string => {
+    if (pictures.data.length === 0) {
+      return ''; // or throw an error, depending on your needs
     }
-    if (group.length > 0) {
-      groupedSlides.push(group);
-    }
-    return groupedSlides;
+    return `${CMS_URL}${
+      pictures.data[index % pictures.data.length].attributes.url
+    }`;
   };
 
-  const groupedSlides = groupTestimonials(slides);
+  console.log(scrollSnaps);
 
   return (
     <>
-      <div className='testimonial_embla relative'>
-        <div className='overflow-hidden' ref={emblaRef}>
-          <div className='testimonial_embla__container '>
-            {groupedSlides.map((group, i) => (
-              <div
-                className='lg:grid grid-cols-3 layout w-full dark lg:w-5/6 gap-12  '
-                key={i}
-              >
-                {group.map((slide, j) => (
-                  <div
-                    className='mt-3 flex flex-col space-y-6 bg-ateneTaupe-100 rounded-md p-6'
-                    key={j}
-                  ></div>
-                ))}
+      <div className='embla'>
+        <div className='embla__viewport' ref={emblaRef}>
+          <div className='embla__container'>
+            {slides.data.map((slide, index) => (
+              <div className='embla__slide' key={index}>
+                <div className='relative h-[30rem] w-full'>
+                  <Image
+                    className='object-cover lg:rounded-lg'
+                    src={imageByIndex(slides, index)}
+                    alt='Your alt text'
+                    fill
+                  />
+                </div>
               </div>
             ))}
           </div>
         </div>
 
-        <PrevButton onClick={scrollPrev} enabled={prevBtnEnabled} />
-        <NextButton onClick={scrollNext} enabled={nextBtnEnabled} />
+        <div className='embla__dots'>
+          {scrollSnaps.map((_, index) => (
+            <DotButton
+              key={index}
+              selected={index === selectedIndex}
+              onClick={() => scrollTo(index)}
+            />
+          ))}
+        </div>
       </div>
     </>
   );

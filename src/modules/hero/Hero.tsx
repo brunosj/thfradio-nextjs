@@ -5,17 +5,19 @@ import Button from '@/common/ui/UIButton';
 import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
 import clsx from 'clsx';
+import EmblaCarousel from '../carousel/Carousel';
+import { Pictures } from '@/types/ResponsesInterface';
 
 type HeroProps = {
   description: string;
-  imageSrc: string;
+  images: Pictures;
   showButtons: boolean;
   picturePosition: 'left' | 'right';
 };
 
 const Hero = ({
   description,
-  imageSrc,
+  images,
   showButtons,
   picturePosition,
 }: HeroProps) => {
@@ -50,7 +52,10 @@ const Hero = ({
             </Button>
           </div>
         </div>
-        <div className='text-center text-white markdown'>
+        <div>
+          <EmblaCarousel slides={images} />
+        </div>
+        {/* <div className='text-center text-white markdown'>
           <div className='relative  h-[30rem] w-full'>
             <Image
               src={`${CMS_URL}${imageSrc}`}
@@ -59,7 +64,7 @@ const Hero = ({
               className='object-cover lg:rounded-lg'
             />
           </div>
-        </div>
+        </div> */}
       </div>
       {showButtons && (
         <>

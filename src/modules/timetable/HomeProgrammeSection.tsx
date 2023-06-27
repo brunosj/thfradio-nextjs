@@ -25,7 +25,7 @@ const HomeProgrammeSection = ({
   return (
     <section className='bg-blue-500 sectionPb' id='programme'>
       <SectionHeader title={title} subtitle={subtitle} />
-      <div className='flex layout max-w-7xl justify-around m-auto'>
+      <div className='flex justify-around m-auto'>
         {isLoading ? (
           <div className='m-auto text-center'>
             <BarsSpinner color='#ff6314' />

@@ -133,6 +133,14 @@ export interface PictureType {
   };
 }
 
+export interface Pictures {
+  data: Array<{
+    attributes: {
+      url: string;
+    };
+  }>;
+}
+
 export interface HomepageTypes {
   attributes: {
     heroText: string;

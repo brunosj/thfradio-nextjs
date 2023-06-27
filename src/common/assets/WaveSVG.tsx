@@ -3,7 +3,7 @@ export function Wave() {
     <svg
       xmlns='http://www.w3.org/2000/svg'
       version='1.1'
-      className='inline-block w-6 lg:w-12 h-3'
+      className='inline-block w-6 lg:w-[2rem] h-3'
     >
       <defs>
         <g>

@@ -12,7 +12,7 @@ const Timetable = ({ calendarEntries }: TimetableProps) => {
   const groupedEntries = groupByDate(calendarEntries);
 
   return (
-    <div className='space-y-6 lg:space-y-12'>
+    <div className='space-y-6 lg:space-y-12 w-full max-w-fit'>
       {Object.entries(groupedEntries).map(([date, entriesForDate], index) => (
         <DateEntry key={index} date={date} entriesForDate={entriesForDate} />
       ))}
