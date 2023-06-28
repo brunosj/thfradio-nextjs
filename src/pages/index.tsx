@@ -18,7 +18,6 @@ const Home: NextPage<{
   const { locale: currentLocale = 'en' } = router;
   const { cloudShows, calendarEntries, programmeShows, tagsList } =
     useContext(DataContext)!;
-
   return (
     <>
       <SEOComponent />

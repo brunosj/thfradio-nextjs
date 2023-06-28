@@ -48,5 +48,3 @@ export const getStaticProps = async ({ locale }: { locale: string }) => {
     revalidate: 10,
   };
 };
-
-
