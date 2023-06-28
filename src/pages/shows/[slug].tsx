@@ -137,7 +137,7 @@ export async function getStaticProps({
       otherLocaleContent: otherLocaleEntry,
       ...(await serverSideTranslations(locale ?? 'en', ['common'])),
     },
-    // revalidate: 10,
+    revalidate: 10,
   };
 }
 
