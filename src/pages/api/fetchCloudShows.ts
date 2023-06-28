@@ -7,8 +7,8 @@ interface MixcloudResponse {
 }
 
 const fetchCloudShows = async (req: NextApiRequest, res: NextApiResponse) => {
-  const limit = 150; // limit of items per fetch
-  const totalItems = 1600; // Total items to fetch
+  const limit = 100; // limit of items per fetch
+  const totalItems = 2000; // Total items to fetch
   const pages = Math.ceil(totalItems / limit); // number of pages to fetch
   const promises = [];
 

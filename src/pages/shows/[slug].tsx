@@ -32,7 +32,6 @@ const ShowPage: NextPage<ShowPage> = ({ content, otherLocaleContent }) => {
   let locale = router.locale;
   const currentContent = locale === 'en' ? content : otherLocaleContent;
   const { cloudShows } = useContext(DataContext)!;
-
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     if (cloudShows && cloudShows.length > 0) {
@@ -50,6 +49,7 @@ const ShowPage: NextPage<ShowPage> = ({ content, otherLocaleContent }) => {
   });
 
   const sortedShows = processShows(filteredCloudcasts);
+
   return (
     <>
       <SEOComponent
