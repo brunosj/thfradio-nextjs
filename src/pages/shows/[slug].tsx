@@ -135,9 +135,9 @@ export async function getStaticProps({
     props: {
       content: currentLocaleEntry,
       otherLocaleContent: otherLocaleEntry,
-      ...(await serverSideTranslations(locale, ['common'], null, ['en', 'de'])),
+      ...(await serverSideTranslations(locale ?? 'en', ['common'])),
     },
-    revalidate: 10,
+    // revalidate: 10,
   };
 }
 
