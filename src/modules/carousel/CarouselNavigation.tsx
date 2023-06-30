@@ -13,6 +13,7 @@ export const DotButton: React.FC<DotButtonPropType> = (props) => {
       className={'embla__dot'.concat(selected ? ' embla__dot--selected' : '')}
       type='button'
       onClick={onClick}
+      aria-label='Other slide'
     />
   );
 };
@@ -30,6 +31,7 @@ export const PrevButton: React.FC<PrevNextButtonPropType> = (props) => {
       className='embla__button embla__button--prev'
       onClick={onClick}
       disabled={!enabled}
+      aria-label='Previous slide'
     >
       <svg className='embla__button__svg' viewBox='137.718 -1.001 366.563 644'>
         <path
@@ -49,6 +51,7 @@ export const NextButton: React.FC<PrevNextButtonPropType> = (props) => {
       className='embla__button embla__button--next'
       onClick={onClick}
       disabled={!enabled}
+      aria-label='Next slide'
     >
       <svg className='embla__button__svg' viewBox='0 0 238.003 238.003'>
         <path

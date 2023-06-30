@@ -59,6 +59,7 @@ const CloudShowChild = ({ item }: ShowCardProps) => {
     <button
       className='flex flex-row w-full md:w-[48%] lg:w-[29%] xl:w-[22%]  border border-darkBlue bg-white font-mono duration-200 lg:flex-col rounded-xl p-4 group items-center '
       onClick={() => onPlay(item.url)}
+      aria-label={`Play ${item.name}`}
     >
       {/* Image */}
       <div className='group relative flex justify-around items-center'>

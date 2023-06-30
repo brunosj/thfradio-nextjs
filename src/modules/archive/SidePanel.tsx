@@ -26,6 +26,7 @@ const SidePanel = ({
                 tag.name === selectedTag?.name ? 'bg-orange-500 text-white' : ''
               }`}
               onClick={() => handleTagClick(tag)}
+              aria-label={`Navigate to ${tag.name}`}
             >
               {tag.name}
             </button>

@@ -24,6 +24,7 @@ const CloudShowsFilter = ({
                 : 'bg-white'
             }`}
             onClick={() => handleTagClick(tag)}
+            aria-label={`Select genre ${tag.name}`}
           >
             {tag.name}
           </button>

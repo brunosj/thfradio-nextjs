@@ -5,6 +5,7 @@ export interface Button {
   color: 'white-orange' | 'blue' | 'white-blue';
   children?: ReactNode;
   className?: string;
+  ariaLabel: string;
 }
 
 export interface MenuItem {

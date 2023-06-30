@@ -28,7 +28,7 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({
 
   return (
     <div className='flex items-center'>
-      <button onClick={togglePlay}>
+      <button onClick={togglePlay} aria-label='Toggle play'>
         {isPlaying ? (
           <Pause className={iconClassName} fill={iconFill} />
         ) : (
@@ -57,6 +57,7 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({
           style={{ width: '4rem' }}
           value={volume}
           onChange={handleVolumeChange}
+          placeholder='Volume'
         />
       </div>
     </div>

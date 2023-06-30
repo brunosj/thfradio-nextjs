@@ -129,6 +129,7 @@ export async function getStaticProps({
   const otherLocaleEntry = currentLocaleEntry.attributes.localizations.data[0];
 
   const pictureFullWidth = currentLocaleEntry.attributes.pictureFullWidth;
+
   otherLocaleEntry.attributes.pictureFullWidth = pictureFullWidth;
 
   return {

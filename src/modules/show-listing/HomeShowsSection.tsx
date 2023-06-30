@@ -22,7 +22,11 @@ const HomeShowSection = ({ title, subtitle, pictures }: ShowsProps) => {
         <ImageGallery items={pictures} />
       </div>
       <div className='pt-12 flex justify-center'>
-        <Button path='/shows' color='white-blue'>
+        <Button
+          path='/shows'
+          color='white-blue'
+          ariaLabel={`Navigate to Shows page`}
+        >
           {t('allShows')}
         </Button>
       </div>

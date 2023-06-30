@@ -44,7 +44,7 @@ const Pagination: React.FC<PaginationProps> = ({
     // Always include the last page if it's not 1
     if (totalPages !== 1 && currentPage !== totalPages)
       pageNumbers.push(totalPages);
-    
+
     return pageNumbers;
   };
 
@@ -59,6 +59,7 @@ const Pagination: React.FC<PaginationProps> = ({
           }`}
           disabled={currentPage === 1}
           onClick={() => handlePageChange(currentPage - 1)}
+          aria-label='Pagination'
         >
           <ChevronLeft />
         </button>
@@ -71,6 +72,7 @@ const Pagination: React.FC<PaginationProps> = ({
                   ? 'bg-blue-500 text-white'
                   : 'bg-white'
               }`}
+              aria-label={`Go to page number ${pageNumber}`}
               onClick={() => handlePageChange(pageNumber)}
             >
               {pageNumber}

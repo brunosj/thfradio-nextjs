@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { Button } from '@/types/uiInterface';
 import clsx from 'clsx';
 
-const Button = ({ children, path, color, className }: Button) => {
+const Button = ({ children, path, color, className, ariaLabel }: Button) => {
   const isExternal = path.slice(0, 4) === 'http';
 
   return (
@@ -19,6 +19,7 @@ const Button = ({ children, path, color, className }: Button) => {
             color === 'blue',
         }
       )}
+      aria-label={ariaLabel}
     >
       <>
         {isExternal ? (

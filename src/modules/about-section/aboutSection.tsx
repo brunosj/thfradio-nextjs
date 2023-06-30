@@ -21,7 +21,12 @@ const AboutSection = ({ title, description, button, links }: AboutSection) => {
           {button && (
             <div className='flex space-x-6 pb-12'>
               {button.map((button, i) => (
-                <Button path={button.path} key={i} color={button.color}>
+                <Button
+                  path={button.path}
+                  key={i}
+                  color={button.color}
+                  ariaLabel={`Navigate to ${button.text}`}
+                >
                   {button.text}
                 </Button>
               ))}

@@ -47,7 +47,11 @@ const Hero = ({
             <ReactMarkdown>{description}</ReactMarkdown>
           </div>
           <div className='pt-6 flex justify-center order-3 '>
-            <Button path='/about' color='white-orange'>
+            <Button
+              path='/about'
+              color='white-orange'
+              ariaLabel={`Navigate to About page`}
+            >
               {t('aboutUs')}
             </Button>
           </div>
@@ -69,12 +73,20 @@ const Hero = ({
       {showButtons && (
         <>
           <div className='hidden lg:flex justify-center order-3 pb-6 lg:pb-0'>
-            <Button path='/about' color='white-orange'>
+            <Button
+              path='/about'
+              color='white-orange'
+              ariaLabel={`Navigate to About page`}
+            >
               {t('aboutUs')}
             </Button>
           </div>
           <div className='hidden lg:flex justify-center order-4 pb-6 lg:pb-0'>
-            <Button path='/#latest' color='white-orange'>
+            <Button
+              path='/#latest'
+              color='white-orange'
+              ariaLabel={`Navigate to Latest shows`}
+            >
               {t('latestShows')}
             </Button>
           </div>

@@ -54,7 +54,11 @@ const ProgrammeShowsList: React.FC<ProgrammeShowsListProps> = ({
           <div className=' layout space-x-2 text-white py-2'>
             {alphabet.map((letter) =>
               lettersWithShows.includes(letter) ? (
-                <button key={letter} onClick={() => scrollToShow(letter)}>
+                <button
+                  key={letter}
+                  onClick={() => scrollToShow(letter)}
+                  aria-label={letter}
+                >
                   {letter}
                 </button>
               ) : (

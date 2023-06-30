@@ -12,6 +12,18 @@ const Shows: NextPage<{
 }> = ({ page }) => {
   const { programmeShows } = useContext(DataContext)!;
 
+  // const sortedShows = [...programmeShows].sort((a, b) => {
+  //   const titleA = a.attributes.title.toLowerCase();
+  //   const titleB = b.attributes.title.toLowerCase();
+  //   if (titleA < titleB) {
+  //     return -1;
+  //   }
+  //   if (titleA > titleB) {
+  //     return 1;
+  //   }
+  //   return 0;
+  // });
+
   return (
     <>
       <SEOComponent

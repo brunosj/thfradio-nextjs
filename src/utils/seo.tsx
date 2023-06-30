@@ -12,7 +12,10 @@ export const SEOComponent = ({
     <Head>
       <title>{title || siteMetadata.title}</title>
       <link rel='icon' href='/favicon.ico' />
-      <meta name='description' content={description} />
+      <meta
+        name='description'
+        content={description || siteMetadata.description}
+      />
       <meta property='og:title' content={siteMetadata.title} />
       <meta property='og:url' content={siteMetadata.siteUrl} />
       <meta property='og:description' content={siteMetadata.description} />
