@@ -131,12 +131,12 @@ export const LiveTicker = () => {
 
   return (
     <div className=' fixed top-16 z-50 w-full bg-white shadow-lg opacity-100 border-darkBlue border-b'>
-      <div className='layout lg:h-12  font-mono flex items-center   space-x-3 justify-between flex-col lg:flex-row'>
+      <div className='layout h-full   font-mono flex items-center   space-x-3 justify-between flex-col lg:flex-row'>
         <div className='hidden lg:block w-full lg:w-1/4 py-2 lg:py-0 space-x-2 text-xs lg:text-sm '>
           <span className='uppercase font-light'>Live from Airport Berlin</span>
           <span className='uppercase font-bold italic'>Now Playing:</span>
         </div>
-        <div className='w-full lg:w-4/6 py-3 mt-1 lg:mt-0'>
+        <div className='w-full lg:w-4/6 py-3 mt-1 lg:mt-0 min-h-full'>
           <Marquee
             gradient={false}
             gradientWidth={25}

@@ -1,9 +1,30 @@
+import { useRouter } from 'next/router';
 import Link from 'next/link';
-import { Button } from '@/types/uiInterface';
+import { Button as ButtonProps } from '@/types/uiInterface';
 import clsx from 'clsx';
 
-const Button = ({ children, path, color, className, ariaLabel }: Button) => {
+const Button = ({
+  children,
+  path,
+  color,
+  className,
+  ariaLabel,
+  onClick,
+}: ButtonProps & {
+  onClick?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+}) => {
   const isExternal = path.slice(0, 4) === 'http';
+  const isAnchor = path.startsWith('/#');
+  const router = useRouter();
+
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    if (onClick) {
+      onClick(e);
+    } else if (!isExternal && !isAnchor) {
+      e.preventDefault();
+      router.push(path);
+    }
+  };
 
   return (
     <button
@@ -19,17 +40,18 @@ const Button = ({ children, path, color, className, ariaLabel }: Button) => {
             color === 'blue',
         }
       )}
+      onClick={handleClick}
       aria-label={ariaLabel}
     >
-      <>
-        {isExternal ? (
-          <Link href={path} rel='noopener noreferrer' target='_blank'>
-            {children}
-          </Link>
-        ) : (
-          <Link href={path}>{children}</Link>
-        )}
-      </>
+      {isExternal ? (
+        <Link href={path} rel='noopener noreferrer' target='_blank'>
+          {children}
+        </Link>
+      ) : isAnchor ? (
+        children
+      ) : (
+        <Link href={path}>{children}</Link>
+      )}
     </button>
   );
 };

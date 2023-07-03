@@ -1,7 +1,7 @@
 .embla {
   --slide-spacing: 1rem;
   --slide-size: 100%;
-  --slide-height: 19rem;
+  --slide-height: 26rem;
   /* padding: 1.6rem; */
   position: relative;
 }
@@ -71,7 +71,6 @@
   border: 0;
   padding: 0;
   margin: 0;
-  
 }
 .embla__dots {
   z-index: 1;
@@ -89,18 +88,17 @@
   height: 1rem;
   display: flex;
   align-items: center;
-  margin: 0.50rem;
-
+  margin: 0.5rem;
 }
 .embla__dot:after {
   background: #ff6314;
-  border-radius: 50%; 
+  border-radius: 50%;
   width: 100%;
   height: 100%;
   content: '';
 }
 .embla__dot--selected:after {
-  background: #1200ff
+  background: #1200ff;
 }
 .embla__button {
   z-index: 1;
@@ -126,4 +124,10 @@
 .embla__button__svg {
   width: 65%;
   height: 65%;
+}
+
+@media (max-width: 1024px) {
+  .embla__dot {
+    visibility: hidden;
+  }
 }

@@ -120,7 +120,9 @@ const ShowDetails: React.FC<ShowDetailsProps> = ({ currentContent }) => {
               </div>
             )}
         </div>
-        <ReactMarkdown>{currentContent.attributes.description}</ReactMarkdown>
+        <div className='text-sm lg:text-base'>
+          <ReactMarkdown>{currentContent.attributes.description}</ReactMarkdown>
+        </div>
       </div>
     </div>
   );

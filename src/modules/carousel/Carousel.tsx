@@ -63,7 +63,6 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
     }`;
   };
 
-
   return (
     <>
       <div className='embla'>

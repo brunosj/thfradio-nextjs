@@ -59,7 +59,7 @@ const Pagination: React.FC<PaginationProps> = ({
           }`}
           disabled={currentPage === 1}
           onClick={() => handlePageChange(currentPage - 1)}
-          aria-label='Pagination'
+          aria-label='Go to previous page'
         >
           <ChevronLeft />
         </button>
@@ -89,6 +89,7 @@ const Pagination: React.FC<PaginationProps> = ({
           }`}
           disabled={currentPage === totalPages}
           onClick={() => handlePageChange(currentPage + 1)}
+          aria-label={`Go to next page`}
         >
           <ChevronRight />
         </button>
