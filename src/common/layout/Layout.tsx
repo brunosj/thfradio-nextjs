@@ -14,8 +14,8 @@ export const Layout = ({ children }: Props) => {
       <main
         className={
           isMobileMenuOpen
-            ? ' pt-12 filter blur-sm duration-700 ease-in-out'
-            : 'pt-12'
+            ? ' lg:pt-10 filter blur-sm duration-700 ease-in-out'
+            : 'lg:pt-10'
         }
       >
         {/* <LiveTicker /> */}
