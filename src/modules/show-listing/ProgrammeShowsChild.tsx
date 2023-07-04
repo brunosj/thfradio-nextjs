@@ -20,7 +20,7 @@ const ProgrammeShowsChild = React.forwardRef<
   return (
     <div key={item.id} ref={ref}>
       <Link
-        className='group flex items-center flex-row border rounded-xl border-blue-600 bg-white hover:bg-blue-500 hover:text-white font-mono duration-200 h-16 lg:h-32'
+        className='group flex items-center flex-row border rounded-xl border-blue-600 bg-white hover:bg-blue-500 hover:text-white font-mono duration-200 h-20 lg:h-32'
         href={`/shows/${item.attributes.slug}`}
       >
         {item.attributes.picture.data && (

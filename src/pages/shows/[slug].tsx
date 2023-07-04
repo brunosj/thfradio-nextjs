@@ -72,7 +72,7 @@ const ShowPage: NextPage<ShowPage> = ({ content, otherLocaleContent }) => {
               </div>
             </div>
           ) : (
-            <div className='layout relative h-[30vh] w-full bg-orange-500'>
+            <div className='layout relative h-[45vh] w-full bg-orange-500'>
               <ShowDetails currentContent={currentContent} />
             </div>
           )}

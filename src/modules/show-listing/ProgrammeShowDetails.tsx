@@ -79,7 +79,7 @@ const ShowDetails: React.FC<ShowDetailsProps> = ({ currentContent }) => {
     <div className='bg-blue-500 rounded-l-xl rounded-r-none lg:rounded-r-xl text-white lg:w-1/2 max-h-fit absolute -bottom-40'>
       <div className='layout py-6 lg:py-12 space-y-6'>
         <h1 className='font-bold'>{currentContent.attributes.title}</h1>
-        <div className=' text-white z-0' id='showDetails'>
+        <div className=' text-white z-0 text-sm lg:text-base' id='showDetails'>
           {currentContent.attributes.frequency &&
             currentContent.attributes.day &&
             currentContent.attributes.startTime &&
