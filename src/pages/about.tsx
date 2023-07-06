@@ -34,7 +34,7 @@ const About: NextPage<{
           button={page.attributes.radioSection.button}
           links={page.attributes.radioSection.links}
         />
-        <CodeOfConduct />
+        <CodeOfConduct textSlides={page.attributes.codeOfConduct} />
         <ImageBanner
           src={page.attributes.imageBanner.data.attributes.url}
           alt='THF Radio at Torhaus'
@@ -54,7 +54,7 @@ export default About;
 
 export const getStaticProps = async ({ locale }: { locale: string }) => {
   const pagesResponse = await fetch(
-    `${process.env.STRAPI_PUBLIC_API_URL}about?locale=${locale}&populate[page][populate]=*&populate[radioSection][populate]=*&populate[torhausSection][populate]=*&populate[heroPictures][populate]=*&populate[imageBanner][populate]=*`
+    `${process.env.STRAPI_PUBLIC_API_URL}about?locale=${locale}&populate[page][populate]=*&populate[radioSection][populate]=*&populate[torhausSection][populate]=*&populate[heroPictures][populate]=*&populate[imageBanner][populate]=*&populate[codeOfConduct][populate]=*`
   );
   const page = await pagesResponse.json();
 

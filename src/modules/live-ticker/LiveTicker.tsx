@@ -132,7 +132,7 @@ export const LiveTicker = () => {
   return (
     <div className='fixed top-16 z-50 w-full bg-white  opacity-100 '>
       <div className='layout h-full   font-mono flex items-center   space-x-3 justify-between flex-col lg:flex-row'>
-        <div className='hidden lg:block w-full lg:w-1/4 py-2 lg:py-0 space-x-2 text-xs lg:text-sm '>
+        <div className='hidden lg:block w-full lg:w-1/3 xl:w-1/4 py-2 lg:py-0 space-x-2 text-xs lg:text-sm  whitespace-pre'>
           <span className='uppercase font-light'>Live from Airport Berlin</span>
           <span className='uppercase font-bold italic'>Now Playing:</span>
         </div>

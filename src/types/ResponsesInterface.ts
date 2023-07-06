@@ -185,6 +185,7 @@ export interface AboutTypes {
         };
       };
     };
+    codeOfConduct: TextSlide[];
   };
 }
 
@@ -193,4 +194,9 @@ export interface PageComponent {
   title: string;
   description: string;
   slug: string;
+}
+
+export interface TextSlide {
+  heading: string;
+  text: string;
 }

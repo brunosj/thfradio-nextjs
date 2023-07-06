@@ -5,7 +5,7 @@ import Button from '@/common/ui/UIButton';
 import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
 import clsx from 'clsx';
-import EmblaCarousel from '../carousel/Carousel';
+import ImageCarousel from '../carousel/ImageCarousel';
 import { Pictures } from '@/types/ResponsesInterface';
 import { useSmoothScroll } from '@/hooks/useSmoothScroll';
 
@@ -59,7 +59,7 @@ const Hero = ({
           </div>
         </div>
         <div>
-          <EmblaCarousel slides={images} />
+          <ImageCarousel slides={images} />
         </div>
       </div>
       {showButtons && (

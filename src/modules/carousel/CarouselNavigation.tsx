@@ -18,6 +18,21 @@ export const DotButton: React.FC<DotButtonPropType> = (props) => {
   );
 };
 
+export const DotButtonText: React.FC<DotButtonPropType> = (props) => {
+  const { selected, onClick } = props;
+
+  return (
+    <button
+      className={'textEmbla__dot'.concat(
+        selected ? ' textEmbla__dot--selected' : ''
+      )}
+      type='button'
+      onClick={onClick}
+      aria-label='Other slide'
+    />
+  );
+};
+
 type PrevNextButtonPropType = {
   enabled: boolean;
   onClick: () => void;
