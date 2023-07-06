@@ -71,6 +71,7 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
             {slides.data.map((slide, index) => (
               <div className='embla__slide' key={index}>
                 <div className='relative h-[30rem] w-full'>
+                  <div className='absolute lg:hidden top-0 left-0 w-full h-full bg-black bg-opacity-30 z-50'></div>
                   <Image
                     className='object-cover lg:rounded-lg'
                     src={imageByIndex(slides, index)}
