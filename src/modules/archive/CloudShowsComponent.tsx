@@ -85,7 +85,7 @@ const CloudShowsComponent = ({ items, tagsList }: ShowCardProps) => {
 
   return (
     <div className='relative w-full' ref={topRef}>
-      <div className='block lg:sticky top-[7rem] z-50 opacity-100 lg:flex pb-12  '>
+      <div className='block lg:sticky top-[6.5rem] z-50 opacity-100 lg:flex pb-12  '>
         <CloudShowsFilter
           sortedTags={sortedTags}
           selectedTag={selectedTag}
