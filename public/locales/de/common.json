@@ -27,18 +27,13 @@
       "lang": "de"
     },
     {
-      "name": "Neueste",
+      "name": "Archiv",
       "path": "/#latest",
       "lang": "de"
     },
     {
-      "name": "Über uns",
-      "path": "/about",
-      "lang": "de"
-    },
-    {
-      "name": "Torhaus",
-      "path": "https://torhausberlin.de/",
+      "name": "Info",
+      "path": "/info",
       "lang": "de"
     },
     {

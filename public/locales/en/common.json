@@ -32,13 +32,8 @@
       "lang": "en"
     },
     {
-      "name": "About",
-      "path": "/about",
-      "lang": "en"
-    },
-    {
-      "name": "Torhaus",
-      "path": "https://torhausberlin.de/",
+      "name": "Info",
+      "path": "/info",
       "lang": "en"
     },
     {

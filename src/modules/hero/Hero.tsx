@@ -50,7 +50,7 @@ const Hero = ({
           </div>
           <div className='pt-6 flex justify-center order-3 '>
             <Button
-              path='/about'
+              path='/info'
               color='white-orange'
               ariaLabel={`Navigate to About page`}
             >
@@ -66,7 +66,7 @@ const Hero = ({
         <>
           <div className='hidden lg:flex justify-center order-3 pb-6 lg:pb-0'>
             <Button
-              path='/about'
+              path='/info'
               color='white-orange'
               ariaLabel={`Navigate to About page`}
             >
