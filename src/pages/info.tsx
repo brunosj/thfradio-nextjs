@@ -6,7 +6,7 @@ import Hero from '@/modules/hero/Hero';
 import { AboutTypes } from '@/types/ResponsesInterface';
 import AboutSection from '@/modules/about-section/aboutSection';
 import ImageBanner from '@/modules/image-banner/ImageBanner';
-import CodeOfConduct from '@/modules/code-of-conduct/codeOfConduct';
+import CodeOfConduct from '@/modules/code-of-conduct/CodeOfConduct';
 import { SEOComponent } from '@/utils/seo';
 
 const About: NextPage<{
