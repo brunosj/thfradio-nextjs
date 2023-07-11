@@ -6,6 +6,7 @@
   "archivePlaying": "THF Radio Archiv",
   "on": "am",
   "allShows": "Alle THF Shows",
+  "allNews": "Alle THF News",
   "aboutUs": "Über uns",
   "fromTheArchive": "Aus dem Archiv",
   "latestShows": "Neueste Sendungen",
@@ -34,6 +35,11 @@
     {
       "name": "Info",
       "path": "/info",
+      "lang": "de"
+    },
+    {
+      "name": "News",
+      "path": "/news",
       "lang": "de"
     },
     {

@@ -58,18 +58,11 @@ const TextCarousel: React.FC<PropType> = (props) => {
     emblaApi.on('select', onSelect);
   }, [emblaApi, onInit, onSelect]);
 
-  const imageByIndex = (slides: TextSlide[], index: number): string => {
-    if (slides.length === 0) {
-      return ''; // or throw an error, depending on your needs
-    }
-    return '';
-  };
-
   return (
     <>
       <div className='embla'>
         <div className='embla__viewport' ref={emblaRef}>
-          <div className='textEmbla__container'>
+          <div className='embla__container embla__adjustHeight'>
             {slides.map((slide, index) => (
               <div className='embla__slide' key={index}>
                 <div className='layout  w-full lg:w-1/2 m-auto space-y-6 markdown pb-6'>

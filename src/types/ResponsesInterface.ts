@@ -55,6 +55,26 @@ export interface ValidShow extends CloudShowTypes {
   date: Date;
 }
 
+export interface NewsType {
+  attributes: {
+    title: string;
+    text: string;
+    date: string;
+    slug: string;
+    summary: string;
+    picture: {
+      data: {
+        id: number;
+        attributes: {
+          name: string;
+          url: string;
+        };
+      };
+    };
+    shows?: ShowTypes[];
+  };
+}
+
 export interface ShowTypes {
   attributes: {
     title: string;
@@ -153,6 +173,7 @@ export interface HomepageTypes {
       }>;
     };
     shows: HomepageSection;
+    news: HomepageSection;
     programme: HomepageSection;
     archive: HomepageSection;
     pictureGallery: {

@@ -6,13 +6,13 @@ import BarsSpinner from '@/common/ui/BarsSpinner';
 
 interface ProgrammeProps {
   title: string;
-  subtitle: string;
+  text: string;
   calendarEntries: CalendarEntry[];
 }
 
 const HomeProgrammeSection = ({
   title,
-  subtitle,
+  text,
   calendarEntries,
 }: ProgrammeProps) => {
   const [isLoading, setIsLoading] = useState(true);
@@ -24,7 +24,7 @@ const HomeProgrammeSection = ({
   }, [calendarEntries]);
   return (
     <section className='bg-blue-500 sectionPb' id='programme'>
-      <SectionHeader title={title} subtitle={subtitle} />
+      <SectionHeader title={title} text={text} />
       <div className='flex justify-around m-auto'>
         {isLoading ? (
           <div className='m-auto text-center'>

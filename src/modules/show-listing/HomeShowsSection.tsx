@@ -7,17 +7,17 @@ import ImageGallery from '../image-gallery/imageGallery';
 
 interface ShowsProps {
   title: string;
-  subtitle: string;
   showListings?: ShowTypes[];
   pictures: PictureType[];
+  text: string;
 }
 
-const HomeShowSection = ({ title, subtitle, pictures }: ShowsProps) => {
+const HomeShowSection = ({ title, pictures, text }: ShowsProps) => {
   const { t } = useTranslation();
 
   return (
     <section className='bg-orange-500 sectionPb'>
-      <SectionHeader title={title} subtitle={subtitle} />
+      <SectionHeader title={title} text={text} />
       <div className='layout'>
         <ImageGallery items={pictures} />
       </div>

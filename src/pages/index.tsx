@@ -10,6 +10,7 @@ import HomeShowSection from '@/modules/show-listing/HomeShowsSection';
 import HomeProgrammeSection from '@/modules/timetable/HomeProgrammeSection';
 import HomeArchiveSection from '@/modules/archive/HomeArchiveSection';
 import { SEOComponent } from '@/utils/seo';
+import HomeNewsSection from '@/modules/news/HomeNewsSection';
 
 const Home: NextPage<{
   page: HomepageTypes;
@@ -28,20 +29,24 @@ const Home: NextPage<{
           showButtons={true}
           picturePosition='right'
         />
+        <div className='grid grid-cols-2'></div>
+        <HomeNewsSection
+          title={page.attributes.news.title}
+          text={page.attributes.news.text}
+        />
         <HomeShowSection
           title={page.attributes.shows.title}
-          subtitle={page.attributes.shows.subtitle}
+          text={page.attributes.shows.text}
           showListings={programmeShows}
           pictures={page.attributes.pictureGallery.data}
         />
         <HomeProgrammeSection
           title={page.attributes.programme.title}
-          subtitle={page.attributes.programme.subtitle}
+          text={page.attributes.programme.text}
           calendarEntries={calendarEntries}
         />
         <HomeArchiveSection
           title={page.attributes.archive.title}
-          subtitle={page.attributes.archive.subtitle}
           text={page.attributes.archive.text}
           shows={cloudShows}
           tagsList={tagsList}

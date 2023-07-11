@@ -3,7 +3,6 @@ import type { NextPage } from 'next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useTranslation } from 'next-i18next';
 import { useRouter } from 'next/router';
-import ReactMarkdown from 'react-markdown';
 import Layout from '@/common/layout/Layout';
 import { SEOComponent } from '@/utils/seo';
 import CloudShowChild from '@/modules/archive/CloudShowChild';
