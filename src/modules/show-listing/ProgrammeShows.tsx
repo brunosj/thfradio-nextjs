@@ -27,12 +27,12 @@ const ProgrammeShows: React.FC<ProgrammeShowsProps> = ({ items }) => {
 
   return (
     <>
-      <ProgrammeShowsList items={activeShows} isActive={true} locale={locale} />
-      <ProgrammeShowsList
+      <ProgrammeShowsList items={items} isActive={true} locale={locale} />
+      {/* <ProgrammeShowsList
         items={inactiveShows}
         isActive={false}
         locale={locale}
-      />
+      /> */}
     </>
   );
 };

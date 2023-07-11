@@ -7,6 +7,7 @@
   "on": "am",
   "allShows": "Alle THF Shows",
   "allNews": "Alle THF News",
+  "ongoing": "Aktiv",
   "aboutUs": "Über uns",
   "fromTheArchive": "Aus dem Archiv",
   "latestShows": "Neueste Sendungen",
@@ -17,6 +18,11 @@
   "menuTitle": "Menü",
   "contactTitle": "Kontakt",
   "menu": [
+    {
+      "name": "News",
+      "path": "/news",
+      "lang": "de"
+    },
     {
       "name": "Sendungen",
       "path": "/shows",
@@ -37,11 +43,7 @@
       "path": "/info",
       "lang": "de"
     },
-    {
-      "name": "News",
-      "path": "/news",
-      "lang": "de"
-    },
+
     {
       "name": "Chat",
       "path": "https://thfchat.chatango.com/",

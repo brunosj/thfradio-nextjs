@@ -1,9 +1,6 @@
 import { useState, useEffect } from 'react';
 import React from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
 import { ShowTypes } from '@/types/ResponsesInterface';
-import { CMS_URL } from '@/utils/constants';
 import useShowListings from '@/hooks/useShowListings';
 import BarsSpinner from '@/common/ui/BarsSpinner';
 import ShowListingChild from './ProgrammeShowsChild';
@@ -77,9 +74,9 @@ const ProgrammeShowsList: React.FC<ProgrammeShowsListProps> = ({
 
       {!isActive && <div className='bg-blue-500 opacity-90 py-3' />}
       <div className='layout py-12 bg-orange-500 grid grid-cols-1 gap-3 lg:gap-6'>
-        <h2 className='font-mono text-white text-2xl font-bold mb-4'>
+        {/* <h2 className='font-mono text-white text-2xl font-bold mb-4'>
           {getTitleByLocale()}
-        </h2>
+        </h2> */}
         {isLoading ? (
           <div className='m-auto text-center'>
             <BarsSpinner color='#1200ff' />

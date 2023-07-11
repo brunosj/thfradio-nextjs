@@ -10,7 +10,7 @@ export const SEOComponent = ({
 }) => {
   return (
     <Head>
-      <title>{title || siteMetadata.title}</title>
+      <title>{`${title ? `${title} | ` : ''} ${siteMetadata.title}`}</title>
       <link rel='icon' href='/favicon.ico' />
       <meta
         name='description'
