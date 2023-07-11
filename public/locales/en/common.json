@@ -19,6 +19,11 @@
   "contactTitle": "Contact",
   "menu": [
     {
+      "name": "News",
+      "path": "/news",
+      "lang": "en"
+    },
+    {
       "name": "Shows",
       "path": "/shows",
       "lang": "en"
@@ -38,11 +43,7 @@
       "path": "/info",
       "lang": "en"
     },
-    {
-      "name": "News",
-      "path": "/news",
-      "lang": "en"
-    },
+
     {
       "name": "Chat",
       "path": "https://thfchat.chatango.com/",
