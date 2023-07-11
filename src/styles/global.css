@@ -82,6 +82,10 @@ h6 {
   @apply py-3;
 }
 
+.markdown h2 {
+  @apply py-3;
+}
+
 .markdown li {
   @apply list-decimal text-left;
 }

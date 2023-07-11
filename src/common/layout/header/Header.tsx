@@ -31,22 +31,26 @@ const Header: React.FC<HeaderProps> = ({ isOpen, setIsOpen }) => {
     e: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
     href: string
   ) => {
-    e.preventDefault();
+    const isExternal = href.slice(0, 4) === 'http';
+    if (!isExternal) {
+      e.preventDefault();
 
-    if (href.startsWith('/#') && router.pathname === '/') {
-      const element = document.getElementById(href.slice(2));
+      if (href.startsWith('/#') && router.pathname === '/') {
+        const element = document.getElementById(href.slice(2));
 
-      if (element) {
-        const elementPositionY = element.getBoundingClientRect().top;
-        window.scrollTo({
-          top: elementPositionY + window.scrollY - 110,
-          behavior: 'smooth',
-        });
+        if (element) {
+          const elementPositionY = element.getBoundingClientRect().top;
+          window.scrollTo({
+            top: elementPositionY + window.scrollY - 100,
+            behavior: 'smooth',
+          });
+        }
+      } else {
+        router.push(href);
       }
-    } else {
-      router.push(href);
     }
   };
+
   // Mobile menu events
   const menuRef = useRef<HTMLDivElement>(null);
 
