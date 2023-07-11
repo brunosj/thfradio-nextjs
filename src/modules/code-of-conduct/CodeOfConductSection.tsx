@@ -5,7 +5,7 @@ type Props = {
   textSlides: TextSlide[];
 };
 
-const CodeOfConduct = ({ textSlides }: Props) => {
+const CodeOfConductSection = ({ textSlides }: Props) => {
   return (
     <section className='sectionPy bg-orange-500'>
       <div className='text-white text-center'>
@@ -18,4 +18,4 @@ const CodeOfConduct = ({ textSlides }: Props) => {
   );
 };
 
-export default CodeOfConduct;
+export default CodeOfConductSection;

@@ -6,7 +6,7 @@ import Hero from '@/modules/hero/Hero';
 import { AboutTypes } from '@/types/ResponsesInterface';
 import AboutSection from '@/modules/about-section/aboutSection';
 import ImageBanner from '@/modules/image-banner/ImageBanner';
-import CodeOfConduct from '@/modules/code-of-conduct/CodeOfConduct';
+import CodeOfConductSection from '@/modules/code-of-conduct/CodeOfConductSection';
 import { SEOComponent } from '@/utils/seo';
 
 const About: NextPage<{
@@ -34,7 +34,7 @@ const About: NextPage<{
           button={page.attributes.radioSection.button}
           links={page.attributes.radioSection.links}
         />
-        <CodeOfConduct textSlides={page.attributes.codeOfConduct} />
+        <CodeOfConductSection textSlides={page.attributes.codeOfConduct} />
         <ImageBanner
           src={page.attributes.imageBanner.data.attributes.url}
           alt='THF Radio at Torhaus'
