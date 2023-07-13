@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@types/next": "^9.0.0",
+    "@widgetbot/react-embed": "^1.7.0",
     "clsx": "^1.2.1",
     "date-fns": "^2.30.0",
     "embla-carousel-auto-height": "8.0.0-rc07",

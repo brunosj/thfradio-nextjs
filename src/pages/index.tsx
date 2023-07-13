@@ -34,16 +34,16 @@ const Home: NextPage<{
           title={page.attributes.news.title}
           text={page.attributes.news.text}
         />
+        <HomeProgrammeSection
+          title={page.attributes.programme.title}
+          text={page.attributes.programme.text}
+          calendarEntries={calendarEntries}
+        />
         <HomeShowSection
           title={page.attributes.shows.title}
           text={page.attributes.shows.text}
           showListings={programmeShows}
           pictures={page.attributes.pictureGallery.data}
-        />
-        <HomeProgrammeSection
-          title={page.attributes.programme.title}
-          text={page.attributes.programme.text}
-          calendarEntries={calendarEntries}
         />
         <HomeArchiveSection
           title={page.attributes.archive.title}

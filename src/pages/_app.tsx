@@ -6,6 +6,7 @@ import { appWithTranslation } from 'next-i18next';
 import { DataProvider } from 'src/context/DataContext';
 import LiveTicker from '@/modules/live-ticker/LiveTicker';
 import MixcloudWidget from '@/modules/mixcloud/MixcloudWidget';
+import JoinChat from '@/modules/chat/JoinChat';
 
 function THFRadioApp({ Component, pageProps }: AppProps) {
   return (
@@ -15,6 +16,7 @@ function THFRadioApp({ Component, pageProps }: AppProps) {
         <Component {...pageProps} />
         <MixcloudWidget />
       </PlayerProvider>
+      <JoinChat />
     </DataProvider>
   );
 }
