@@ -23,7 +23,7 @@ export const Layout = ({ children }: Props) => {
       </main>
       <Footer />
       {/* <MixcloudWidget /> */}
-      <ScrollToTopButton />
+      {/* <ScrollToTopButton /> */}
     </div>
   );
 };
