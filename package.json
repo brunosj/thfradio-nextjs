@@ -14,6 +14,7 @@
     "clsx": "^1.2.1",
     "date-fns": "^2.30.0",
     "embla-carousel-auto-height": "8.0.0-rc07",
+    "embla-carousel-autoplay": "8.0.0-rc11",
     "embla-carousel-react": "8.0.0-rc07",
     "i18next": "^22.5.1",
     "next": "^13.4.9",

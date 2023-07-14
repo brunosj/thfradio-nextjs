@@ -16,6 +16,9 @@ dependencies:
   embla-carousel-auto-height:
     specifier: 8.0.0-rc07
     version: 8.0.0-rc07(embla-carousel@8.0.0-rc07)
+  embla-carousel-autoplay:
+    specifier: 8.0.0-rc11
+    version: 8.0.0-rc11(embla-carousel@8.0.0-rc07)
   embla-carousel-react:
     specifier: 8.0.0-rc07
     version: 8.0.0-rc07(react@18.2.0)
@@ -1030,6 +1033,14 @@ packages:
     resolution: {integrity: sha512-UD2u4BSaQfWeqaYgZRjZ4tFaxxnQMr2eg4+5pkGjUYlDnvOQWdqL70e22RlUsbG/oTC6MN+Z8Ag5vbQSxg0nXw==}
     peerDependencies:
       embla-carousel: 8.0.0-rc07
+    dependencies:
+      embla-carousel: 8.0.0-rc07
+    dev: false
+
+  /embla-carousel-autoplay@8.0.0-rc11(embla-carousel@8.0.0-rc07):
+    resolution: {integrity: sha512-Yzy0cW1ggGL/bJUbp1n6csKiQVz8qYiMQLwsx+/k3bD3niZyXikWEQMSiDUeNHLNUksBAaqHwoLDsrP6Ci/ydg==}
+    peerDependencies:
+      embla-carousel: 8.0.0-rc11
     dependencies:
       embla-carousel: 8.0.0-rc07
     dev: false

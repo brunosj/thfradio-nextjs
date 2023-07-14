@@ -1,8 +1,9 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState, useRef } from 'react';
 import useEmblaCarousel, {
   EmblaCarouselType,
   EmblaOptionsType,
 } from 'embla-carousel-react';
+import Autoplay from 'embla-carousel-autoplay';
 import { DotButton } from './CarouselNavigation';
 import Image from 'next/image';
 import { Pictures } from '@/types/ResponsesInterface';
@@ -15,22 +16,40 @@ type PropType = {
 
 const ImageCarousel: React.FC<PropType> = (props) => {
   const { slides, options } = props;
-  const [emblaRef, emblaApi] = useEmblaCarousel(options);
+  const autoplay = useRef(
+    Autoplay(
+      { delay: 3000, stopOnInteraction: false }
+      // (emblaRoot) => emblaRoot.parentElement
+    )
+  );
+
+  const [emblaRef, emblaApi] = useEmblaCarousel(options, [autoplay.current]);
   const [prevBtnEnabled, setPrevBtnEnabled] = useState(false);
   const [nextBtnEnabled, setNextBtnEnabled] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [scrollSnaps, setScrollSnaps] = useState<number[]>([]);
 
-  const scrollPrev = useCallback(
-    () => emblaApi && emblaApi.scrollPrev(),
-    [emblaApi]
-  );
-  const scrollNext = useCallback(
-    () => emblaApi && emblaApi.scrollNext(),
-    [emblaApi]
-  );
+  const scrollPrev = useCallback(() => {
+    if (emblaApi) {
+      emblaApi.scrollPrev();
+      autoplay.current.reset();
+    }
+  }, [emblaApi]);
+
+  const scrollNext = useCallback(() => {
+    if (emblaApi) {
+      emblaApi.scrollNext();
+      autoplay.current.reset();
+    }
+  }, [emblaApi]);
+
   const scrollTo = useCallback(
-    (index: number) => emblaApi && emblaApi.scrollTo(index),
+    (index: number) => {
+      if (emblaApi) {
+        emblaApi.scrollTo(index);
+        autoplay.current.reset();
+      }
+    },
     [emblaApi]
   );
 

@@ -24,7 +24,7 @@ const NewsCarousel: React.FC<PropType> = (props) => {
     <div className='news__embla'>
       <div className='embla__viewport' ref={emblaRef}>
         <div className='embla__container'>
-          {slides.map((item, index) => {
+          {slides.slice(0, 6).map((item, index) => {
             const formattedDate = format(
               new Date(item.attributes.date),
               'dd.MM.yyyy'
