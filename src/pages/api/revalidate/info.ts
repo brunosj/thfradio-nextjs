@@ -11,7 +11,7 @@ export default async function handler(
   }
 
   try {
-    await res.revalidate(`/`);
+    await res.revalidate(`/info`);
 
     return res.json({ revalidated: true });
   } catch (error) {
