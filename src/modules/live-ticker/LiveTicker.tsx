@@ -148,7 +148,6 @@ export const LiveTicker = () => {
           </Marquee>
         </div>
         <div className='hidden lg:block ml-auto'>
-          {' '}
           <AudioPlayer
             iconClassName='w-6 h-6 lg:w-10 lg:h-10'
             iconFill='#1200ff'

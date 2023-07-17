@@ -1,12 +1,8 @@
-import React from 'react';
-import { Pause } from '@/common/assets/PauseIcon';
-import { Play } from '@/common/assets/PlayIcon';
-import dynamic from 'next/dynamic';
+import { useEffect, useRef } from 'react';
 import { useRouter } from 'next/router';
 import useAudioStore from '@/hooks/useAudioStore';
-
-const ReactPlayer = dynamic(() => import('react-player/lazy'), { ssr: false });
-
+import { Pause } from '@/common/assets/PauseIcon';
+import { Play } from '@/common/assets/PlayIcon';
 interface AudioPlayerProps {
   iconFill: string;
   iconClassName: string;
@@ -19,11 +15,31 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({
   const router = useRouter();
   const liveStreamUrl: string = 'https://thfradio2.out.airtime.pro/thfradio2_b';
 
+  const audioRef = useRef<HTMLAudioElement>(null);
+  const sourceRef = useRef<HTMLSourceElement>(null);
+
   const { isPlaying, volume, togglePlay, setVolume } = useAudioStore();
+
+  useEffect(() => {
+    if (isPlaying) {
+      if (!sourceRef?.current?.getAttribute('src')) {
+        sourceRef?.current?.setAttribute('src', liveStreamUrl);
+      }
+
+      audioRef?.current?.load();
+      audioRef?.current?.play();
+    } else {
+      sourceRef?.current?.setAttribute('src', '');
+      audioRef?.current?.pause();
+    }
+  }, [isPlaying, liveStreamUrl]);
 
   const handleVolumeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newVolume = parseFloat(event.target.value);
     setVolume(newVolume);
+    if (audioRef.current) {
+      audioRef.current.volume = newVolume;
+    }
   };
 
   return (
@@ -36,17 +52,9 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({
         )}
       </button>
 
-      {isPlaying && (
-        <ReactPlayer
-          key={router.route}
-          url={liveStreamUrl}
-          playing={true}
-          volume={volume}
-          width='0' // set to 0 for audio-only player
-          height='0' // set to 0 for audio-only player
-          playsinline
-        />
-      )}
+      <audio ref={audioRef}>
+        <source ref={sourceRef} type='audio/mpeg' />
+      </audio>
 
       <div className='hidden lg:block -mt-2'>
         <input

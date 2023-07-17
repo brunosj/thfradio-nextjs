@@ -1,5 +1,4 @@
 import { AppProps } from 'next/app';
-import { PlayerProvider } from '@/context/PlayerContext';
 import '../styles/global.css';
 import '../modules/carousel/carousel.css';
 import { appWithTranslation } from 'next-i18next';
@@ -11,11 +10,9 @@ import JoinChat from '@/modules/chat/JoinChat';
 function THFRadioApp({ Component, pageProps }: AppProps) {
   return (
     <DataProvider>
-      <PlayerProvider>
-        <LiveTicker />
-        <Component {...pageProps} />
-        <MixcloudWidget />
-      </PlayerProvider>
+      <LiveTicker />
+      <Component {...pageProps} />
+      <MixcloudWidget />
       <JoinChat />
     </DataProvider>
   );
