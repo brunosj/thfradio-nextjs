@@ -1,0 +1,26 @@
+name: Trigger Vercel Deployment
+
+on:
+  schedule:
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Trigger Deployment
+      run: |
+        curl -X POST https://api.vercel.com/v9/now/deployments \
+        -H "Authorization: Bearer ${{ secrets.VERCEL_TOKEN }}" \
+        -H "Content-Type: application/json" \
+        -d '{
+          "name": "thfradio-nextjs",
+          "project": "prj_FIBaExQgSvkKWZ0BIFQdJy0s7FMl",
+          "files": ["package.json", "next.config.js"],
+          "target": "production"
+        }'
