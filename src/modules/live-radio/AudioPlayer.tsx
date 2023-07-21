@@ -1,50 +1,39 @@
-import { useEffect, useRef } from 'react';
-import { useRouter } from 'next/router';
-import useAudioStore from '@/hooks/useAudioStore';
+import { useRef } from 'react';
+import usePlayerState from '@/hooks/usePlayerState';
 import { Pause } from '@/common/assets/PauseIcon';
 import { Play } from '@/common/assets/PlayIcon';
+
 interface AudioPlayerProps {
   iconFill: string;
   iconClassName: string;
 }
 
-const AudioPlayer: React.FC<AudioPlayerProps> = ({
-  iconFill,
+export default function LivePlayer({
   iconClassName,
-}) => {
-  const router = useRouter();
-  const liveStreamUrl: string = 'https://thfradio2.out.airtime.pro/thfradio2_b';
+  iconFill,
+}: AudioPlayerProps) {
+  const AUDIO_SRC = `https://thfradio2.out.airtime.pro/thfradio2_b`;
 
-  const audioRef = useRef<HTMLAudioElement>(null);
-  const sourceRef = useRef<HTMLSourceElement>(null);
+  const player = useRef<HTMLAudioElement>(
+    null
+  ) as React.MutableRefObject<HTMLAudioElement>;
+  const source = useRef<HTMLSourceElement>(
+    null
+  ) as React.MutableRefObject<HTMLSourceElement>;
 
-  const { isPlaying, volume, togglePlay, setVolume } = useAudioStore();
-
-  useEffect(() => {
-    if (isPlaying) {
-      if (!sourceRef?.current?.getAttribute('src')) {
-        sourceRef?.current?.setAttribute('src', liveStreamUrl);
-      }
-
-      audioRef?.current?.load();
-      audioRef?.current?.play();
-    } else {
-      sourceRef?.current?.setAttribute('src', '');
-      audioRef?.current?.pause();
-    }
-  }, [isPlaying, liveStreamUrl]);
-
-  const handleVolumeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const newVolume = parseFloat(event.target.value);
-    setVolume(newVolume);
-    if (audioRef.current) {
-      audioRef.current.volume = newVolume;
-    }
-  };
+  const { isPlaying, play, pause } = usePlayerState({
+    audioRef: player,
+    sourceRef: source,
+    url: AUDIO_SRC,
+  });
 
   return (
-    <div className='flex items-center'>
-      <button onClick={togglePlay} aria-label='Toggle play'>
+    <section className='flex items-center'>
+      <button
+        className=''
+        onClick={isPlaying ? pause : play}
+        aria-label={isPlaying ? 'Pause Live Broadcast' : 'Play Live Broadcast'}
+      >
         {isPlaying ? (
           <Pause className={iconClassName} fill={iconFill} />
         ) : (
@@ -52,24 +41,10 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({
         )}
       </button>
 
-      <audio ref={audioRef}>
-        <source ref={sourceRef} type='audio/mpeg' />
+      <audio hidden id='thfradio-live-player' preload='none' ref={player}>
+        <source ref={source} type='audio/mpeg' />
+        Your browser does not support the audio element.
       </audio>
-
-      <div className='hidden lg:block -mt-2'>
-        <input
-          type='range'
-          min='0'
-          max='1'
-          step='0.01'
-          style={{ width: '4rem' }}
-          value={volume}
-          onChange={handleVolumeChange}
-          placeholder='Volume'
-        />
-      </div>
-    </div>
+    </section>
   );
-};
-
-export default AudioPlayer;
+}

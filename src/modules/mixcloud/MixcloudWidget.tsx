@@ -1,54 +1,50 @@
-import React, { useEffect } from 'react';
-import useAudioStore from '@/hooks/useAudioStore';
+import Script from 'next/script';
+import { SyntheticEvent } from 'react';
+import { ActivePlayer, useGlobalStore } from '@/hooks/useStore';
 
-const MixcloudWidget = () => {
-  const { url, isMixcloudPlaying, setMixcloudPlay } = useAudioStore();
+export default function MixcloudPlayer() {
+  const showKey = useGlobalStore((state) => state.showKey);
 
-  useEffect(() => {
-    const handleShowChange = (url: string) => {
-      useAudioStore.setState({ url, source: 'archive' });
-      setMixcloudPlay(true);
-    };
+  const activePlayer = useGlobalStore((state) => state.activePlayer);
+  const activePlayerSet = useGlobalStore((state) => state.activePlayerSet);
 
-    document.addEventListener('mixcloud-show-change', (event: any) => {
-      handleShowChange(event.detail.url);
-    });
+  const handleIframeLoad = async (
+    event: SyntheticEvent<HTMLIFrameElement, Event>
+  ) => {
+    try {
+      activePlayerSet(ActivePlayer.MIXCLOUD);
 
-    return () => {
-      document.removeEventListener('mixcloud-show-change', (event: any) =>
-        handleShowChange(event.detail.url)
-      );
-    };
-  }, [setMixcloudPlay]);
+      const widget = window.Mixcloud.PlayerWidget(event.currentTarget);
 
-  useEffect(() => {
-    if (url && isMixcloudPlaying) {
-      const iframe = document.getElementById(
-        'mixcloud-widget-iframe'
-      ) as HTMLIFrameElement;
-      if (iframe) {
-        iframe.src = `https://www.mixcloud.com/widget/iframe/?hide_cover=1&mini=1&autoplay=1&feed=${encodeURIComponent(
-          url
-        )}`;
-      }
+      await widget.ready;
+
+      await widget.play();
+    } catch (error) {
+      console.error(error);
     }
-  }, [url, isMixcloudPlaying]);
+  };
 
   return (
-    <div className='mixcloud-widget fixed bottom-0 left-0 w-full flex items-end justify-center bg-transparent z-0'>
-      {url && isMixcloudPlaying && (
+    <>
+      {activePlayer === ActivePlayer.MIXCLOUD && showKey && (
         <iframe
-          id='mixcloud-widget-iframe'
-          src={`https://www.mixcloud.com/widget/iframe/?hide_cover=1&mini=1&autoplay=1&feed=${encodeURIComponent(
-            url
-          )}`}
-          frameBorder='0'
-          width='100%'
-          height='60'
-        ></iframe>
+          allow='autoplay'
+          onLoad={handleIframeLoad}
+          id='mixcloud-player'
+          height={60}
+          className='fixed bottom-0 left-0 w-full lg:w-5/6'
+          src={
+            `https://www.mixcloud.com/widget/iframe/?` +
+            `hide_cover=1&` +
+            `autoplay=1&` +
+            `dark=1&` +
+            `mini=1&` +
+            `feed=${showKey}`
+          }
+        />
       )}
-    </div>
-  );
-};
 
-export default MixcloudWidget;
+      <Script src='https://widget.mixcloud.com/media/js/widgetApi.js' />
+    </>
+  );
+}
