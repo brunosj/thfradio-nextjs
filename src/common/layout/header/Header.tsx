@@ -12,6 +12,7 @@ import { useContext } from 'react';
 import { Bars2Icon } from '@/common/assets/Bars2Icon';
 import { Bars3Icon } from '@/common/assets/Bars3Icon';
 import { XMarkIcon } from '@/common/assets/XMarkIcon';
+import { handleAnchorLink } from '@/utils/handleAnchorLink';
 
 interface HeaderProps {
   cloudShows?: CloudShowTypes[];
@@ -31,24 +32,7 @@ const Header: React.FC<HeaderProps> = ({ isOpen, setIsOpen }) => {
     e: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
     href: string
   ) => {
-    const isExternal = href.slice(0, 4) === 'http';
-    if (!isExternal) {
-      e.preventDefault();
-
-      if (href.startsWith('/#') && router.pathname === '/') {
-        const element = document.getElementById(href.slice(2));
-
-        if (element) {
-          const elementPositionY = element.getBoundingClientRect().top;
-          window.scrollTo({
-            top: elementPositionY + window.scrollY - 100,
-            behavior: 'smooth',
-          });
-        }
-      } else {
-        router.push(href);
-      }
-    }
+    handleAnchorLink(e, href, router);
   };
 
   // Mobile menu events

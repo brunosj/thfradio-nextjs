@@ -1,7 +1,6 @@
 import React from 'react';
 import useEmblaCarousel, { EmblaOptionsType } from 'embla-carousel-react';
 import { NewsType } from '@/types/ResponsesInterface';
-import NewsChild from '../news/NewsChild';
 import Image from 'next/image';
 import { CMS_URL } from '@/utils/constants';
 import format from 'date-fns/format';
