@@ -42,12 +42,6 @@
       "name": "Info",
       "path": "/info",
       "lang": "en"
-    },
-
-    {
-      "name": "Chat",
-      "path": "https://discord.gg/3AVWBZmt",
-      "lang": "en"
     }
   ],
   "followMenu": [

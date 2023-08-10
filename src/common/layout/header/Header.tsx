@@ -13,6 +13,7 @@ import { Bars2Icon } from '@/common/assets/Bars2Icon';
 import { Bars3Icon } from '@/common/assets/Bars3Icon';
 import { XMarkIcon } from '@/common/assets/XMarkIcon';
 import { handleAnchorLink } from '@/utils/handleAnchorLink';
+import JoinChatMobile from '@/modules/chat/JoinChatMobile';
 
 interface HeaderProps {
   cloudShows?: CloudShowTypes[];
@@ -181,6 +182,7 @@ const Header: React.FC<HeaderProps> = ({ isOpen, setIsOpen }) => {
               </Link>
             );
           })}
+          <JoinChatMobile />
           <Link
             href={router.asPath}
             onClick={(e) => {
