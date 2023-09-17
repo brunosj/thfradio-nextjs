@@ -110,7 +110,7 @@ const ShowDetails: React.FC<ShowDetailsProps> = ({ currentContent }) => {
                   )}
                   {currentContent.attributes.spotify && (
                     <Link
-                      href={currentContent.attributes.soundcloud}
+                      href={currentContent.attributes.spotify}
                       target='_blank'
                     >
                       <SlSocialSpotify className='w-6 h-6 textHover' />
@@ -118,7 +118,7 @@ const ShowDetails: React.FC<ShowDetailsProps> = ({ currentContent }) => {
                   )}
                   {currentContent.attributes.twitterx && (
                     <Link
-                      href={currentContent.attributes.soundcloud}
+                      href={currentContent.attributes.twitterx}
                       target='_blank'
                     >
                       <SlSocialTwitter className='w-6 h-6 textHover' />
@@ -126,7 +126,7 @@ const ShowDetails: React.FC<ShowDetailsProps> = ({ currentContent }) => {
                   )}
                   {currentContent.attributes.website && (
                     <Link
-                      href={currentContent.attributes.soundcloud}
+                      href={currentContent.attributes.website}
                       target='_blank'
                     >
                       <SlGlobe className='w-6 h-6 textHover' />
