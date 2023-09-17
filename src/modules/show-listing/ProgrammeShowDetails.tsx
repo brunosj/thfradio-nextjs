@@ -19,6 +19,9 @@ interface ShowDetailsProps {
       instagram?: string;
       mail?: string;
       soundcloud?: string;
+      spotify?: string;
+      website?: string;
+      twitterx?: string;
     };
   };
 }
