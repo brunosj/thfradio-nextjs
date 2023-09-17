@@ -1,7 +1,7 @@
 import React from 'react';
 import { AiOutlineInstagram } from 'react-icons/ai';
 import { CiMail } from 'react-icons/ci';
-import { SlSocialSoundcloud } from 'react-icons/sl';
+import { SlSocialSoundcloud, SlSocialSpotify, SlGlobe, SlSocialTwitter } from 'react-icons/sl';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import ReactMarkdown from 'react-markdown';
@@ -100,20 +100,44 @@ const ShowDetails: React.FC<ShowDetailsProps> = ({ currentContent }) => {
                       <AiOutlineInstagram className='w-6 h-6 textHover' />
                     </Link>
                   )}
-                  {currentContent.attributes.mail && (
-                    <Link
-                      href={`mailto:${currentContent.attributes.mail}`}
-                      target='_blank'
-                    >
-                      <CiMail className='w-6 h-6 textHover' />
-                    </Link>
-                  )}
                   {currentContent.attributes.soundcloud && (
                     <Link
                       href={currentContent.attributes.soundcloud}
                       target='_blank'
                     >
                       <SlSocialSoundcloud className='w-6 h-6 textHover' />
+                    </Link>
+                  )}
+                  {currentContent.attributes.spotify && (
+                    <Link
+                      href={currentContent.attributes.soundcloud}
+                      target='_blank'
+                    >
+                      <SlSocialSpotify className='w-6 h-6 textHover' />
+                    </Link>
+                  )}
+                  {currentContent.attributes.twitterx && (
+                    <Link
+                      href={currentContent.attributes.soundcloud}
+                      target='_blank'
+                    >
+                      <SlSocialTwitter className='w-6 h-6 textHover' />
+                    </Link>
+                  )}
+                  {currentContent.attributes.website && (
+                    <Link
+                      href={currentContent.attributes.soundcloud}
+                      target='_blank'
+                    >
+                      <SlGlobe className='w-6 h-6 textHover' />
+                    </Link>
+                  )}
+                  {currentContent.attributes.mail && (
+                    <Link
+                      href={`mailto:${currentContent.attributes.mail}`}
+                      target='_blank'
+                    >
+                      <CiMail className='w-6 h-6 textHover' />
                     </Link>
                   )}
                 </div>
