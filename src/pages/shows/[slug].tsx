@@ -38,16 +38,20 @@ const ShowPage: NextPage<ShowPage> = ({ content, otherLocaleContent }) => {
     }
   }, [cloudShows]);
 
-  const filteredCloudcasts = cloudShows.filter((cloudcast: CloudShowTypes) => {
-    const name = cloudcast.name.replace(/[\s-]/g, '').toLowerCase();
-    const keyword = currentContent.attributes.keyword
-      .replace(/[\s-]/g, '')
-      .toLowerCase();
+  let filteredCloudcasts;
+  let sortedShows;
+  if (cloudShows) {
+    filteredCloudcasts = cloudShows.filter((cloudcast: CloudShowTypes) => {
+      const name = cloudcast.name.replace(/[\s-]/g, '').toLowerCase();
+      const keyword = currentContent.attributes.keyword
+        .replace(/[\s-]/g, '')
+        .toLowerCase();
 
-    return new RegExp(keyword, 'i').test(name);
-  });
+      return new RegExp(keyword, 'i').test(name);
+    });
 
-  const sortedShows = processShows(filteredCloudcasts);
+    sortedShows = processShows(filteredCloudcasts);
+  }
 
   return (
     <>
@@ -83,9 +87,10 @@ const ShowPage: NextPage<ShowPage> = ({ content, otherLocaleContent }) => {
               {currentContent.attributes.description}
             </ReactMarkdown> */}
           </article>
+
           <div
             className={` w-full flex flex-wrap gap-6 lg:gap-12 justify-around ${
-              sortedShows.length >= 1 ? ' pb-6 lg:pb-12' : ''
+              sortedShows && sortedShows.length >= 1 ? ' pb-6 lg:pb-12' : ''
             }`}
           >
             {isLoading ? (
@@ -94,7 +99,7 @@ const ShowPage: NextPage<ShowPage> = ({ content, otherLocaleContent }) => {
               </div>
             ) : (
               <>
-                {sortedShows.map((item, i) => (
+                {sortedShows?.map((item, i) => (
                   <CloudShowChild key={i} item={item} />
                 ))}
               </>
