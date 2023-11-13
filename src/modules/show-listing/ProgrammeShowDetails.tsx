@@ -99,13 +99,13 @@ const ShowDetails: React.FC<ShowDetailsProps> = ({ currentContent }) => {
       <div className='layout py-6 lg:py-12 space-y-6'>
         <div className='flex items-center gap-6'>
           {currentContent.attributes.picture?.data && (
-            <div className='relative w-24 h-24'>
+            <div className='relative w-20 h-20 lg:w-24 lg:h-24 flex-shrink-0'>
               <Image
                 quality={50}
                 src={`${CMS_URL}${currentContent.attributes.picture?.data.attributes.url}`}
                 fill
                 sizes=''
-                className='object-cover rounded-xl aspect-square'
+                className='object-cover rounded-xl aspect-square '
                 alt={currentContent.attributes.picture?.data.attributes.name}
               />
             </div>

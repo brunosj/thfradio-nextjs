@@ -68,7 +68,7 @@ const ShowPage: NextPage<ShowPage> = ({ content, otherLocaleContent }) => {
       <Layout>
         <div className='relative'>
           {currentContent.attributes.pictureFullWidth?.data ? (
-            <div className='relative min-h-[50vh] lg:min-h-[80vh] w-full'>
+            <div className='relative min-h-fit lg:min-h-[80vh] w-full'>
               <Image
                 quality={50}
                 src={`${CMS_URL}${currentContent.attributes.pictureFullWidth?.data.attributes.url}`}
@@ -77,24 +77,18 @@ const ShowPage: NextPage<ShowPage> = ({ content, otherLocaleContent }) => {
                 className='object-cover object-center'
                 alt={currentContent.attributes.title}
               />
-              <div className='layout overflow-hidden py-6 lg:py-0 '>
+              <div className='layout overflow-hidden pt-12 pb-6 '>
                 <ShowDetails currentContent={currentContent} />
               </div>
             </div>
           ) : (
-            <div className='layout relative min-h-[40vh] w-full bg-orange-500 py-6 lg:py-0'>
+            <div className='layout relative min-h-fit lg:min-h-[60vh]  w-full bg-orange-500  pt-12 pb-6'>
               <ShowDetails currentContent={currentContent} />
             </div>
           )}
         </div>
 
-        <div className='bg-darkBlue min-h-[30vh] lg:min-h-[40vh] layout'>
-          <article className='lg:pt-40 pb-6 lg:pb-12 markdown text-white w-1/2'>
-            {/* <ReactMarkdown>
-              {currentContent.attributes.description}
-            </ReactMarkdown> */}
-          </article>
-
+        <div className='bg-darkBlue min-h-[30vh] lg:min-h-[40vh] layout lg:pt-60 pt-12 pb-6 lg:pb-12'>
           <div
             className={` w-full flex flex-wrap gap-6 lg:gap-12 justify-around ${
               sortedShows && sortedShows.length >= 1 ? ' pb-6 lg:pb-12' : ''
