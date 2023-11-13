@@ -92,10 +92,12 @@ const ImageCarousel: React.FC<PropType> = (props) => {
                 <div className='relative h-[30rem] w-full'>
                   <div className='absolute lg:hidden top-0 left-0 w-full h-full bg-black bg-opacity-30 z-50'></div>
                   <Image
+                    quality={50}
                     className='object-cover lg:rounded-lg'
                     src={imageByIndex(slides, index)}
                     alt='Your alt text'
                     fill
+                    priority={true}
                   />
                 </div>
               </div>

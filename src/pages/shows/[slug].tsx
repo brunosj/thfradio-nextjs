@@ -53,36 +53,43 @@ const ShowPage: NextPage<ShowPage> = ({ content, otherLocaleContent }) => {
     sortedShows = processShows(filteredCloudcasts);
   }
 
+  const image =
+    currentContent.attributes.pictureFullWidth.data?.attributes.url ||
+    currentContent.attributes.picture.data?.attributes.url ||
+    '';
+
   return (
     <>
       <SEOComponent
         title={currentContent.attributes.title}
         description={currentContent.attributes.description}
+        image={image}
       />
       <Layout>
         <div className='relative'>
           {currentContent.attributes.pictureFullWidth?.data ? (
-            <div className='relative h-[60vh] w-full'>
+            <div className='relative min-h-[50vh] lg:min-h-[80vh] w-full'>
               <Image
+                quality={50}
                 src={`${CMS_URL}${currentContent.attributes.pictureFullWidth.data.attributes.url}`}
                 fill
                 sizes=''
                 className='object-cover object-center'
                 alt={currentContent.attributes.title}
               />
-              <div className='layout overflow-hidden'>
+              <div className='layout overflow-hidden py-6 lg:py-0 '>
                 <ShowDetails currentContent={currentContent} />
               </div>
             </div>
           ) : (
-            <div className='layout relative h-[45vh] w-full bg-orange-500'>
+            <div className='layout relative min-h-[40vh] w-full bg-orange-500 py-6 lg:py-0'>
               <ShowDetails currentContent={currentContent} />
             </div>
           )}
         </div>
 
-        <div className='bg-darkBlue min-h-[60vh] lg:min-h-[40vh] layout'>
-          <article className='pt-40 pb-6 lg:pb-12 markdown text-white w-1/2'>
+        <div className='bg-darkBlue min-h-[30vh] lg:min-h-[40vh] layout'>
+          <article className='lg:pt-40 pb-6 lg:pb-12 markdown text-white w-1/2'>
             {/* <ReactMarkdown>
               {currentContent.attributes.description}
             </ReactMarkdown> */}

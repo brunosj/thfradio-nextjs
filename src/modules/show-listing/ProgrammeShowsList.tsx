@@ -16,6 +16,14 @@ const ProgrammeShowsList: React.FC<ProgrammeShowsListProps> = ({
   isActive,
   locale,
 }) => {
+  const thfShows = items.filter((item) =>
+    item.attributes.title.toUpperCase().startsWith('THF')
+  );
+
+  const otherShows = items.filter(
+    (item) => !item.attributes.title.toUpperCase().startsWith('THF')
+  );
+
   const [refs, activeLetter, scrollToShow] = useShowListings(items);
 
   const alphabet = Array.from({ length: 26 }, (_, i) =>
@@ -83,7 +91,18 @@ const ProgrammeShowsList: React.FC<ProgrammeShowsListProps> = ({
           </div>
         ) : (
           <>
+            {thfShows
+              .sort((a, b) =>
+                a.attributes.title.localeCompare(b.attributes.title)
+              )
+              .map((item) => (
+                <ShowListingChild key={item.id} item={item} />
+              ))}
+
             {items
+              .filter(
+                (item) => !item.attributes.title.toUpperCase().startsWith('THF')
+              )
               .sort((a, b) =>
                 a.attributes.title.localeCompare(b.attributes.title)
               )

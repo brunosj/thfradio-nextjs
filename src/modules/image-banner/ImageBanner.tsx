@@ -8,6 +8,7 @@ const ImageBanner = ({ src, alt }: Props) => {
   return (
     <div className='relative h-[70vh] w-full'>
       <Image
+        quality={50}
         src={`${CMS_URL}${src}`}
         alt={alt}
         fill

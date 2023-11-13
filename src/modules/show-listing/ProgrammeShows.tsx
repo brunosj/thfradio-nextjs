@@ -22,8 +22,6 @@ const ProgrammeShows: React.FC<ProgrammeShowsProps> = ({ items }) => {
     item.attributes.title[0].toUpperCase()
   );
 
-  const activeShows = items.filter((item) => item.attributes.activeShow);
-  const inactiveShows = items.filter((item) => !item.attributes.activeShow);
 
   return (
     <>

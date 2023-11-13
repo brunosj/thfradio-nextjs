@@ -34,6 +34,7 @@ const NewsCarousel: React.FC<PropType> = (props) => {
                   <Link href={`/news/#${item.attributes.slug}`}>
                     <div className='relative w-full h-48 lg:h-72 imageHover'>
                       <Image
+                        quality={50}
                         src={`${CMS_URL}${item.attributes.picture.data.attributes.url}`}
                         fill
                         sizes=''

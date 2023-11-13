@@ -14,6 +14,7 @@ const ImageGallery = ({ items }: Props) => {
         {items.map((item, i) => (
           <div key={i} className='relative h-48 lg:h-96 w-full'>
             <Image
+              quality={50}
               src={`${CMS_URL}${item.attributes.url}`}
               alt='THF Radio at Torhaus'
               fill

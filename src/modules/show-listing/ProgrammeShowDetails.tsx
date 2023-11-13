@@ -1,11 +1,18 @@
 import React from 'react';
 import { AiOutlineInstagram } from 'react-icons/ai';
 import { CiMail } from 'react-icons/ci';
-import { SlSocialSoundcloud, SlSocialSpotify, SlGlobe, SlSocialTwitter } from 'react-icons/sl';
+import Image from 'next/image';
+import {
+  SlSocialSoundcloud,
+  SlSocialSpotify,
+  SlGlobe,
+  SlSocialTwitter,
+} from 'react-icons/sl';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import ReactMarkdown from 'react-markdown';
 import { Wave } from '@/common/assets/WaveSVG';
+import { CMS_URL } from '@/utils/constants';
 
 interface ShowDetailsProps {
   currentContent: {
@@ -22,6 +29,15 @@ interface ShowDetailsProps {
       spotify?: string;
       website?: string;
       twitterx?: string;
+      picture: {
+        data: {
+          id: number;
+          attributes: {
+            name: string;
+            url: string;
+          };
+        };
+      };
     };
   };
 }
@@ -78,10 +94,28 @@ const ShowDetails: React.FC<ShowDetailsProps> = ({ currentContent }) => {
     return time ? time.slice(0, 5) : '';
   };
 
+  console.log(
+    `${CMS_URL}${currentContent.attributes.picture.data.attributes.url}`
+  );
+
   return (
-    <div className='bg-blue-500 rounded-l-xl rounded-r-none lg:rounded-r-xl text-white lg:w-1/2 max-h-fit absolute -bottom-40'>
+    <div className='bg-blue-500 rounded-xl text-white lg:w-[85%] xl:w-3/4  max-h-fit relative lg:absolute lg:-bottom-40'>
       <div className='layout py-6 lg:py-12 space-y-6'>
-        <h1 className='font-bold'>{currentContent.attributes.title}</h1>
+        <div className='flex items-center gap-6'>
+          {currentContent.attributes.picture.data && (
+            <div className='relative w-24 h-24'>
+              <Image
+                quality={50}
+                src={`${CMS_URL}${currentContent.attributes.picture.data.attributes.url}`}
+                fill
+                sizes=''
+                className='object-cover rounded-xl aspect-square'
+                alt={currentContent.attributes.picture.data.attributes.name}
+              />
+            </div>
+          )}
+          <h1 className='font-bold'>{currentContent.attributes.title}</h1>
+        </div>
         <div className=' text-white z-0 text-sm lg:text-base' id='showDetails'>
           {currentContent.attributes.frequency &&
             currentContent.attributes.day &&
@@ -147,7 +181,7 @@ const ShowDetails: React.FC<ShowDetailsProps> = ({ currentContent }) => {
               </div>
             )}
         </div>
-        <div className='text-sm lg:text-base'>
+        <div className='text-xs md:text-sm lg:text-base markdown'>
           <ReactMarkdown>{currentContent.attributes.description}</ReactMarkdown>
         </div>
       </div>

@@ -35,7 +35,9 @@ const About: NextPage<{
           links={page.attributes.radioSection.links}
         />
         <CodeOfConductSection textSlides={page.attributes.codeOfConduct} />
-        <ImageBanner
+        <Image
+          quality={50}
+          Banner
           src={page.attributes.imageBanner.data.attributes.url}
           alt='THF Radio at Torhaus'
         />

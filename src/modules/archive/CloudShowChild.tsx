@@ -45,6 +45,7 @@ const CloudShowChild = ({ item }: ShowCardProps) => {
       <div className='group relative flex justify-around items-center'>
         <div className={`w-24 lg:w-40 xl:w-56`}>
           <Image
+            quality={50}
             src={item.pictures.extra_large}
             height={600}
             width={600}

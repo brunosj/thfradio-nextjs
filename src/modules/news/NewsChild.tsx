@@ -21,6 +21,7 @@ const NewsChild: React.FC<NewsProps> = ({ item }) => {
     >
       <div className='relative w-full h-48 lg:h-72'>
         <Image
+          quality={50}
           src={`${CMS_URL}${item.attributes.picture.data.attributes.url}`}
           fill
           sizes=''

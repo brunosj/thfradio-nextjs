@@ -88,7 +88,7 @@ const Header: React.FC<HeaderProps> = ({ isOpen, setIsOpen }) => {
     <header className='sticky w-full z-50 top-0 pt-4  bg-blue-500 text-white pb-4 lg:pb-0 opacity-100 h-16'>
       <div className={`layout flex items-center justify-between `}>
         <Link className='w-24 lg:w-32 pb-2 lg:pb-4' href='/' aria-label='logo'>
-          <Image src={logo} alt='THF Radio Logo' />
+          <Image quality={50} src={logo} alt='THF Radio Logo' />
         </Link>
         <div className=''>
           {/* Desktop Menu */}

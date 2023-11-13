@@ -30,6 +30,7 @@ const ProgrammeShowsChild = React.forwardRef<
           <div className='group relative flex h-full justify-around imageHover'>
             <div className='relative w-16 lg:w-32'>
               <Image
+                quality={50}
                 src={`${CMS_URL}${item.attributes.picture.data.attributes.url}`}
                 fill
                 sizes=''

@@ -71,7 +71,7 @@ h6 {
 }
 
 .markdown a {
-  @apply text-neutral-300  duration-300  hover:text-neutral-500 group-hover:text-neutral-500;
+  @apply text-neutral-100 font-semibold duration-300  hover:text-neutral-300 group-hover:text-neutral-300 underline underline-offset-4;
 }
 
 .markdown p {
@@ -87,7 +87,7 @@ h6 {
 }
 
 .markdown li {
-  @apply list-decimal text-left;
+  @apply list-decimal text-left list-inside ml-6 mb-3 last:mb-6 ;
 }
 
 .textHover {

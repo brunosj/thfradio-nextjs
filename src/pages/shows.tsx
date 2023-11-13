@@ -12,6 +12,8 @@ const Shows: NextPage<{
 }> = ({ page }) => {
   const { programmeShows } = useContext(DataContext)!;
 
+  
+
   // const sortedShows = [...programmeShows].sort((a, b) => {
   //   const titleA = a.attributes.title.toLowerCase();
   //   const titleB = b.attributes.title.toLowerCase();
