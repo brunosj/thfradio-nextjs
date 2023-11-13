@@ -29,7 +29,7 @@ interface ShowDetailsProps {
       spotify?: string;
       website?: string;
       twitterx?: string;
-      picture: {
+      picture?: {
         data: {
           id: number;
           attributes: {
@@ -94,23 +94,19 @@ const ShowDetails: React.FC<ShowDetailsProps> = ({ currentContent }) => {
     return time ? time.slice(0, 5) : '';
   };
 
-  console.log(
-    `${CMS_URL}${currentContent.attributes.picture.data.attributes.url}`
-  );
-
   return (
     <div className='bg-blue-500 rounded-xl text-white lg:w-[85%] xl:w-3/4  max-h-fit relative lg:absolute lg:-bottom-40'>
       <div className='layout py-6 lg:py-12 space-y-6'>
         <div className='flex items-center gap-6'>
-          {currentContent.attributes.picture.data && (
+          {currentContent.attributes.picture?.data && (
             <div className='relative w-24 h-24'>
               <Image
                 quality={50}
-                src={`${CMS_URL}${currentContent.attributes.picture.data.attributes.url}`}
+                src={`${CMS_URL}${currentContent.attributes.picture?.data.attributes.url}`}
                 fill
                 sizes=''
                 className='object-cover rounded-xl aspect-square'
-                alt={currentContent.attributes.picture.data.attributes.name}
+                alt={currentContent.attributes.picture?.data.attributes.name}
               />
             </div>
           )}

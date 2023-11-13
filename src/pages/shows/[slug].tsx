@@ -54,8 +54,8 @@ const ShowPage: NextPage<ShowPage> = ({ content, otherLocaleContent }) => {
   }
 
   const image =
-    currentContent.attributes.pictureFullWidth.data?.attributes.url ||
-    currentContent.attributes.picture.data?.attributes.url ||
+    currentContent.attributes.pictureFullWidth?.data?.attributes.url ||
+    currentContent.attributes.picture?.data?.attributes.url ||
     '';
 
   return (
@@ -71,7 +71,7 @@ const ShowPage: NextPage<ShowPage> = ({ content, otherLocaleContent }) => {
             <div className='relative min-h-[50vh] lg:min-h-[80vh] w-full'>
               <Image
                 quality={50}
-                src={`${CMS_URL}${currentContent.attributes.pictureFullWidth.data.attributes.url}`}
+                src={`${CMS_URL}${currentContent.attributes.pictureFullWidth?.data.attributes.url}`}
                 fill
                 sizes=''
                 className='object-cover object-center'
