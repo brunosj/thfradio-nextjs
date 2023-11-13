@@ -13,9 +13,7 @@ export const Layout = ({ children }: Props) => {
       <Header isOpen={isMobileMenuOpen} setIsOpen={setMobileMenuOpen} />
       <main
         className={
-          isMobileMenuOpen
-            ? ' pt-6 lg:pt-10 filter blur-sm duration-700 ease-in-out'
-            : 'pt-6 lg:pt-10'
+          isMobileMenuOpen ? 'filter blur-sm duration-700 ease-in-out' : ''
         }
       >
         {/* <LiveTicker /> */}

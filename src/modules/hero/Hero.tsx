@@ -26,7 +26,7 @@ const Hero = ({
   const handleAnchorLinkClick = useSmoothScroll();
 
   return (
-    <section className='px-0 lg:px-16 bg-blue-500 grid grid-cols-1 lg:grid-cols-2 pt-6 lg:py-12 gap-6 lg:gap-12'>
+    <section className='px-0 lg:px-16 bg-blue-500 grid grid-cols-1 lg:grid-cols-2 pt-6 lg:pt-20 lg:pb-12 gap-6 lg:gap-12'>
       <div
         className={clsx(
           picturePosition === 'right' ? 'order-1' : 'order-2',

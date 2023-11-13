@@ -22,7 +22,7 @@ const News: NextPage<{
         description={page.attributes.description}
       />
       <Layout>
-        <div className='bg-blue-500 relative'>
+        <div className='bg-blue-500 relative pt-6 lg:pt-10'>
           <div className='layout sectionPy'>
             <h1 className='text-white'>{page.attributes.title}</h1>
           </div>

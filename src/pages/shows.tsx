@@ -12,8 +12,6 @@ const Shows: NextPage<{
 }> = ({ page }) => {
   const { programmeShows } = useContext(DataContext)!;
 
-  
-
   // const sortedShows = [...programmeShows].sort((a, b) => {
   //   const titleA = a.attributes.title.toLowerCase();
   //   const titleB = b.attributes.title.toLowerCase();
@@ -33,7 +31,7 @@ const Shows: NextPage<{
         description={page.attributes.description}
       />
       <Layout>
-        <div className='bg-darkBlue relative'>
+        <div className='bg-darkBlue relative pt-6 lg:pt-10'>
           <div className='layout sectionPy'>
             <h1 className='text-white'>{page.attributes.title}</h1>
           </div>
