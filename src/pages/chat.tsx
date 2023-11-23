@@ -7,6 +7,7 @@ import DiscordEmbed from '@/modules/chat/DiscordEmbed';
 import { XMarkIcon } from '@/common/assets/XMarkIcon';
 import { TbBrandDiscord } from 'react-icons/tb';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import Link from 'next/link';
 
 const Chat: NextPage<{
   page: PageTypes;
@@ -16,13 +17,15 @@ const Chat: NextPage<{
       <SEOComponent title='THF Radio Chat' />
       {/* <Layout> */}
       <div className='relative'>
-        <div className='absolute left-0 w-full bg-orange-500 text-white h-[50px] px-4'>
+        <div className='absolute left-0 w-full bg-orange-500 text-white h-[63px] px-4'>
           <div className='flex space-x-4 items-center h-full'>
-            <span className='flex-grow '>THF Radio Chat</span>
+            <span className='flex-grow '>
+              <Link href='/'>THF Radio</Link>
+            </span>
             <TbBrandDiscord className='w-6 h-6' />
           </div>
         </div>
-        <div className='pt-[6.5rem] h-screen w-[full]'>
+        <div className='pt-[5.6rem] h-screen w-[full] bg-[#303236]'>
           <DiscordEmbed />
         </div>
       </div>
