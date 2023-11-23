@@ -26,6 +26,13 @@
   margin-left: calc(var(--slide-spacing) * -1);
 }
 
+.embla__slide {
+  flex: 0 0 var(--slide-size);
+  min-width: 0;
+  padding-left: var(--slide-spacing);
+  position: relative;
+}
+
 .embla__marginRight {
   margin-right: -10%;
 }
@@ -33,13 +40,6 @@
 .embla__adjustHeight {
   align-items: flex-start;
   transition: height 0.4s;
-}
-
-.embla__slide {
-  flex: 0 0 var(--slide-size);
-  min-width: 0;
-  padding-left: var(--slide-spacing);
-  position: relative;
 }
 
 .embla__container > .embla__marginRight:last-child {

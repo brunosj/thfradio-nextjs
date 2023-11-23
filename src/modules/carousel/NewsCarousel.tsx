@@ -14,7 +14,7 @@ type PropType = {
 const NewsCarousel: React.FC<PropType> = (props) => {
   const options: EmblaOptionsType = {
     slidesToScroll: 'auto',
-    containScroll: 'trimSnaps',
+    containScroll: 'keepSnaps',
   };
   const { slides } = props;
   const [emblaRef] = useEmblaCarousel(options);

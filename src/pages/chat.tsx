@@ -14,19 +14,19 @@ const Chat: NextPage<{
   return (
     <>
       <SEOComponent title='THF Radio Chat' />
-      <Layout>
-        <div className='relative'>
-          <div className='absolute top-6 left-0 w-full bg-orange-500 text-white h-[50px] px-4'>
-            <div className='flex space-x-4 items-center h-full'>
-              <span className='flex-grow '>THF Radio Chat</span>
-              <TbBrandDiscord className='w-6 h-6' />
-            </div>
-          </div>
-          <div className='pt-[4.5rem] h-screen w-[full]'>
-            <DiscordEmbed />
+      {/* <Layout> */}
+      <div className='relative'>
+        <div className='absolute left-0 w-full bg-orange-500 text-white h-[50px] px-4'>
+          <div className='flex space-x-4 items-center h-full'>
+            <span className='flex-grow '>THF Radio Chat</span>
+            <TbBrandDiscord className='w-6 h-6' />
           </div>
         </div>
-      </Layout>
+        <div className='pt-[6.5rem] h-screen w-[full]'>
+          <DiscordEmbed />
+        </div>
+      </div>
+      {/* </Layout> */}
     </>
   );
 };
