@@ -63,7 +63,7 @@ const ShowPage: NextPage<ShowPage> = ({ content, otherLocaleContent }) => {
       <SEOComponent
         title={currentContent.attributes.title}
         description={currentContent.attributes.description}
-        image={image}
+        image={`${CMS_URL}${image}`}
       />
       <Layout>
         <div className='relative'>
