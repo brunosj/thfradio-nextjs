@@ -34,17 +34,6 @@ const ProgrammeShowsList: React.FC<ProgrammeShowsListProps> = ({
     item.attributes.title[0].toUpperCase()
   );
 
-  const sectionTitleEnglish = isActive ? 'Current Shows' : 'Archive';
-  const sectionTitleGerman = isActive ? 'Aktuelle Sendungen' : 'Archiv';
-
-  const getTitleByLocale = () => {
-    if (locale === 'de') {
-      return sectionTitleGerman;
-    } else {
-      return sectionTitleEnglish;
-    }
-  };
-
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     if (items && items.length > 0) {
@@ -82,9 +71,6 @@ const ProgrammeShowsList: React.FC<ProgrammeShowsListProps> = ({
 
       {!isActive && <div className='bg-blue-500 opacity-90 py-3' />}
       <div className='layout py-12 bg-orange-500 grid grid-cols-1 gap-3 lg:gap-6'>
-        {/* <h2 className='font-mono text-white text-2xl font-bold mb-4'>
-          {getTitleByLocale()}
-        </h2> */}
         {isLoading ? (
           <div className='m-auto text-center'>
             <BarsSpinner color='#1200ff' />

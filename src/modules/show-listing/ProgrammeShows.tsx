@@ -12,16 +12,6 @@ interface ProgrammeShowsProps {
 const ProgrammeShows: React.FC<ProgrammeShowsProps> = ({ items }) => {
   const router = useRouter();
   const locale = router.locale || 'en';
-  const [refs, activeLetter, scrollToShow] = useShowListings(items);
-
-  const alphabet = Array.from({ length: 26 }, (_, i) =>
-    String.fromCharCode(65 + i)
-  );
-
-  const lettersWithShows: string[] = items.map((item) =>
-    item.attributes.title[0].toUpperCase()
-  );
-
 
   return (
     <>

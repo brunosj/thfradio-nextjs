@@ -19,9 +19,17 @@ const useShowListings = (
 
   const scrollToShow = (letter: string) => {
     setActiveLetter(letter);
-    const show = items.find(
+
+    const showsWithLetter = items.filter(
       (item) => item.attributes.title[0].toLowerCase() === letter.toLowerCase()
     );
+
+    const sortedShows = showsWithLetter.sort((a, b) =>
+      a.attributes.title.localeCompare(b.attributes.title)
+    );
+
+    const show = sortedShows[0];
+    console.log(show);
 
     if (show && refs.current[show.id]?.current) {
       const boundingRect =
