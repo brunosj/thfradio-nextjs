@@ -1,23 +1,40 @@
 import React from 'react';
-import useEmblaCarousel, { EmblaOptionsType } from 'embla-carousel-react';
+import useEmblaCarousel, {
+  type UseEmblaCarouselType,
+} from 'embla-carousel-react';
 import { NewsType } from '@/types/ResponsesInterface';
 import Image from 'next/image';
 import { CMS_URL } from '@/utils/constants';
-import format from 'date-fns/format';
+import { format } from 'date-fns/format';
 import Link from 'next/link';
 
 type PropType = {
   slides: NewsType[];
-  options?: EmblaOptionsType;
+  options?: CarouselProps;
+};
+
+type CarouselApi = UseEmblaCarouselType[1];
+type UseCarouselParameters = Parameters<typeof useEmblaCarousel>;
+type CarouselOptions = UseCarouselParameters[0];
+type CarouselPlugin = UseCarouselParameters[1];
+
+type CarouselProps = {
+  opts?: CarouselOptions;
+  plugins?: CarouselPlugin;
+  orientation?: 'horizontal' | 'vertical';
+  setApi?: (api: CarouselApi) => void;
 };
 
 const NewsCarousel: React.FC<PropType> = (props) => {
-  const options: EmblaOptionsType = {
-    slidesToScroll: 'auto',
-    containScroll: 'keepSnaps',
+  const options: CarouselProps = {
+    // Update type of 'options' to CarouselProps
+    opts: {
+      slidesToScroll: 'auto',
+      containScroll: 'keepSnaps',
+    },
   };
   const { slides } = props;
-  const [emblaRef] = useEmblaCarousel(options);
+  const [emblaRef] = useEmblaCarousel(options?.opts);
 
   return (
     <div className='news__embla'>

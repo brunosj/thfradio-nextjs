@@ -4,7 +4,7 @@ import { NewsType } from '@/types/ResponsesInterface';
 import ReactMarkdown from 'react-markdown';
 import Image from 'next/image';
 import { CMS_URL } from '@/utils/constants';
-import format from 'date-fns/format';
+import { format } from 'date-fns/format';
 
 interface NewsProps {
   item: NewsType;

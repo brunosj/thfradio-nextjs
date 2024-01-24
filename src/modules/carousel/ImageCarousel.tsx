@@ -1,7 +1,6 @@
 import React, { useCallback, useEffect, useState, useRef } from 'react';
 import useEmblaCarousel, {
-  EmblaCarouselType,
-  EmblaOptionsType,
+  type UseEmblaCarouselType,
 } from 'embla-carousel-react';
 import Autoplay from 'embla-carousel-autoplay';
 import { DotButton } from './CarouselNavigation';
@@ -10,8 +9,20 @@ import { Pictures } from '@/types/ResponsesInterface';
 import { CMS_URL } from '@/utils/constants';
 
 type PropType = {
-  options?: EmblaOptionsType;
+  options?: CarouselProps;
   slides: Pictures;
+};
+
+type CarouselApi = UseEmblaCarouselType[1];
+type UseCarouselParameters = Parameters<typeof useEmblaCarousel>;
+type CarouselOptions = UseCarouselParameters[0];
+type CarouselPlugin = UseCarouselParameters[1];
+
+type CarouselProps = {
+  opts?: CarouselOptions;
+  plugins?: CarouselPlugin;
+  orientation?: 'horizontal' | 'vertical';
+  setApi?: (api: CarouselApi) => void;
 };
 
 const ImageCarousel: React.FC<PropType> = (props) => {
@@ -23,7 +34,9 @@ const ImageCarousel: React.FC<PropType> = (props) => {
     )
   );
 
-  const [emblaRef, emblaApi] = useEmblaCarousel(options, [autoplay.current]);
+  const [emblaRef, emblaApi] = useEmblaCarousel(options?.opts, [
+    autoplay.current,
+  ]);
   const [prevBtnEnabled, setPrevBtnEnabled] = useState(false);
   const [nextBtnEnabled, setNextBtnEnabled] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -53,14 +66,18 @@ const ImageCarousel: React.FC<PropType> = (props) => {
     [emblaApi]
   );
 
-  const onInit = useCallback((emblaApi: EmblaCarouselType) => {
-    setScrollSnaps(emblaApi.scrollSnapList());
+  const onInit = useCallback((emblaApi: CarouselApi) => {
+    if (emblaApi) {
+      setScrollSnaps(emblaApi.scrollSnapList());
+    }
   }, []);
 
-  const onSelect = useCallback((emblaApi: EmblaCarouselType) => {
-    setSelectedIndex(emblaApi.selectedScrollSnap());
-    setPrevBtnEnabled(emblaApi.canScrollPrev());
-    setNextBtnEnabled(emblaApi.canScrollNext());
+  const onSelect = useCallback((emblaApi: CarouselApi) => {
+    if (emblaApi) {
+      setSelectedIndex(emblaApi.selectedScrollSnap());
+      setPrevBtnEnabled(emblaApi.canScrollPrev());
+      setNextBtnEnabled(emblaApi.canScrollNext());
+    }
   }, []);
 
   useEffect(() => {
