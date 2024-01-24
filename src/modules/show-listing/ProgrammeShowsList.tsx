@@ -20,10 +20,6 @@ const ProgrammeShowsList: React.FC<ProgrammeShowsListProps> = ({
     item.attributes.title.toUpperCase().startsWith('THF')
   );
 
-  const otherShows = items.filter(
-    (item) => !item.attributes.title.toUpperCase().startsWith('THF')
-  );
-
   const [refs, activeLetter, scrollToShow] = useShowListings(items);
 
   const alphabet = Array.from({ length: 26 }, (_, i) =>
