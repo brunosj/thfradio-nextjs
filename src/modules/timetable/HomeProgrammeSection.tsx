@@ -22,6 +22,7 @@ const HomeProgrammeSection = ({
       setIsLoading(false);
     }
   }, [calendarEntries]);
+
   return (
     <section className='bg-blue-500 sectionPb' id='programme'>
       <SectionHeader title={title} text={text} />

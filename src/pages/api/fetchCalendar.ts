@@ -7,6 +7,7 @@ import {
   addDays,
   endOfWeek,
 } from 'date-fns';
+import { CalendarEntry } from '@/types/ResponsesInterface';
 
 const fetchCalendar = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
@@ -15,19 +16,24 @@ const fetchCalendar = async (req: NextApiRequest, res: NextApiResponse) => {
     );
     const serializedCalendarEntries = JSON.stringify(calendarEntriesResponse);
     const calendarEntries = JSON.parse(serializedCalendarEntries);
-    const veventEntries = Object.values(calendarEntries).filter(
-      (entry: any) => entry.type === 'VEVENT'
-    );
-
     const now = startOfDay(new Date());
     const endOfCurrentWeek = endOfDay(addDays(endOfWeek(now), 1));
-    const upcomingShows = veventEntries.filter((show: any) => {
-      const showStart = new Date(show.start);
-      const showEnd = new Date(show.end);
-      return (
-        isWithinInterval(showStart, { start: now, end: endOfCurrentWeek }) &&
-        isWithinInterval(showEnd, { start: now, end: endOfCurrentWeek })
-      );
+    const veventEntries: any[] = Object.values(calendarEntries);
+    const upcomingShows: CalendarEntry[] = veventEntries
+      .filter((entry: any) => entry.type === 'VEVENT')
+      .filter((show: any) => {
+        const showStart = new Date(show.start);
+        const showEnd = new Date(show.end);
+        return (
+          isWithinInterval(showStart, { start: now, end: endOfCurrentWeek }) &&
+          isWithinInterval(showEnd, { start: now, end: endOfCurrentWeek })
+        );
+      });
+
+    upcomingShows.sort((entry1, entry2) => {
+      const startTime1 = new Date(entry1.start).getTime();
+      const startTime2 = new Date(entry2.start).getTime();
+      return startTime1 - startTime2;
     });
 
     return res.status(200).json(upcomingShows);
