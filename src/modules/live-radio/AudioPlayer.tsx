@@ -6,13 +6,16 @@ import { Play } from '@/common/assets/PlayIcon';
 interface AudioPlayerProps {
   iconFill: string;
   iconClassName: string;
+  audioSrc: string;
 }
 
 export default function LivePlayer({
   iconClassName,
   iconFill,
+  audioSrc,
 }: AudioPlayerProps) {
-  const AUDIO_SRC = `https://thfradio2.out.airtime.pro/thfradio2_b`;
+
+  const AUDIO_SRC = audioSrc;
 
   const player = useRef<HTMLAudioElement>(
     null

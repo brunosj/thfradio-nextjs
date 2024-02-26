@@ -8,6 +8,7 @@ export function Play({ className, fill }: PlayProps) {
     <svg
       xmlns='http://www.w3.org/2000/svg'
       fill={fill}
+      id='play'
       viewBox='0 0 24 24'
       // strokeWidth={1.5}
       // stroke='currentColor'

@@ -151,6 +151,7 @@ export const LiveTicker = () => {
           <AudioPlayer
             iconClassName='w-6 h-6 lg:w-10 lg:h-10'
             iconFill='#1200ff'
+            audioSrc='https://thfradio2.out.airtime.pro/thfradio2_b'
           />
         </div>
       </div>

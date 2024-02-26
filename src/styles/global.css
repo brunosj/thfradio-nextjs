@@ -39,7 +39,7 @@ h1 {
 }
 
 h2 {
-  @apply mt-0 text-xl font-light lg:text-3xl lg:mt-2;
+  @apply mt-0 text-xl font-normal lg:text-3xl lg:mt-2;
 }
 
 h3 {
@@ -78,16 +78,14 @@ h6 {
   @apply mb-3 lg:mb-6 last:mb-0;
 }
 
-.markdown h5 {
-  @apply py-3;
-}
-
-.markdown h2 {
+.markdown h2,
+h3,
+h5 {
   @apply py-3;
 }
 
 .markdown li {
-  @apply list-decimal text-left list-inside ml-6 mb-3 last:mb-6 ;
+  @apply list-decimal text-left list-inside ml-6 mb-3 last:mb-6;
 }
 
 .textHover {
@@ -107,7 +105,17 @@ h6 {
   opacity: 1;
 }
 
-input[type='range'] {
+#play:hover {
+  fill: #ff6314;
+  transition: all 0.15s ease-in-out;
+}
+
+#pause:hover {
+  stroke: #ff6314;
+  transition: all 0.15s ease-in-out;
+}
+
+scg input[type='range'] {
   -webkit-appearance: none;
   width: 5rem;
   height: 0.2rem;
