@@ -147,10 +147,14 @@ const Header: React.FC<HeaderProps> = ({ isOpen, setIsOpen }) => {
           {/* Mobile Menu */}
           <nav className={'block lg:hidden '}>
             <div className='flex space-x-3'>
-              <AudioPlayer 
-              iconFill='white'
-              iconClassName='w-6 h-6'           
-              audioSrc='https://thfradio2.out.airtime.pro/thfradio2_b' />
+              <AudioPlayer
+                iconFill='white'
+                iconClassName='w-6 h-6'
+                audioSrc={
+                  process.env.LIVE_RADIO_STREAM ||
+                  'http://91.107.238.209:8000/live'
+                }
+              />
               <button
                 onClick={handleToggleMenu}
                 className='text-white'

@@ -14,7 +14,6 @@ export default function LivePlayer({
   iconFill,
   audioSrc,
 }: AudioPlayerProps) {
-
   const AUDIO_SRC = audioSrc;
 
   const player = useRef<HTMLAudioElement>(
