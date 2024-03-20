@@ -152,7 +152,7 @@ const Header: React.FC<HeaderProps> = ({ isOpen, setIsOpen }) => {
                 iconClassName='w-6 h-6'
                 audioSrc={
                   process.env.LIVE_RADIO_STREAM ||
-                  'http://91.107.238.209:8000/live'
+                  'https://thfradio2.out.airtime.pro/thfradio2_a'
                 }
               />
               <button

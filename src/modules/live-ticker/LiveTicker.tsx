@@ -152,7 +152,8 @@ export const LiveTicker = () => {
             iconClassName='w-6 h-6 lg:w-10 lg:h-10'
             iconFill='#1200ff'
             audioSrc={
-              process.env.LIVE_RADIO_STREAM || 'http://91.107.238.209:8000/live'
+              process.env.LIVE_RADIO_STREAM ||
+              'https://thfradio2.out.airtime.pro/thfradio2_a'
             }
           />
         </div>
