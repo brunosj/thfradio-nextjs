@@ -1,6 +1,6 @@
 import React from 'react';
 import { useRouter } from 'next/router';
-import { ShowTypes } from '@/types/ResponsesInterface';
+import type { ShowTypes } from '@/types/ResponsesInterface';
 import useShowListings from '@/hooks/useShowListings';
 import { CMS_URL } from '@/utils/constants';
 import ProgrammeShowsList from './ProgrammeShowsList';

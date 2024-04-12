@@ -1,5 +1,5 @@
 import TextCarousel from '../carousel/TextCarousel';
-import { TextSlide } from '@/types/ResponsesInterface';
+import type { TextSlide } from '@/types/ResponsesInterface';
 
 type Props = {
   textSlides: TextSlide[];

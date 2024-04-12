@@ -1,5 +1,5 @@
 import CloudShowsComponent from './CloudShowsComponent';
-import { CloudShowTypes, TagsList } from '@/types/ResponsesInterface';
+import type { CloudShowTypes, TagsList } from '@/types/ResponsesInterface';
 import { processShows } from '@/utils/showUtils';
 
 type CloudShowsArchiveProps = {

@@ -2,7 +2,7 @@
 import React from 'react';
 import { useRouter } from 'next/router';
 import CalendarEntry from './CalendarEntry';
-import { CalendarEntry as CalendarEntryProps } from '@/types/ResponsesInterface';
+import type { CalendarEntry as CalendarEntryProps } from '@/types/ResponsesInterface';
 
 interface DateEntryProps {
   date: string;

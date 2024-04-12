@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
-import { CloudShowTypes } from '@/types/ResponsesInterface';
+import type { CloudShowTypes } from '@/types/ResponsesInterface';
 import { Play } from '@/common/assets/PlayIcon';
 import { getShowName, getFormattedDateString } from '@/utils/showUtils';
 import BarsSpinner from '@/common/ui/BarsSpinner';

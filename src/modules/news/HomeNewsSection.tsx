@@ -1,5 +1,5 @@
 import SectionHeader from '@/common/layout/section/SectionHeader';
-import { NewsType } from '@/types/ResponsesInterface';
+import type { NewsType } from '@/types/ResponsesInterface';
 import Button from '@/common/ui/UIButton';
 import { useTranslation } from 'next-i18next';
 import NewsCarousel from '../carousel/NewsCarousel';

@@ -1,4 +1,4 @@
-import { TagTypes } from '@/types/ResponsesInterface';
+import type { TagTypes } from '@/types/ResponsesInterface';
 import React from 'react';
 
 interface SidePanelProps {

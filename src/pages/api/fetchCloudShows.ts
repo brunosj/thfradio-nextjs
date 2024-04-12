@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { CloudShowTypes } from '@/types/ResponsesInterface';
+import type { CloudShowTypes } from '@/types/ResponsesInterface';
 import fetch from 'node-fetch';
 
 interface MixcloudResponse {
@@ -8,7 +8,7 @@ interface MixcloudResponse {
 
 const fetchCloudShows = async (req: NextApiRequest, res: NextApiResponse) => {
   const limit = 100;
-  const totalItems = 1600;
+  const totalItems = 2500;
   const pages = Math.ceil(totalItems / limit);
   const promises = [];
 
@@ -26,7 +26,6 @@ const fetchCloudShows = async (req: NextApiRequest, res: NextApiResponse) => {
 
     const results = await Promise.all(promises);
     const shows = results.flat().slice(0, totalItems);
-
     return res.status(200).json(shows);
   } catch (error) {
     console.error(error);

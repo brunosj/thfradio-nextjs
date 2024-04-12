@@ -5,7 +5,7 @@ import useEmblaCarousel, {
 import Autoplay from 'embla-carousel-autoplay';
 import { DotButton } from './CarouselNavigation';
 import Image from 'next/image';
-import { Pictures } from '@/types/ResponsesInterface';
+import type { Pictures } from '@/types/ResponsesInterface';
 import { CMS_URL } from '@/utils/constants';
 
 type PropType = {

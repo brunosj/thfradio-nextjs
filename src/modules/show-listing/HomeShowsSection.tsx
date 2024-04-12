@@ -1,6 +1,6 @@
 import SectionHeader from '@/common/layout/section/SectionHeader';
 import ShowListing from './ProgrammeShows';
-import { ShowTypes, PictureType } from '@/types/ResponsesInterface';
+import type { ShowTypes, PictureType } from '@/types/ResponsesInterface';
 import Button from '@/common/ui/UIButton';
 import { useTranslation } from 'next-i18next';
 import ImageGallery from '../image-gallery/imageGallery';

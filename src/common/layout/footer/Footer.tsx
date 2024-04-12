@@ -1,7 +1,7 @@
-import { Props } from '@/types/PropsInterface';
 import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
-import { MenuType } from '@/types/uiInterface';
+import type { Props } from '@/types/PropsInterface';
+import type { MenuType } from '@/types/uiInterface';
 import Link from 'next/link';
 const Footer = ({ children }: Props) => {
   const router = useRouter();

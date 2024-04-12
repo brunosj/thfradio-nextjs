@@ -1,5 +1,5 @@
 import React from 'react';
-import { CloudShowTypes } from '@/types/ResponsesInterface';
+import type { CloudShowTypes } from '@/types/ResponsesInterface';
 import CloudShowChild from './CloudShowChild';
 
 interface ShowCardListProps {

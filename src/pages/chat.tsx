@@ -1,6 +1,6 @@
 import type { NextPage } from 'next';
 import Layout from '@/common/layout/Layout';
-import { PageTypes } from '@/types/ResponsesInterface';
+import type { PageTypes } from '@/types/ResponsesInterface';
 import { SEOComponent } from '@/utils/seo';
 import { DISCORD_INVITE_URL } from '@/utils/constants';
 import DiscordEmbed from '@/modules/chat/DiscordEmbed';

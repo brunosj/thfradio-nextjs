@@ -2,7 +2,7 @@
 import React from 'react';
 import groupByDate from './groupByDate';
 import DateEntry from './DateEntry';
-import { CalendarEntry } from '@/types/ResponsesInterface';
+import type { CalendarEntry } from '@/types/ResponsesInterface';
 
 interface TimetableProps {
   calendarEntries: CalendarEntry[];

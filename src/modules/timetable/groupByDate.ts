@@ -1,5 +1,5 @@
 // File: GroupByDate.ts
-import { CalendarEntry } from '@/types/ResponsesInterface';
+import type { CalendarEntry } from '@/types/ResponsesInterface';
 import { startOfDay } from 'date-fns';
 
 const groupByDate = (entries: CalendarEntry[]) => {

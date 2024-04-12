@@ -1,7 +1,7 @@
 import Header from '@/layout/header/Header';
 import Footer from '@/layout/footer/Footer';
 import LiveTicker from '@/modules/live-ticker/LiveTicker';
-import { Props } from '@/types/PropsInterface';
+import type { Props } from '@/types/PropsInterface';
 import MixcloudWidget from '@/modules/mixcloud/MixcloudWidget';
 import { useState } from 'react';
 import ScrollToTopButton from '../ui/ScrollToTopButton';

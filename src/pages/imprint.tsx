@@ -1,7 +1,7 @@
 import type { NextPage } from 'next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Layout from '@/common/layout/Layout';
-import { PageTypes } from '@/types/ResponsesInterface';
+import type { PageTypes } from '@/types/ResponsesInterface';
 import { SEOComponent } from '@/utils/seo';
 import GenericPage from '@/modules/generic-page/GenericPage';
 

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import SectionHeader from '@/common/layout/section/SectionHeader';
-import { CalendarEntry } from '@/types/ResponsesInterface';
+import type { CalendarEntry } from '@/types/ResponsesInterface';
 import Timetable from './Timetable';
 import BarsSpinner from '@/common/ui/BarsSpinner';
 

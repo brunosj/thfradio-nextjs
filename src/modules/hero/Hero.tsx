@@ -6,7 +6,7 @@ import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
 import clsx from 'clsx';
 import ImageCarousel from '../carousel/ImageCarousel';
-import { Pictures } from '@/types/ResponsesInterface';
+import type { Pictures } from '@/types/ResponsesInterface';
 import { useSmoothScroll } from '@/hooks/useSmoothScroll';
 
 type HeroProps = {

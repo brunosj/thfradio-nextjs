@@ -1,6 +1,6 @@
 // File: CalendarEntry.tsx
 import React from 'react';
-import { CalendarEntry as CalendarEntryProps } from '@/types/ResponsesInterface';
+import type { CalendarEntry as CalendarEntryProps } from '@/types/ResponsesInterface';
 
 import { Wave } from '@/common/assets/WaveSVG';
 import { useRouter } from 'next/router';

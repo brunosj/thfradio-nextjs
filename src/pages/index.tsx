@@ -4,7 +4,7 @@ import type { NextPage } from 'next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { DataContext } from '@/context/DataContext';
 import Layout from '@/common/layout/Layout';
-import { HomepageTypes, TagsList } from '@/types/ResponsesInterface';
+import type { HomepageTypes } from '@/types/ResponsesInterface';
 import Hero from '@/modules/hero/Hero';
 import HomeShowSection from '@/modules/show-listing/HomeShowsSection';
 import HomeProgrammeSection from '@/modules/timetable/HomeProgrammeSection';
@@ -19,6 +19,14 @@ const Home: NextPage<{
   const { locale: currentLocale = 'en' } = router;
   const { cloudShows, calendarEntries, programmeShows, tagsList } =
     useContext(DataContext)!;
+
+  console.log(`
+
+Hey there, welcome to the site of THF Radio, a community radio based in Berlin 📻
+
+If you like it and want to see the code behind it, check it out at https://github.com/brunosj/thfradio-nextjs
+
+For any issues or dev-related questions, please get in touch at contact@landozone.net ✨`);
 
   return (
     <>

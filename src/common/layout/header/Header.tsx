@@ -6,7 +6,7 @@ import { useTranslation } from 'next-i18next';
 import { MenuType } from '@/types/uiInterface';
 import logo from '@/assets/logo_white.png';
 import AudioPlayer from '@/modules/live-radio/AudioPlayer';
-import { CalendarEntry, CloudShowTypes } from '@/types/ResponsesInterface';
+import type { CalendarEntry, CloudShowTypes } from '@/types/ResponsesInterface';
 import { DataContext } from '@/context/DataContext';
 import { useContext } from 'react';
 import { Bars2Icon } from '@/common/assets/Bars2Icon';

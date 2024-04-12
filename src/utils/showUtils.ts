@@ -1,4 +1,4 @@
-import { CloudShowTypes, ValidShow } from '@/types/ResponsesInterface';
+import type { CloudShowTypes, ValidShow } from '@/types/ResponsesInterface';
 import { parse, toDate, isValid, format } from 'date-fns';
 
 export const getShowName = (item: CloudShowTypes): string | null => {

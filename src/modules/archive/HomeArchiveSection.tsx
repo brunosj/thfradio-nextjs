@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import SectionHeader from '@/common/layout/section/SectionHeader';
-import { CloudShowTypes, TagsList } from '@/types/ResponsesInterface';
+import type { CloudShowTypes, TagsList } from '@/types/ResponsesInterface';
 import CloudShowsArchive from './CloudShowsArchive';
 import BarsSpinner from '@/common/ui/BarsSpinner';
 

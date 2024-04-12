@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect, createRef } from 'react';
-import { ShowTypes } from '@/types/ResponsesInterface';
+import type { ShowTypes } from '@/types/ResponsesInterface';
 
 interface RefsObject {
   [key: string]: React.RefObject<HTMLDivElement>;

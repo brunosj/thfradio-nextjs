@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useTranslation } from 'next-i18next';
 import { useRouter } from 'next/router';
-import { ShowTypes } from '@/types/ResponsesInterface';
+import type { ShowTypes } from '@/types/ResponsesInterface';
 import { CMS_URL } from '@/utils/constants';
 
 interface ProgrammeShowsProps {

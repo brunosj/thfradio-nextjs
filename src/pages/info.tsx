@@ -3,7 +3,7 @@ import type { NextPage } from 'next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Layout from '@/common/layout/Layout';
 import Hero from '@/modules/hero/Hero';
-import { AboutTypes } from '@/types/ResponsesInterface';
+import type { AboutTypes } from '@/types/ResponsesInterface';
 import AboutSection from '@/modules/about-section/aboutSection';
 import ImageBanner from '@/modules/image-banner/ImageBanner';
 import CodeOfConductSection from '@/modules/code-of-conduct/CodeOfConductSection';

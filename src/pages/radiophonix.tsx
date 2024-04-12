@@ -5,7 +5,7 @@ import { DataContext } from '@/context/DataContext';
 import { useContext } from 'react';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Layout from '@/common/layout/Layout';
-import { PageTypes } from '@/types/ResponsesInterface';
+import type { PageTypes } from '@/types/ResponsesInterface';
 import { SEOComponent } from '@/utils/seo';
 import ReactMarkdown from 'react-markdown';
 import AudioPlayer from '@/modules/live-radio/AudioPlayer';

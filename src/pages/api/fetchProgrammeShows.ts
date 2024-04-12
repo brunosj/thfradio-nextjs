@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { ShowTypes } from '@/types/ResponsesInterface';
+import type { ShowTypes } from '@/types/ResponsesInterface';
 import fetch from 'node-fetch';
 
 interface StrapiShowResponse {

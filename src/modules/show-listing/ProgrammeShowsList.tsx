@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import React from 'react';
-import { ShowTypes } from '@/types/ResponsesInterface';
+import type { ShowTypes } from '@/types/ResponsesInterface';
 import useShowListings from '@/hooks/useShowListings';
 import BarsSpinner from '@/common/ui/BarsSpinner';
 import ShowListingChild from './ProgrammeShowsChild';

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useRouter } from 'next/router';
-import { NewsType } from '@/types/ResponsesInterface';
+import type { NewsType } from '@/types/ResponsesInterface';
 import ReactMarkdown from 'react-markdown';
 import Image from 'next/image';
 import { CMS_URL } from '@/utils/constants';

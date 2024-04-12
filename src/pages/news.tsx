@@ -5,10 +5,9 @@ import { DataContext } from '@/context/DataContext';
 import { useContext } from 'react';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Layout from '@/common/layout/Layout';
-import { PageTypes } from '@/types/ResponsesInterface';
 import { SEOComponent } from '@/utils/seo';
 import NewsChild from '@/modules/news/NewsChild';
-import { NewsType } from '@/types/ResponsesInterface';
+import type { NewsType, PageTypes } from '@/types/ResponsesInterface';
 
 const News: NextPage<{
   page: PageTypes;

@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
 import Link from 'next/link';
-import { Button as ButtonProps } from '@/types/uiInterface';
+import type { Button as ButtonProps } from '@/types/uiInterface';
 import clsx from 'clsx';
 
 const Button = ({

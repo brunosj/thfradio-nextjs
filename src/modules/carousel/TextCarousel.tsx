@@ -5,7 +5,7 @@ import useEmblaCarousel, {
 import AutoHeight from 'embla-carousel-auto-height';
 import { DotButton, DotButtonText } from './CarouselNavigation';
 import Image from 'next/image';
-import { TextSlide } from '@/types/ResponsesInterface';
+import type { TextSlide } from '@/types/ResponsesInterface';
 import { CMS_URL } from '@/utils/constants';
 import ReactMarkdown from 'react-markdown';
 

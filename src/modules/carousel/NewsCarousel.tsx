@@ -2,7 +2,7 @@ import React from 'react';
 import useEmblaCarousel, {
   type UseEmblaCarouselType,
 } from 'embla-carousel-react';
-import { NewsType } from '@/types/ResponsesInterface';
+import type { NewsType } from '@/types/ResponsesInterface';
 import Image from 'next/image';
 import { CMS_URL } from '@/utils/constants';
 import { format } from 'date-fns/format';

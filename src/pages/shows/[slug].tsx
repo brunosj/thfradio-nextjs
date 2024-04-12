@@ -8,7 +8,7 @@ import { SEOComponent } from '@/utils/seo';
 import CloudShowChild from '@/modules/archive/CloudShowChild';
 import { DataContext } from '@/context/DataContext';
 import BarsSpinner from '@/common/ui/BarsSpinner';
-import {
+import type {
   ShowTypes,
   CloudShowTypes,
   TagsList,

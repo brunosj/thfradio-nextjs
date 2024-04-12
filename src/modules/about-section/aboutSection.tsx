@@ -5,7 +5,7 @@ import Button from '@/common/ui/UIButton';
 import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
 import clsx from 'clsx';
-import { AboutSection } from '@/types/ResponsesInterface';
+import type { AboutSection } from '@/types/ResponsesInterface';
 
 const AboutSection = ({ title, description, button, links }: AboutSection) => {
   const { t } = useTranslation();

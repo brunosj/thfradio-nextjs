@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { TagsList } from '@/types/ResponsesInterface';
+import type { TagsList } from '@/types/ResponsesInterface';
 import fetch from 'node-fetch';
 
 interface StrapiTagsResponse {

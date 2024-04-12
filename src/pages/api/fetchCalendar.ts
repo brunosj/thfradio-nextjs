@@ -7,7 +7,7 @@ import {
   addDays,
   endOfWeek,
 } from 'date-fns';
-import { CalendarEntry } from '@/types/ResponsesInterface';
+import type { CalendarEntry } from '@/types/ResponsesInterface';
 
 const fetchCalendar = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
