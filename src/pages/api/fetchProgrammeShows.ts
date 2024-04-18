@@ -18,3 +18,9 @@ const fetchProgrammeShows = async (
 };
 
 export default fetchProgrammeShows;
+
+export const config = {
+  api: {
+    responseLimit: false,
+  },
+};

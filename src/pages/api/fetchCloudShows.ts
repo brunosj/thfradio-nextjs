@@ -34,3 +34,9 @@ const fetchCloudShows = async (req: NextApiRequest, res: NextApiResponse) => {
 };
 
 export default fetchCloudShows;
+
+export const config = {
+  api: {
+    responseLimit: false,
+  },
+};
