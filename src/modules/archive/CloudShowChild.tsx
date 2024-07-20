@@ -74,7 +74,7 @@ const CloudShowChild = ({ item }: ShowCardProps) => {
       <div className='mt-3 lg:mt-6 flex h-full w-2/3 flex-grow  flex-col  lg:w-full px-6 text-left lg:text-center space-y-3 lg:space-y-6 mb-3 justify-center lg:justify-between'>
         <div className='flex space-y-3 flex-col'>
           <span className='font-light opacity-70 text-sm'>{formattedDate}</span>
-          <h4 className='group-hover:text-blue-500 duration-300 lg:mb-6 font-bold '>
+          <h4 className='group-hover:text-blue-500 duration-300 lg:mb-6 font-bold over break-words '>
             {name}
           </h4>
         </div>

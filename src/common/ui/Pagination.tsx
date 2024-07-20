@@ -26,7 +26,7 @@ const Pagination: React.FC<PaginationProps> = ({
 
     // Adjust if near the start or end
     if (currentPage <= 3) {
-      middleEnd = Math.min(6, totalPages);
+      middleEnd = Math.min(4, totalPages);
     } else if (currentPage > totalPages - 3) {
       middleStart = Math.max(totalPages - 4, 2);
     }
