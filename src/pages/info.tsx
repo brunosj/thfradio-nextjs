@@ -33,6 +33,7 @@ const About: NextPage<{
           description={page.attributes.radioSection.description}
           button={page.attributes.radioSection.button}
           links={page.attributes.radioSection.links}
+          acceptApplications={page.attributes.acceptApplications}
         />
         <CodeOfConductSection textSlides={page.attributes.codeOfConduct} />
         <ImageBanner

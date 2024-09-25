@@ -131,6 +131,7 @@ export interface HomepageSection {
 export interface AboutSection {
   title: string;
   description: string;
+  acceptApplications?: boolean;
   button: Array<{
     id: number;
     text: string;
@@ -197,6 +198,7 @@ export interface AboutTypes {
         };
       }>;
     };
+    acceptApplications: boolean;
     radioSection: AboutSection;
     torhausSection: AboutSection;
     imageBanner: {

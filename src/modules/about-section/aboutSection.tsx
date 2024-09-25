@@ -7,8 +7,16 @@ import { useTranslation } from 'next-i18next';
 import clsx from 'clsx';
 import type { AboutSection } from '@/types/ResponsesInterface';
 
-const AboutSection = ({ title, description, button, links }: AboutSection) => {
+const AboutSection = ({
+  title,
+  description,
+  button,
+  links,
+  acceptApplications,
+}: AboutSection) => {
   const { t } = useTranslation();
+
+  console.log(acceptApplications);
 
   return (
     <section className='layout bg-darkBlue sectionPy space-y-12'>
@@ -18,7 +26,7 @@ const AboutSection = ({ title, description, button, links }: AboutSection) => {
           <div className='text-white markdown'>
             <ReactMarkdown>{description}</ReactMarkdown>
           </div>
-          {button && (
+          {acceptApplications && button && (
             <div className='flex space-x-6 pb-12'>
               {button.map((button, i) => (
                 <Button
