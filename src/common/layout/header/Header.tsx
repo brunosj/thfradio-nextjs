@@ -25,7 +25,7 @@ interface HeaderProps {
 const Header: React.FC<HeaderProps> = ({ isOpen, setIsOpen }) => {
   const router = useRouter();
   const { t } = useTranslation();
-  const menu: MenuType = t('menu', { returnObjects: true });
+  const menu: MenuType = t('menu', { returnObjects: true }) as MenuType;
   const { cloudShows, calendarEntries } = useContext(DataContext)!;
 
   // Anchor links smooth behaviour

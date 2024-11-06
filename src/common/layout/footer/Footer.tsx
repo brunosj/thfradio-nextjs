@@ -7,10 +7,16 @@ const Footer = ({ children }: Props) => {
   const router = useRouter();
 
   const { t } = useTranslation();
-  const menu: MenuType = t('menu', { returnObjects: true });
-  const extraMenu: MenuType = t('extraMenu', { returnObjects: true });
-  const followMenu: MenuType = t('followMenu', { returnObjects: true });
-  const contactMenu: MenuType = t('contactMenu', { returnObjects: true });
+  const menu: MenuType = t('menu', { returnObjects: true }) as MenuType;
+  const extraMenu: MenuType = t('extraMenu', {
+    returnObjects: true,
+  }) as MenuType;
+  const followMenu: MenuType = t('followMenu', {
+    returnObjects: true,
+  }) as MenuType;
+  const contactMenu: MenuType = t('contactMenu', {
+    returnObjects: true,
+  }) as MenuType;
 
   return (
     <footer className='bg-blue-500 py-6 lg:py-12 layout'>
